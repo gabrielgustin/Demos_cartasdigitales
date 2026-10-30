@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tucson · Carta</title>
+<meta name="description" content="Carta de Tucson Steak House: appetizers, steaks a la leña, seafood, burgers, pastas y postres.">
+<meta name="theme-color" content="#2f2f2f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Oswald:wght@400;500&family=Montserrat:wght@400;500;600&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#383838; --char-2:#2c2c2c; --cu:#b07f5e; --cu-2:#d2a27f; --red:#a3302b;
+  --paper:#f7f3ee; --card:#fff; --ink:#2b2b2b; --mute:#6b6560; --line:#e3dad1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.dia{display:inline-block;width:7px;height:7px;background:var(--cu);transform:rotate(45deg);flex:none}
+
+/* ---------- portada ---------- */
+.hero{position:relative;background:var(--char);color:#fff;text-align:center;padding:72px 16px 56px;overflow:hidden}
+.hero .new{position:absolute;top:22px;right:max(16px,calc(50% - 520px));transform:rotate(-8deg);font-family:'Kaushan Script';font-size:1.5rem;line-height:1}
+.hero .new small{display:block;font-family:Montserrat;font-size:.55rem;letter-spacing:.35em;color:var(--cu-2);text-transform:uppercase;margin-top:4px}
+.logo{font-family:Oranienbaum,serif;font-weight:400;font-size:clamp(4.6rem,19vw,9.5rem);line-height:1;letter-spacing:.14em;margin-right:-.14em;text-transform:uppercase}
+.logo span{display:inline-block}
+.sub{margin-top:10px;font-weight:600;font-size:clamp(.95rem,3.6vw,1.45rem);letter-spacing:.42em;margin-right:-.42em;color:var(--cu);text-transform:uppercase}
+.dots{display:flex;justify-content:center;gap:16px;margin:28px 0 26px}
+.perks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.perk{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 7px;border:1px solid rgba(255,255,255,.28);font-family:Oswald;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase}
+.perk svg{width:18px;height:18px;flex:none}
+.perk.red{background:var(--red);border-color:var(--red)}
+.deco{position:absolute;pointer-events:none;color:rgba(255,255,255,.35)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--char-2);border-bottom:2px solid var(--cu)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1120px;margin:0 auto;scrollbar-width:none;scroll-snap-type:x proximity}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 13px 6px;border:1px solid rgba(255,255,255,.22);color:#e9e2db;font-family:Oswald;font-size:.86rem;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;scroll-snap-align:center;transition:background .2s,color .2s,border-color .2s}
+.nav a[aria-current="true"]{background:var(--cu);border-color:var(--cu);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding:36px 0 10px}
+.grid{columns:2 460px;column-gap:44px}
+.sec{break-inside:avoid;margin-bottom:44px}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.sec-h::before,.sec-h::after{content:"";flex:1;height:1px;background:#c9c0b7}
+.ribbon{position:relative;padding:7px 26px 6px;background:var(--bg,var(--char));color:#fff;font-family:Oswald;font-weight:400;font-size:clamp(1.15rem,4.4vw,1.4rem);letter-spacing:.16em;margin-right:-.16em;text-transform:uppercase;white-space:nowrap;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.sec.r .ribbon{--bg:var(--red)}
+.sec-note{text-align:center;font-size:.78rem;color:var(--mute);margin:-8px 0 14px}
+.items{list-style:none;background:var(--card);border:1px solid var(--line);padding:4px 18px}
+.it{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:13px 0}
+.it+.it{border-top:1px dashed var(--line)}
+.it h3{font-family:Oswald;font-weight:500;font-size:1.02rem;letter-spacing:.12em;line-height:1.25;color:var(--red);text-transform:uppercase}
+.it h3 .nw{font-family:'Kaushan Script';font-size:1.05rem;letter-spacing:0;text-transform:none;color:var(--ink);margin-right:7px}
+.it h3 .st{color:var(--cu);font-size:.8em}
+.it h3 .gf{display:inline-block;width:19px;height:19px;vertical-align:-3px;margin-left:6px;color:var(--ink)}
+.it p{grid-column:1/-1;font-size:.84rem;line-height:1.45;color:#4a4540;max-width:58ch}
+.prices{display:flex;gap:14px;text-align:right;align-self:start}
+.pr{font-family:Oswald;font-weight:500;font-size:1.08rem;letter-spacing:.06em;white-space:nowrap;color:var(--red)}
+.pr small{display:block;font-family:Oswald;font-weight:400;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:1px}
+.it.wide .prices{grid-column:1/-1;justify-content:flex-start;flex-wrap:wrap;text-align:left;gap:8px 20px;margin-top:2px}
+.side{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.8rem;color:var(--mute)}
+.side svg{width:22px;height:22px;flex:none;color:var(--ink)}
+.side b{font-family:Oswald;font-weight:500;letter-spacing:.08em;color:var(--ink)}
+
+/* ---------- pie ---------- */
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;padding-top:12px;padding-bottom:40px}
+.legend div{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-family:Oswald;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.35}
+.legend svg{width:26px;height:26px;flex:none}
+.foot{background:var(--char);color:#fff;text-align:center;padding:44px 16px calc(44px + env(safe-area-inset-bottom))}
+.foot .logo{font-size:3.4rem}
+.foot .sub{font-size:.8rem;margin-top:6px}
+.foot a{display:inline-block;margin-top:22px;font-size:.78rem;font-weight:500;letter-spacing:.2em;text-decoration:none;border-bottom:1px solid var(--cu);padding-bottom:4px}
+
+/* ---------- animaciones: solo transform/opacity, una vez por elemento ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.hero .logo span{animation:rise .9s calc(var(--i) * 90ms + .1s) cubic-bezier(.2,.7,.2,1) both}
+.hero .sub{animation:fade 1s .75s both}
+.hero .dots .dia{animation:fade .5s calc(var(--i) * 120ms + 1s) both}
+.hero .new{animation:fade 1s 1.2s both}
+.deco.arrow{animation:drift 3.5s 1.4s ease-in-out infinite}
+.nav a[aria-current="true"]{animation:chip .35s ease-out}
+@keyframes rise{0%{opacity:0;transform:translateY(40%)}100%{opacity:1;transform:none}}
+@keyframes fade{0%{opacity:0}100%{opacity:1}}
+@keyframes drift{50%{transform:translateY(8px)}}
+@keyframes chip{50%{transform:scale(1.08)}}
+@media (max-width:900px){.deco{display:none}}
+@media (max-width:640px){
+  .hero{padding-top:84px}
+  .items{padding:2px 14px}
+  .it h3{font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="deco arrow" viewBox="0 0 24 110" style="width:22px;left:max(24px,calc(50% - 300px));top:24px" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M8 0v92M16 0v92M2 86l10 12 10-12M5 92l7 8 7-8"/></svg>
+  <svg class="deco" viewBox="0 0 40 160" style="width:30px;left:max(24px,calc(50% - 480px));bottom:-20px" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 0v42h8V8M38 0v42h-8V8M14 160V12q6-8 12 0v148M20 4v156"/></svg>
+  <div class="new">brand new<small>it's Tucson</small></div>
+  <h1 class="logo">Tucson</h1>
+  <p class="sub">Steak House</p>
+  <div class="dots" aria-hidden="true"><i class="dia" style="--i:0"></i><i class="dia" style="--i:1"></i><i class="dia" style="--i:2"></i></div>
+  <div class="perks">
+    <span class="perk red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg>No cobramos cubierto</span>
+    <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 15c0-4 4-7 9-7s9 3 9 7c0 1.5-1 2.5-2.5 2.5h-13C4 17.5 3 16.5 3 15Z"/><path d="M8 10l1 3M12 9v3M16 10l-1 3"/></svg>El pan debe solicitarse</span>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+
+<main class="wrap"><div class="grid" id="menu"></div></main>
+
+<section class="wrap legend" aria-label="Información">
+  <div><svg id="gf-legend" viewBox="0 0 24 24"></svg>Informe a su camarero si necesita que su comida sea libre de TACC</div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><text x="12" y="15.2" text-anchor="middle" font-family="Oswald" font-size="8" fill="currentColor" stroke="none">ENG</text></svg>English menu upon request</div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M5 12.5h10v2.5H5zM17 12.5v2.5M19 12.5v2.5M17 10c0-2 2-2 2-4M5 5l14 14"/></svg>Prohibido fumar · Ley antitabaco N°1799</div>
+</section>
+
+<footer class="foot">
+  <p class="logo">Tucson</p>
+  <p class="sub">Steak House</p>
+  <a href="https://www.tucsonrestaurante.com.ar" target="_blank" rel="noopener">WWW.TUCSONRESTAURANTE.COM.AR</a>
+</footer>
+
+<script>
+// ---------- datos (transcriptos de la carta física, junio 2025) ----------
+// n nombre · d descripción · p precio (número u objeto {etiqueta: precio}) · nw "New" · st destacado ★ · gf apto sin TACC
+const GF = '<svg class="gf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><title>Sin TACC</title><circle cx="12" cy="12" r="10"/><path d="M12 19V7M12 9.5c-2-.3-3-1.6-3-3.3 2 .3 3 1.6 3 3.3Zm0 0c2-.3 3-1.6 3-3.3-2 .3-3 1.6-3 3.3ZM12 13.5c-2-.3-3-1.6-3-3.3 2 .3 3 1.6 3 3.3Zm0 0c2-.3 3-1.6 3-3.3-2 .3-3 1.6-3 3.3ZM5 5l14 14"/></svg>';
+const SALAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M7 12c0-3 2-5 4-5M12 12c0-4 3-6 5-6M9 9c1-3 4-4 6-3"/></svg>';
+const CAESAR = {icon: SALAD, html: 'Todos nuestros Super Steaks son acompañados con <b>Caesar\'s Salad</b>'};
+const ST = (s, t) => ({Simple: s, Tradicional: t});
+
+const SECS = [
+ {id: 'appetizers', t: 'West Appetizers', nav: 'Appetizers', items: [
+  {n: 'Tucson Fest', st: 1, d: 'Degustación de Phoenix Chips, nachos y Mozzarella St. George acompañados con salsa cole-slaw, Mediterráneo, guacamole y Ranch.', p: 17900},
+  {n: 'Virginia Style Spinach', st: 1, d: '250 grs. de espinaca con salsa blanca y queso, acompañada con tortillas de maíz, queso blanco y salsa Mediterráneo.', p: 12000},
+  {n: 'Phoenix Chips', d: '200 grs. de papas fritas con cáscara cubiertas con un mix de quesos fundidos, panceta ahumada, cebollín y salsa Ranch.', p: 12500},
+  {n: 'Mozzarella St. George', d: '6 bastones de mozzarella rebozada acompañados con salsa Mediterráneo y salsa Ranch.', p: 12000},
+  {n: 'Cooper Smoked Trout', d: '100 grs. de salmón ahumado, acompañado con tostaditas y dip de salsa Chef.', p: 15500},
+  {n: 'Buffalo Wings', d: 'Alitas de pollo crocantes, acompañadas con salsa Hickory opción barbacoa picante.', p: 12500},
+  {n: 'Provoleta Especial', d: 'Provoleta con tomates confitados a la plancha, hilos de miel, romero fresco y almendras tostadas.', p: 12500},
+  {n: 'Guacamole N. México', gf: 1, d: '300 grs. de palta condimentada con tomate, cebolla y picante suave, acompañado con nachos y dip mixto.', p: 16000},
+  {n: 'Chicken Rolls', d: 'Trío de crocantes de pollo, mix de quesos, frijoles acompañados de guacamole, queso crema y salsa Mediterráneo.', p: 12000},
+  {n: 'Onion Rings', nw: 1, d: 'Aros de cebolla con salsa tártara y barbacoa.', p: 10500},
+ ]},
+ {id: 'steaks', t: 'Tucson Steaks', nav: 'Steaks', r: 1, after: CAESAR, items: [
+  {n: 'Kuva Roast Rib-Eye', d: '400 grs. de ojo de bife asado a la leña acompañado con papa rellena.', p: 22800},
+  {n: 'Saint Xavier Back Steak', st: 1, d: '400 grs. de ojo de bife marinado 48 hrs. en ananá, jengibre y soja, asado a la leña, con John\'s Potatoes.', p: 22900},
+  {n: 'Red Rock Tenderloin', d: '300 grs. de lomo asado a la leña, condimentado con mix de pimientas y acompañado con aros de cebolla, Tucson fries y ensalada cole-slaw.', p: 23500},
+  {n: 'Arizona Baby-Back Ribs', d: 'Costillar de cerdo ahumado asado a la leña, bañado con salsa barbacoa y mix picante de especias, con papa Hasselback, aros de cebolla y ensalada cole-slaw.', p: 26200},
+  {n: 'Brickell Beef Back Ribs', d: 'Costillar de novillo ahumado y bañado con salsa barbacoa, asado a la leña y acompañado con Tucson fries y ensalada cole-slaw.', p: 23900},
+  {n: 'Slow Braised Pork Loin', d: '300 grs. de bondiola de cerdo braseada, bañada en salsa teriyaki acompañada con John\'s Potatoes.', p: 19800},
+  {n: 'Guadalupe Baby', d: 'Costillar de cerdo ahumado y bañado con salsa barbacoa, asado a la leña, acompañado con Tucson fries y ensalada cole-slaw.', p: {'Back ribs': 26200, 'Half rack': 18800}},
+  {n: 'Smoked Pork New Orleans', nw: 1, d: '250 grs. de vacío de cerdo ahumado a baja temperatura en chimichurri de naranja con batatas asadas y finas hierbas.', p: 18500},
+  {n: 'Mississippi Beef Back Ribs', nw: 1, d: 'Costillas de novillo ahumado, con barbacoa, mix picante de especias, papa Hasselback, aros de cebolla y ensalada cole-slaw.', p: 24900},
+ ]},
+ {id: 'seafood', t: 'Seafood', after: CAESAR, items: [
+  {n: 'Anchorage Fresh Fillet Salmon', d: 'Filete de salmón fresco asado a la leña, acompañado con ensalada cole-slaw o papas fritas o John\'s Potatoes.', p: 28500},
+  {n: 'Italian Style Salmon', d: 'Colchón de risotto de calabaza y parmesano, acompañado de 170 grs. de filete de salmón rosado asado a la leña con salsa cremolatta de cítricos, almendra y perejil.', p: 25200},
+  {n: 'Alaska', nw: 1, d: '175 grs. de salmón laqueado a la parrilla sobre colchón de vegetales al estilo oriental con salsa de soja y cremoso de cabutia a las hierbas y miel.', p: 23200},
+  {n: 'Blue Cheese Trout', nw: 1, d: 'Filete de trucha salmonada fresca asada a la leña con salsa de queso azul, acompañada de John\'s Potatoes.', p: 28500},
+ ]},
+ {id: 'chicken', t: 'Chicken', items: [
+  {n: 'Honokam Chicken', d: 'Pechuga de pollo deshuesada marinada 48 hrs. en vino blanco y especias, servida con tomate picado, cebollín y queso fundido, acompañada con papas fritas y ensalada cole-slaw.', p: 17800},
+  {n: 'Tohono Chicken', d: 'Pechuga de pollo deshuesada marinada 48 hrs. en vino blanco y especias, asada a la leña y servida con salsa barbacoa, acompañada con papas fritas y ensalada cole-slaw.', p: 16800},
+  {n: 'Parmesan Crusted Chicken', d: 'Muslo o pechuga de pollo deshuesada, asada a la leña y cubierta con crocante de queso parmesano y hierbas frescas, acompañado con pasta linguini casera, brócoli y salsa rosa.', p: 17200},
+  {n: 'Chicken Picatta', nw: 1, d: 'Pasta linguini salteada, pechuga de pollo grillada a la leña, ragú de hongos, alcaparras fritas, jugo de lima y queso parmesano.', p: 17500},
+  {n: 'Iowa White Chicken', nw: 1, d: 'Pechuga de pollo a la parrilla con salsa cítrica, colchón de vegetales al estilo oriental con salsa de soja y cremoso de cabutia a las hierbas y miel.', p: 17200},
+ ]},
+ {id: 'argentinos', t: 'Favoritos Argentinos', nav: 'Argentinos', r: 1, gf: 1, after: {icon: SALAD, html: '<b>Ingredientes para su ensalada:</b> tomate, zanahoria, cebolla, huevo, remolacha, lechuga criolla, rúcula y queso parmesano. Hasta 3 ingredientes.'}, items: [
+  {n: 'Bife de chorizo', d: 'Bife de chorizo asado a la leña, acompañado con ensalada o papas fritas.', p: {'400 grs.': 22800, '300 grs.': 20800}},
+  {n: 'Entraña', d: '300 grs. de entraña asada a la leña, acompañada con ensalada o papas fritas.', p: 25500},
+  {n: 'Ojo de bife', d: '400 grs. de ojo de bife asado a la leña, acompañado con ensalada o papas fritas.', p: 22800},
+  {n: 'Pollo deshuesado a la parrilla', d: '1/4 de pollo deshuesado asado a la leña con ensalada o papas fritas.', p: 15800},
+  {n: 'Bondiola a la leña', d: 'Bondiola asada a la leña, acompañada con ensalada o papas fritas.', p: 18200},
+ ]},
+ {id: 'pastas', t: 'Pastas', items: [
+  {n: 'Texas Lingüini', d: 'Pasta lingüini casera con salsa Alfredo, trozos de pechuga de pollo grillé y especias Tucson.', p: 16200},
+  {n: 'Smoked Salmon Pasta', d: 'Pasta lingüini casera salteada con salsa Alfredo, trozos de salmón ahumado y especias Tucson.', p: 18500},
+  {n: 'Sorrentinos de bondiola', nw: 1, d: 'Sorrentinos caseros rellenos de bondiola y especias con salsa Alfredo o salsa mixta.', p: 18200},
+  {n: 'Mediterráneo Pasta', d: 'Pasta lingüini casera con salsa de tomate especial, aros de calamar, camarones y mejillones.', p: 18900},
+ ]},
+ {id: 'burgers', t: 'Burger, Sandwiches & Tacos', nav: 'Burgers & Tacos', items: [
+  {n: 'Apache Burger', d: '270 grs. de hamburguesa casera con aderezo cheddar, panceta crocante, tomates asados, rúcula y aderezo, con papas fritas y dip de salsa de ají amarillo.', p: ST(16500, 18000)},
+  {n: 'New Heaven Burger', d: '270 grs. de hamburguesa casera con queso cheddar, lechuga, tomate, pepinillo agridulce y cebolla, con papas fritas y cole-slaw.', p: ST(16500, 18000)},
+  {n: 'Louis Lasen Burger', d: '270 grs. de hamburguesa casera con panceta, mix de quesos, cebolla, salsa Hickory (aparte), acompañada con papas fritas y ensalada cole-slaw.', p: ST(16000, 17500)},
+  {n: 'Provolone Cheese Burger', nw: 1, d: 'Hamburguesa con queso provoleta, lechuga, tomate, aros de cebolla morada, en pan de papa aderezado con chimichurri cremoso y salsa Hickory Tucson. Con papas fritas y dip de chimichurri cremoso Tucson.', p: ST(17000, 18700)},
+  {n: 'OCB Burger', nw: 1, d: 'Hamburguesa casera, doble cheddar, doble panceta crispy, cebolla crispy, en pan de papa aderezado con salsa Steak Tucson. Con papas fritas y dip de aderezo Steak Tucson.', p: ST(16100, 18000)},
+  {n: 'Vegan Burger', nw: 1, d: 'Hamburguesa de porotos aduki y remolacha asada a la leña, con lechuga, tomate y cebolla. Con papas fritas y dip de ketchup.', p: 15500},
+  {n: 'Tex Mex Tacos', d: 'Dúo de tacos rellenos con cebolla, morrón y mix de quesos, acompañados de guacamole, queso crema, salsa Mediterráneo y papas fritas. Opción carne, pollo o vegetariano.', p: 16500},
+  {n: 'American Wok', d: 'Vegetales de estación salteados al wok en aceite de oliva y salsa de soja, acompañados con pollo o carne.', p: 16000},
+ ]},
+ {id: 'salads', t: 'Salads', r: 1, items: [
+  {n: 'Pumpkin & Veggies with Mozzarella Cheese', d: 'Bastones de calabaza asada, acompañados de palta, semillas de girasol, tomates cherry, hojas de espinaca y rúcula, zucchini grillado, remolacha, cubos de mozzarella, aderezada con vinagreta de mango.', p: 16000},
+  {n: 'Caesar\'s Salad', d: 'Lechugas frescas romana, queso parmesano, croutones y aderezo Caesar.', p: {'Clásica': 12500, 'Con pollo grillé': 15500, 'Con pollo crispy': 16500}},
+  {n: 'Cobb Salad', d: 'Lechugas frescas, 125 grs. de pollo horneado, tomate, panceta ahumada crujiente, huevo, palta y roquefort.', p: 16000},
+  {n: 'Crispy Chicken', d: '225 grs. de crujientes pechugas de pollo rebozadas, acompañadas con salsa Hickory, lechugas frescas, radicheta y zanahoria, aderezada con salsa Honey Mustard.', p: 16800},
+ ]},
+ {id: 'sides', t: 'Sides & Extras', nav: 'Sides', note: 'Solo para acompañar su plato. Como plato principal lleva un adicional de $ 3.000.', items: [
+  {n: 'John\'s Potatoes o Puré de cabutia', d: 'Puré de papas con queso parmesano, manteca, crema de leche, perejil y cebollines. / Puré de cabutia.', p: 5000},
+  {n: 'Baked Potatoes', d: 'Papa al horno rellena con queso blanco, manteca, mix de quesos, panceta ahumada y cebollines.', p: 7500},
+  {n: 'Provolone Cheese', d: 'Queso provolone asado a la leña con oliva y orégano.', p: 10500},
+  {n: 'French Fries', d: 'Papas fritas.', p: 5500},
+  {n: 'Pasta Linguini', d: '180 grs. de pasta linguini al natural.', p: 7500},
+ ]},
+ {id: 'kids', t: 'Menu Kids', nav: 'Kids', r: 1, note: '*Menú especial, solo válido hasta 14 años de edad.', items: [
+  {n: 'Crispy Chicken Kids', d: '225 grs. de crujientes pechugas de pollo rebozadas, acompañadas de papas fritas.', p: 11500},
+  {n: 'Burger Kids', d: 'Hamburguesa de carne de 135 grs. con queso cheddar acompañada de papas fritas y aderezo a elección.', p: 11000},
+  {n: 'Texas Lingüini', d: 'Linguinis caseros con crema o salsa Alfredo o salsa rosa.', p: 7500},
+ ]},
+ {id: 'desserts', t: 'Desserts & Cakes', nav: 'Postres', items: [
+  {n: 'Maxi Oreo', d: 'Alfajor con base de galletitas Oreo, relleno con helado de crema americana, cubierto con charlotte y maní caramelizado.', p: 9800},
+  {n: 'Flowing Volcano', nw: 1, d: 'Clásico volcán de chocolate acompañado de helado y salsa toffee de cacao.', p: 10800},
+  {n: 'Fabulous Ice Cream', d: 'Tres bochas de helado y crema chantilly con charlotte y maní caramelizado.', p: 9800},
+  {n: 'Frutos del bosque', d: 'Mix de frutos rojos macerados en vino tinto con bocha de helado de crema americana y crema chantilly.', p: 9800},
+  {n: 'Apple Crumble & Ice Cream', d: 'Tarta de manzana crocante tibia con helado de crema americana y salsa charlotte.', p: 9800},
+  {n: 'Brownie & Ice Cream', d: 'Brownie tibio con helado y salsa charlotte.', p: 9500},
+  {n: 'Cheesecake Fest', nw: 1, d: 'Degustación de nuestros cheesecakes.', p: 10800},
+  {n: 'Pavlova', nw: 1, d: 'Merengue seco, dulce de leche, crema chantilly y frutas de estación.', p: 9800},
+  {n: 'Fruit Salad', d: 'Ensalada de frutas con jugo de naranja y miel.', p: 7200},
+  {n: 'Flan casero', d: 'Con dulce de leche o crema.', p: 6500},
+  {n: 'Sweet Shot', d: 'Degustación de pequeños postres. Tiramisú, chocotorta, Oreo, cheesecake de frutos rojos, trío de chocolate y lemon pie.', p: {'x1': 3300, 'x4': 11500, 'x6': 15500}},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+
+const item = (it, gf) => `<li class="it${typeof it.p === 'object' && Object.keys(it.p).length > 2 ? ' wide' : ''}">
+  <h3>${it.nw ? '<span class="nw">New</span>' : ''}${it.st ? '<span class="st">★</span> ' : ''}${it.n}${it.st ? ' <span class="st">★</span>' : ''}${it.gf || gf ? GF : ''}</h3>
+  <div class="prices">${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}
+</li>`;
+
+const section = s => `<section class="sec${s.r ? ' r' : ''}" id="${s.id}" aria-labelledby="${s.id}-t">
+  <header class="sec-h"><h2 class="ribbon" id="${s.id}-t">${s.t}</h2></header>
+  ${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  <ul class="items">${s.items.map(it => item(it, s.gf)).join('')}</ul>
+  ${s.after ? `<p class="side">${s.after.icon}<span>${s.after.html}</span></p>` : ''}
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+document.getElementById('gf-legend').outerHTML = GF.replace('class="gf"', '');
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+
+// ---------- animaciones ----------
+const logo = document.querySelector('.hero .logo');
+logo.setAttribute('aria-label', logo.textContent);
+logo.innerHTML = [...logo.textContent].map((ch, i) => `<span aria-hidden="true" style="--i:${i}">${ch}</span>`).join('');
+// cada sección aparece una sola vez al entrar en pantalla
+const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); rv.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
+document.querySelectorAll('.sec, .legend > div').forEach(el => { el.classList.add('rv'); rv.observe(el); });
+</script>
+</body>
+</html>

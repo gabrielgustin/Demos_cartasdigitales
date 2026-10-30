@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ricaso · Carta</title>
+<meta name="theme-color" content="#F7C6D4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161616; --bg:#F7C6D4; --paper:#fff;
+  --y:#FFD23F; --p:#7A45CC; --k:#F06BB0; --c:#5BC8EC; --o:#FF9F1C; --r:#D93427; --l:#B8E04A; --b:#3D7BF0;
+  --shadow:5px 5px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--bg);
+  background-image:radial-gradient(rgba(255,255,255,.45) 1.2px,transparent 1.3px);background-size:18px 18px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* ---------- títulos estilo "sticker" ---------- */
+.title,.logo,.note,.group-t{
+  font-family:'Luckiest Guy',cursive;color:#fff;letter-spacing:.03em;
+  -webkit-text-stroke:var(--sw,2.5px) var(--ink);paint-order:stroke fill;
+  text-shadow:var(--ts,3px 4px 0) var(--ink);line-height:1;
+}
+.title{font-size:clamp(2rem,5.5vw,2.6rem);text-transform:uppercase}
+.note{--sw:1.4px;--ts:2px 2px 0;font-size:.95rem;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:28px 0 22px;text-align:center}
+.hero-in{display:flex;align-items:center;justify-content:center;gap:clamp(8px,4vw,40px)}
+.logo{--sw:4px;--ts:6px 7px 0;font-size:clamp(4.2rem,16vw,8.5rem);transform:rotate(-3deg);display:inline-block;white-space:nowrap}
+.tagline{margin-top:14px;font-weight:900;font-size:1rem;letter-spacing:.02em}
+.mascot{height:auto;display:block}
+.hero .mascot{width:clamp(140px,30vw,240px);flex:none}
+.hero .bubble{position:absolute;top:10px;right:max(0px,calc(50% - 400px));transform:rotate(4deg)}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 14px;border:3px solid var(--ink);border-radius:999px;background:var(--paper);font-weight:900;font-size:.9rem;box-shadow:3px 3px 0 var(--ink)}
+.status i{width:10px;height:10px;border-radius:50%;background:#20b25a;box-shadow:0 0 0 3px rgba(32,178,90,.25)}
+.status.off i{background:var(--r);box-shadow:0 0 0 3px rgba(217,52,39,.25)}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:3px solid var(--ink);border-radius:12px;background:var(--y);font-family:'Luckiest Guy';font-size:1rem;letter-spacing:.04em;text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn svg{width:18px;height:18px}
+.btn.g{background:var(--l)}.btn.k{background:var(--k)}.btn.c{background:var(--c)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--bg);border-block:3px solid var(--ink)}
+.nav ul{display:flex;gap:8px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1180px;margin:0 auto;scrollbar-width:none;scroll-snap-type:x proximity}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 14px 5px;border:2.5px solid var(--ink);border-radius:999px;background:var(--paper);font-family:'Luckiest Guy';font-size:.92rem;letter-spacing:.04em;text-decoration:none;scroll-snap-align:center;transition:background .15s,transform .15s,box-shadow .15s}
+.nav a[aria-current="true"]{background:var(--y);box-shadow:3px 3px 0 var(--ink);transform:translate(-1px,-1px)}
+
+/* ---------- grupos y secciones ---------- */
+.group{padding:34px 0 8px}
+.group-t{--sw:3px;--ts:4px 5px 0;display:flex;align-items:center;gap:14px;font-size:clamp(1.6rem,4.5vw,2.2rem);margin-bottom:26px;text-transform:uppercase}
+.group-t::before,.group-t::after{content:"";flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 18px)}
+.grid{columns:2 440px;column-gap:40px}
+.sec{break-inside:avoid;margin-bottom:38px}
+.sec-h{display:flex;align-items:flex-end;flex-wrap:wrap;gap:6px 14px;margin-bottom:12px;min-height:52px;position:relative}
+.aside{margin-left:auto;display:flex;align-items:flex-end;gap:4px}
+.aside .mascot{height:112px;width:auto;flex:none}
+.bubble{position:relative;background:var(--paper);border:3px solid var(--ink);border-radius:22px;padding:9px 13px 7px;max-width:180px;font-family:'Luckiest Guy';font-size:.82rem;line-height:1.1;letter-spacing:.03em;text-align:center;text-transform:uppercase;box-shadow:3px 3px 0 var(--ink)}
+.bubble::after{content:"";position:absolute;right:-11px;bottom:12px;width:14px;height:14px;background:var(--paper);border:3px solid var(--ink);border-left:0;border-bottom:0;transform:rotate(45deg) skew(10deg,10deg)}
+.hero .bubble::after{right:auto;left:18px;bottom:-10px;transform:rotate(135deg)}
+
+/* ---------- tablero de items ---------- */
+.board{list-style:none;border:3px solid var(--ink);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper)}
+.board+.board{margin-top:18px}
+.row{--fg:var(--ink);display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:10px 14px;background:var(--bg-row);color:var(--fg)}
+.row+.row{border-top:3px solid var(--ink)}
+.row.y{--bg-row:var(--y)}.row.k{--bg-row:var(--k)}.row.c{--bg-row:var(--c)}.row.o{--bg-row:var(--o)}.row.l{--bg-row:var(--l)}
+.row.p{--bg-row:var(--p);--fg:#fff}.row.r{--bg-row:var(--r);--fg:#fff}
+.row h3{font-family:'Luckiest Guy';font-weight:400;font-size:1.08rem;letter-spacing:.035em;line-height:1.1;text-transform:uppercase;padding-top:2px}
+.row h3 em{font-family:Nunito;font-style:normal;font-weight:800;font-size:.68rem;letter-spacing:0;text-transform:none;opacity:.85}
+.row p{font-weight:700;font-size:.8rem;line-height:1.3;margin-top:2px;opacity:.92;max-width:44ch}
+.tag{display:inline-block;margin-left:6px;padding:2px 7px 0;border:2px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font-size:.62rem;vertical-align:middle;transform:rotate(-4deg)}
+.prices{display:flex;gap:14px;text-align:center}
+.pr{font-family:'Permanent Marker',cursive;font-size:1.3rem;line-height:1;white-space:nowrap}
+.pr small{display:block;font-family:Nunito;font-weight:900;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;opacity:.8}
+.pr.ask{font-size:.95rem;opacity:.85}
+.foot{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--l);border-top:3px solid var(--ink);font-weight:900;font-size:.82rem}
+.foot svg{width:18px;height:18px;flex:none}
+.deco{position:absolute;pointer-events:none}
+
+/* ---------- sucursales ---------- */
+.branches{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.branch{background:#FFF6DA;border:3px solid var(--ink);border-radius:10px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.branch h3{align-self:flex-start;font-family:'Luckiest Guy';font-weight:400;font-size:1.15rem;letter-spacing:.04em;padding:5px 12px 2px;border:3px solid var(--ink);border-radius:8px;background:var(--bg-row);color:var(--fg,var(--ink));transform:rotate(-2deg);text-transform:uppercase}
+.branch p{font-weight:800;font-size:.9rem;line-height:1.35}
+.branch small{font-weight:700;font-size:.78rem;opacity:.75}
+.branch .links{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.branch .links a{flex:1;justify-content:center;font-size:.85rem;padding:8px 10px}
+
+/* ---------- info ---------- */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding:36px 0 120px}
+.card{background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:18px;box-shadow:var(--shadow);font-weight:800}
+.card dt{font-family:'Luckiest Guy';letter-spacing:.04em;font-size:1rem}
+.card dd{margin:0 0 10px}
+.wifi-key{font-family:'Permanent Marker';font-size:1.6rem;line-height:1.2}
+.foot-brand{display:flex;align-items:center;justify-content:center;gap:12px;text-align:center}
+.foot-brand .logo{font-size:3.4rem;--sw:3px;--ts:4px 5px 0}
+
+/* ---------- FAB + toast ---------- */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;background:#25D366}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;z-index:40;padding:10px 18px 8px;background:var(--ink);color:#fff;border-radius:999px;font-family:'Luckiest Guy';letter-spacing:.04em;transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- animaciones: solo transform/opacity y pausadas fuera de pantalla, para no volver a trabar el scroll ---------- */
+.fx{animation-play-state:paused}
+.fx.on{animation-play-state:running}
+.mascot.fx{transform-origin:50% 100%;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.i-bob{animation:pop .8s cubic-bezier(.34,1.56,.64,1) both,bob 3.2s .8s ease-in-out infinite}
+.i-chomp{animation:pop .8s cubic-bezier(.34,1.56,.64,1) both,chomp 1.4s .8s ease-in-out infinite}
+.i-sway{animation:pop .8s cubic-bezier(.34,1.56,.64,1) both,sway 3s .8s ease-in-out infinite}
+.i-groove{animation:pop .8s cubic-bezier(.34,1.56,.64,1) both,groove 1.2s .8s ease-in-out infinite}
+.bubble.fx{transform-origin:100% 100%;animation:bub .55s .3s cubic-bezier(.34,1.56,.64,1) both,float 3.4s 1s ease-in-out infinite}
+.hero .bubble.fx{transform-origin:0 100%}
+.title.fx{animation:tpop .6s cubic-bezier(.34,1.56,.64,1) both}
+.deco.fx{transform-origin:50% 100%;animation:sway 4s ease-in-out infinite}
+.logo span{display:inline-block;animation:drop .7s calc(var(--i) * 70ms + .1s) cubic-bezier(.34,1.56,.64,1) both}
+.nav a[aria-current="true"]{animation:chip .4s cubic-bezier(.34,1.56,.64,1)}
+.row{transition:transform .12s}
+.row:active{transform:scale(.985)}
+.fab{animation:nudge 5s 2s ease-in-out infinite}
+.status i{position:relative}
+.status i::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 1.8s ease-out infinite}
+@keyframes pop{0%{transform:translateY(35%) scale(.5) rotate(-10deg);opacity:0}60%{opacity:1;transform:translateY(-4%) scale(1.06) rotate(3deg)}100%{transform:none}}
+@keyframes bob{50%{transform:translateY(-7px) rotate(-2deg)}}
+@keyframes chomp{0%,60%,100%{transform:none}30%{transform:translateY(3px) scale(1.03,.96)}45%{transform:translateY(-4px) rotate(-2deg) scale(.98,1.03)}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes groove{0%,100%{transform:rotate(-3deg)}25%,75%{transform:translateY(-6px)}50%{transform:rotate(3deg)}}
+@keyframes bub{0%{transform:scale(0) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes float{50%{transform:translateY(-4px) rotate(-1.5deg)}}
+@keyframes tpop{0%{transform:scale(.8) rotate(-4deg)}100%{transform:none}}
+@keyframes drop{0%{transform:translateY(-60%) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+@keyframes chip{40%{transform:translate(-1px,-3px) scale(1.12)}100%{transform:translate(-1px,-1px)}}
+@keyframes nudge{0%,88%,100%{transform:none}91%{transform:rotate(-8deg) scale(1.08)}94%{transform:rotate(7deg) scale(1.08)}97%{transform:rotate(-4deg)}}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
+@media (max-width:640px){
+  .logo{font-size:13.5vw}.hero-in{gap:8px}.hero .mascot{width:26vw}
+  .hero .bubble{position:static;display:inline-block;margin-bottom:6px}
+  .hero .bubble::after{display:none}
+  .row{padding:10px 12px}
+  .prices{gap:10px}.pr{font-size:1.12rem}
+  .aside .mascot{height:104px}.bubble{font-size:.74rem;max-width:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="bubble fx">¡Hacete amigo!</div>
+  <div class="hero-in">
+    <div>
+      <h1 class="logo">Ricaso</h1>
+      <p class="tagline">Burgers · Lomos · Wraps · Córdoba</p>
+      <div class="status" id="status" role="status"><i></i><span></span></div>
+    </div>
+    <img class="mascot fx i-bob" src="img/azul.webp" width="720" height="701" alt="">
+  </div>
+  <div class="actions">
+    <a class="btn k" href="https://instagram.com/ricasocba" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@Ricasocba</a>
+    <button class="btn c" type="button" data-copy="hacete amigo2025"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1.2" fill="currentColor"/></svg>Copiar WiFi</button>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+
+<main class="wrap" id="menu"></main>
+
+<section class="wrap" id="sucursales" aria-labelledby="suc-t">
+  <h2 class="group-t" id="suc-t">Nuestras sucursales</h2>
+  <div class="branches" id="branches"></div>
+</section>
+
+<footer class="wrap info">
+  <dl class="card">
+    <dt>WiFi · Clave</dt>
+    <dd class="wifi-key">hacete amigo2025</dd>
+    <button class="btn c" type="button" data-copy="hacete amigo2025">Copiar clave</button>
+  </dl>
+  <dl class="card">
+    <dt>Seguinos</dt><dd><a href="https://instagram.com/ricasocba" target="_blank" rel="noopener">@Ricasocba</a></dd>
+    <dt>Pedí al</dt><dd><a href="https://wa.me/5493518626600" target="_blank" rel="noopener">351-8626600</a></dd>
+    <dt>Atendemos</dt><dd>Todos los días de 12 a 00hs</dd>
+  </dl>
+  <div class="card foot-brand"><img class="mascot fx i-groove" src="img/rojo.webp" width="720" height="682" alt="" loading="lazy" decoding="async" style="width:110px"><span class="logo">Ricaso</span></div>
+</footer>
+
+<a class="btn fab" href="https://wa.me/5493518626600" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">Pedí ya</a>
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<script>
+// ---------- datos (transcriptos de la carta física) ----------
+const LEAF = '<svg viewBox="0 0 24 24" fill="#2f8f2f" stroke="#161616" stroke-width="1.6"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15Z"/><path d="M5 19 13 11" fill="none"/></svg>';
+const SD = (s, d) => ({Simple: s, Doble: d});
+
+const GROUPS = [
+ {t: 'Para comer', secs: [
+  {id: 'burgers', t: 'Burgers', note: 'salen con papas y mayo extra', bubble: 'Hacemos nuestro pan y nuestro propio blend de carne', m: 'burger', boards: [
+   {pal: ['c', 'k'], foot: 'Hacela veggie cambiando el medallón por uno de falafel.', items: [
+    {n: 'La New York', d: 'Medallón de carne (100g), queso cheddar, panceta crispy, cebolla caramelizada y barbacoa.', p: SD(14800, 17800)},
+    {n: 'La Jefa', d: 'Medallón de carne (100g), queso cheddar, panceta crispy, lechuga, tomate, cebolla morada y mayo ricasa.', p: SD(14800, 17800)},
+    {n: 'La Abusa', d: 'Medallón de carne (100g) x3, queso cheddar, panceta crispy, cebolla caramelizada y barbacoa.', p: {Triple: 20800}},
+    {n: 'La Miamor', d: 'Medallón de carne (100g), queso cheddar, panceta crispy, pepinos encurtidos y aderezo mil islas.', p: SD(14800, 17800)},
+    {n: 'La Cheeseburger', d: 'Medallón de carne (100g), queso cheddar, aderezo mil islas.', p: SD(14300, 17300)},
+    {n: 'La Champion', d: 'Medallón de carne (100g), queso azul, cebollas y champis asados.', p: SD(14800, 17800)},
+    {n: 'La Doble Cuarto', d: 'Medallón de carne (100g) x2, queso cheddar, cebolla morada, ketchup y mostaza.', p: {Doble: 17300}},
+    {n: 'La Criolla', d: 'Medallón de carne (100g), queso sardo, salsa criolla, lechuga, tomate y mayo casera.', p: SD(14300, 17300)},
+   ]},
+   {pal: ['o', 'r'], items: [
+    {n: 'De Pollo Tranqui', tag: 'Full pollito', d: 'Medallón casero de pollo frito, queso cheddar, lechuga, tomate y mayo casera.', p: {Simple: 16300}},
+    {n: 'Patty Melt Changuchito', d: 'Medallón de carne (100g), queso cheddar, pan de molde enmantecado y tostado, panceta crispy y aderezo mil islas.', p: {Doble: 17300}},
+   ]},
+  ]},
+  {id: 'wraps', t: 'Wraps', note: 'salen con nachos y mayo extra', bubble: 'Podés cambiar los nachos por papas', m: 'wrap', boards: [
+   {pal: ['y', 'p'], items: [
+    {n: 'De Pollo', d: 'Pechuga de pollo a la plancha, panceta crispy, queso danbo, pimientos asados, crutones, lechuga y mayo ricasa.', p: 17300},
+    {n: 'De Pollo Fresco', d: 'Pechuga de pollo a la plancha, queso danbo, palta, choclo salteado, cebolla morada, lechuga y mayo ricasa.', p: 17200},
+    {n: 'De Carne', d: 'Ternera desmenuzada (9hs de cocción), queso danbo, cebollas asadas, tomate, rúcula, salsa criolla y mayo casera.', p: 18300},
+    {n: 'Pulled Pork', d: 'Bondiola desmenuzada (9hs de cocción), queso danbo, queso cheddar, pimientos asados, pepinos encurtidos y aderezo mil islas.', p: 17300},
+    {n: 'El Falafel', d: '5 bolitas de falafel, queso danbo, cebolla morada, tomate, lechuga, aderezo sour cream.', p: 16800},
+    {n: 'El Veggie', d: 'Palta, queso danbo, huevo, tomate, lechuga y mayo ricasa.', p: 16800},
+   ]},
+  ]},
+  {id: 'lomos', t: 'Lomos', note: 'salen con papas y mayo extra', boards: [
+   {pal: ['k', 'p'], foot: 'Hacelo veggie cambiando el bife de carne por bife de seitán.', items: [
+    {n: 'El Ricardito', d: 'Bife de chorizo (160g), queso dambo, jamón cocido, huevo, tomate, lechuga y mayo casera.', p: 21800},
+    {n: 'El Masabroso', d: 'Bife de chorizo (160g), queso cheddar, pimientos y cebollas asadas, y mayo casera.', p: 21800},
+   ]},
+  ]},
+  {id: 'milas', t: 'Milas', boards: [
+   {pal: ['c', 'k'], items: [
+    {n: 'Clásica', d: 'Milanesa de carne acompañada de papas fritas o ensalada.', p: 16000},
+    {n: 'Napo', d: 'Milanesa de carne, salsa de tomate, jamón y queso, acompañada de papas fritas o ensalada.', p: 16900},
+    {n: 'Fugazzeta', d: 'Milanesa de carne, cebollas asadas y queso, acompañada de papas fritas o ensalada.', p: 16900},
+   ]},
+  ]},
+  {id: 'ensaladas', t: 'Ensaladas', bubble: '¡Están muy buenas!', m: 'rojo', boards: [
+   {pal: ['c', 'l'], items: [
+    {n: 'Pollo', d: 'Pechuga de pollo a la plancha, palta, queso sardo, tomate, crutones, mix de verdes y mayo ricasa.', p: 14500},
+    {n: 'Vegeta', d: '5 bolitas de falafel, queso sardo, choclo salteado, tomate, pepinos encurtidos, cebolla morada, mix de verdes y mayo ricasa.', p: 14000},
+    {n: 'César', d: 'Pechuga de pollo a la plancha, queso sardo, crutones, lechuga, panceta crispy y aderezo césar.', p: 14500},
+   ]},
+  ]},
+  {id: 'picoteo', t: 'Picoteo', boards: [
+   {pal: ['y', 'p'], items: [
+    {n: 'Papas con mayo Ricasa', p: 9000},
+    {n: 'Nuggets de pollo', u: '(10 unidades)', p: 11000},
+    {n: 'Aros de cebolla', u: '(10 unidades)', p: 8900},
+    {n: 'Falafel', u: '(10 unidades)', p: 7000},
+   ]},
+  ]},
+  {id: 'infantil', t: 'Menú infantil', nav: 'Infantil', note: 'viene con plancha de stickers', deco: true, boards: [
+   {pal: ['c'], items: [
+    {n: 'Ricasito', d: 'Burger de pollo o carne, queso cheddar, sale con papas fritas y aderezo.', p: 14300},
+   ]},
+  ]},
+  {id: 'extras', t: 'Extras', bubble: 'Aprovechá las promos para compartir', m: 'rulos', boards: [
+   {pal: ['p', 'y'], items: [
+    {n: 'Medallón de carne', u: '(100g) + cheddar', p: null},
+    {n: 'Cheddar', p: 2000},
+    {n: 'Panceta', p: 2000},
+    {n: 'Queso dambo', p: 2500},
+    {n: 'Huevo frito', p: 1500},
+    {n: 'Mayo ricasa', p: 1000},
+   ]},
+  ]},
+  {id: 'postre', t: 'Postre', boards: [{pal: ['o'], items: [{n: 'Chocotorta', p: 4000}]}]},
+ ]},
+ {t: 'Para tomar', secs: [
+  {id: 'sin-alcohol', t: 'Bebidas sin alcohol', nav: 'Sin alcohol', boards: [
+   {pal: ['l', 'y'], items: [
+    {n: 'Pepsi', p: 3800}, {n: 'Pepsi Black', p: 3800}, {n: '7Up', p: 3900}, {n: '7Up Free', p: 3900},
+    {n: 'Mirinda', p: 3800}, {n: 'H2O', p: 3500}, {n: 'Agua', p: 3500}, {n: 'Agua saborizada', p: 3900},
+    {n: 'Soda', p: 3900}, {n: 'Jarra de limonada', p: 8900}, {n: 'Vaso de limonada', p: 4000},
+    {n: 'Jarra de limonada frutos rojos', p: 9000}, {n: 'Vaso de limonada frutos rojos', p: 4900},
+    {n: 'Cervezas sin alcohol', d: 'Stella Artois 0.0% 330cc · Corona 0.0% 330cc', p: 5500},
+   ]},
+  ]},
+  {id: 'con-alcohol', t: 'Bebidas con alcohol', nav: 'Con alcohol', bubble: '¡Salud!', m: 'azul', boards: [
+   {pal: ['y', 'p'], items: [
+    {n: 'Fernet Branca + gaseosa cola', u: '(jarro)', p: 8000},
+    {n: 'Gin tonic con Old Church', p: 7000},
+    {n: 'Gin tonic con Beefeater', p: 9000},
+    {n: 'Aperol Spritz', p: 7900},
+    {n: 'Campari', u: '(tonic - naranja)', p: 7000},
+    {n: 'Vodka con Red Bull', p: 8000},
+    {n: 'Prittiado', u: '(jarro)', p: 7000},
+    {n: 'Copa de vino', p: 4900},
+   ]},
+  ]},
+  {id: 'cerveza', t: 'Chopp & Cerveza', nav: 'Cerveza', boards: [
+   {pal: ['o'], items: [{n: 'Chopp', d: 'Consultar variedades disponibles', p: 5500}]},
+   {pal: ['r', 'c'], items: [
+    {n: 'Patagonia lata', u: '473cc', p: 5500},
+    {n: 'Andes lata', u: '473cc', p: 5000},
+    {n: 'Budweiser lata', u: '473cc', p: 5000},
+    {n: 'Stella lata', u: '473cc', p: 5500},
+    {n: 'Corona botella', u: '330cc', p: 5500},
+   ]},
+  ]},
+  {id: 'vermu', t: 'Vermú', boards: [
+   {pal: ['p', 'c'], items: [
+    {n: 'Lunfa + soda', u: '(rosso o rosado)', p: 5500},
+    {n: 'Cinzano + soda', u: '(rosso o blanco) (vaso)', p: 5500},
+    {n: 'Jarra de Lunfa + soda', u: '(rosso, blanco o rosado)', p: 16000},
+    {n: 'Jarra de Cinzano + soda', u: '(rosso o blanco)', p: 16000},
+   ]},
+  ]},
+  {id: 'energizantes', t: 'Energizantes', boards: [
+   {pal: ['p', 'k'], items: [{n: 'Red Bull Energy Drink', p: null}, {n: 'Red Bull Sugarfree', p: null}]},
+  ]},
+ ]},
+];
+
+const BRANCHES = [
+ {n: 'Nueva Cba', col: 'k', a: 'Fructuoso Rivera 15', h: 'Todos los días de 12 a 15 y de 20 a 00hs', tel: '351-7050009'},
+ {n: 'Tejeda', col: 'l', a: 'Tejeda 4289', h: 'Todos los días de 12 a 00hs', tel: '351-8626600'},
+ {n: 'Monseñor', col: 'o', a: 'Mons. Pablo Cabrera 3141', h: 'Todos los días de 12 a 15 y de 20 a 00hs', tel: '351-7066892'},
+ {n: 'Gral. Paz', col: 'p', a: 'Esquiú 432', h: 'Todos los días de 12 a 15 y de 20 a 00hs', tel: '351-9077777'},
+ {n: 'Alberdi', col: 'c', a: 'Nicolás Avellaneda 314', h: 'Todos los días de 12 a 15 y de 20 a 00hs', tel: '351-2102063'},
+ {n: 'Manantiales II', col: 'k', a: 'Prados de Manantiales, local 6', h: 'Todos los días de 12 a 15 y de 20 a 00hs', tel: '351-6546931'},
+];
+
+const RAINBOW = `<svg class="deco fx" viewBox="0 0 120 64" style="width:96px;right:6px;top:-8px" aria-hidden="true"><g fill="none" stroke-width="9" stroke-linecap="round">
+ <path d="M14 60a46 46 0 0 1 92 0" stroke="#EF4B3F"/><path d="M24 60a36 36 0 0 1 72 0" stroke="#FFD23F"/><path d="M34 60a26 26 0 0 1 52 0" stroke="#B8E04A"/><path d="M44 60a16 16 0 0 1 32 0" stroke="#5BC8EC"/></g></svg>`;
+
+// ---------- render ----------
+const money = n => n == null ? 'consultar' : '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr${v == null ? ' ask' : ''}">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+// archivo, ancho, alto, animación de reposo
+const MASCOTS = {
+  azul: ['azul', 720, 701, 'bob'], rojo: ['rojo', 720, 682, 'groove'],
+  burger: ['burger', 720, 645, 'chomp'], wrap: ['wrap', 704, 720, 'sway'], rulos: ['rulos', 584, 720, 'chomp'],
+};
+const mascot = m => { const [f, w, h, idle] = MASCOTS[m]; return `<img class="mascot fx i-${idle}" src="img/${f}.webp" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">`; };
+
+const row = (it, col) => `<li class="row ${col}">
+  <div><h3>${it.n}${it.u ? ` <em>${it.u}</em>` : ''}${it.tag ? `<span class="tag">${it.tag}</span>` : ''}</h3>${it.d ? `<p>${it.d}</p>` : ''}</div>
+  <div class="prices">${it.p && typeof it.p === 'object' ? Object.entries(it.p).map(([k, v]) => price(v, k)).join('') : price(it.p)}</div>
+</li>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <header class="sec-h">
+    <div><h2 class="title fx" id="${s.id}-t">${s.t}</h2>${s.note ? `<div class="note" style="margin-top:6px">${s.note}</div>` : ''}</div>
+    ${s.bubble ? `<div class="aside"><div class="bubble fx">${s.bubble}</div>${mascot(s.m)}</div>` : ''}
+    ${s.deco ? RAINBOW : ''}
+  </header>
+  ${s.boards.map(b => `<ul class="board">${b.items.map((it, i) => row(it, b.pal[i % b.pal.length])).join('')}${b.foot ? `<li class="foot">${LEAF}${b.foot}</li>` : ''}</ul>`).join('')}
+</section>`;
+
+document.getElementById('menu').innerHTML = GROUPS.map(g =>
+  `<div class="group"><h2 class="group-t">${g.t}</h2><div class="grid">${g.secs.map(section).join('')}</div></div>`).join('');
+
+const allSecs = GROUPS.flatMap(g => g.secs);
+document.getElementById('nav').innerHTML = allSecs.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('')
+  + '<li><a href="#sucursales">Sucursales</a></li>';
+
+document.getElementById('branches').innerHTML = BRANCHES.map(b => {
+  const wa = '549' + b.tel.replace(/\D/g, '');
+  const map = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(b.a + ', Córdoba, Argentina');
+  return `<article class="branch" style="--bg-row:var(--${b.col})${b.col === 'p' ? ';--fg:#fff' : ''}">
+    <h3>${b.n}</h3><p>${b.a}</p><p>${b.h}</p><small>Delivery propio, PedidosYa, take away y salón</small>
+    <div class="links"><a class="btn g" href="https://wa.me/${wa}" target="_blank" rel="noopener">${b.tel}</a><a class="btn" href="${map}" target="_blank" rel="noopener">Cómo llegar</a></div>
+  </article>`;
+}).join('');
+
+
+// ---------- abierto / cerrado (hora de Córdoba, horario general 12 a 00hs) ----------
+const h = +new Intl.DateTimeFormat('en-US', {timeZone: 'America/Argentina/Cordoba', hour: 'numeric', hourCycle: 'h23'}).format(new Date());
+const st = document.getElementById('status'), open = h >= 12;
+st.classList.toggle('off', !open);
+st.querySelector('span').textContent = open ? 'Abierto ahora · hasta las 00hs' : 'Cerrado · abrimos a las 12hs';
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también tocaba el scroll de la página y lo trababa
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec, #sucursales').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+
+// ---------- copiar clave WiFi ----------
+// ---------- animaciones ----------
+const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fx = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('on', e.isIntersecting)), {rootMargin: '60px 0px'});
+document.querySelectorAll('.fx').forEach(el => fx.observe(el));
+const logo = document.querySelector('.hero .logo');
+logo.setAttribute('aria-label', logo.textContent);
+logo.innerHTML = [...logo.textContent].map((ch, i) => `<span aria-hidden="true" style="--i:${i}">${ch}</span>`).join('');
+// al tocar un personaje o el logo: un salto que se suma (composite) a la animación que ya tiene
+const jump = [{transform: 'none'}, {transform: 'translateY(-16px) rotate(-8deg) scale(1.08)'}, {transform: 'translateY(2px) rotate(4deg) scale(.97)'}, {transform: 'none'}];
+document.addEventListener('click', e => { const m = e.target.closest('.mascot'); if (m && motion) m.animate(jump, {duration: 650, easing: 'ease-out', composite: 'add'}); });
+logo.addEventListener('click', () => motion && logo.querySelectorAll('span').forEach((l, i) =>
+  l.animate([{transform: 'none'}, {transform: 'translateY(-18px) scale(1.12,.9)'}, {transform: 'none'}], {duration: 500, delay: i * 60, easing: 'ease-out', composite: 'add'})));
+
+const toast = document.getElementById('toast');
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(b.dataset.copy); toast.textContent = '¡Clave copiada!'; }
+  catch { toast.textContent = 'Clave: ' + b.dataset.copy; }
+  toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800);
+}));
+</script>
+</body>
+</html>

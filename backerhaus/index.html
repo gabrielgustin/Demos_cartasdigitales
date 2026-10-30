@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bäckerhaus · Carta</title>
+<meta name="description" content="Carta de Bäckerhaus: cafetería, desayunos y meriendas, brunch, almuerzos, cenas, picadas y promos de Oktoberfest.">
+<meta name="theme-color" content="#1c2e5c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=UnifrakturCook:wght@700&family=Oswald:wght@400;500;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c2e5c; --blue:#2a5caa; --red:#c4202d; --gold:#e9bf6c; --gold-2:#c8923f; --green:#2d5a3c;
+  --paper:#f6ead0; --paper-2:#efdcb4; --ink:#1c2e5c; --mute:#4d4a45;
+  /* rombos bávaros y ornamento (✤ con líneas) como SVG */
+  --raute:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14'%3E%3Crect width='24' height='14' fill='%23fff'/%3E%3Cpath d='M12 0L24 7 12 14 0 7z' fill='%232a5caa'/%3E%3C/svg%3E");
+  --fl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%231c2e5c'%3E%3Cellipse cx='10' cy='4.5' rx='2.6' ry='4'/%3E%3Cellipse cx='10' cy='15.5' rx='2.6' ry='4'/%3E%3Cellipse cx='4.5' cy='10' rx='4' ry='2.6'/%3E%3Cellipse cx='15.5' cy='10' rx='4' ry='2.6'/%3E%3C/g%3E%3Ccircle cx='10' cy='10' r='1.6' fill='%23f6ead0'/%3E%3C/svg%3E");
+  --div:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14'%3E%3Cpath d='M0 7h68M92 7h68' stroke='%231c2e5c' stroke-width='.8'/%3E%3Cg fill='%232a5caa'%3E%3Cellipse cx='80' cy='3.4' rx='2' ry='3'/%3E%3Cellipse cx='80' cy='10.6' rx='2' ry='3'/%3E%3Cellipse cx='76.4' cy='7' rx='3' ry='2'/%3E%3Cellipse cx='83.6' cy='7' rx='3' ry='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:118px}
+body{font-family:Lora,Georgia,serif;color:var(--ink);background:var(--paper) radial-gradient(ellipse at 50% 0,#fbf3e1 0,transparent 60%) no-repeat;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.raute{height:14px;background:var(--raute)}
+.fl{display:inline-block;width:20px;height:20px;background:var(--fl) center/contain no-repeat;flex:none}
+
+/* ---------- portada ---------- */
+.hero{position:relative;text-align:center;padding:34px 16px 0;overflow:hidden}
+.brand-row{display:flex;align-items:center;justify-content:center;gap:10px}
+.laurel{width:clamp(34px,8vw,58px);color:var(--navy);flex:none}
+.laurel.r{transform:scaleX(-1)}
+.brand{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.6rem,13vw,6.2rem);white-space:nowrap;line-height:1;letter-spacing:-.01em}
+.brand span{display:inline-block}
+.ribbon{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:9px 34px 8px;background:linear-gradient(#f4d48f,var(--gold) 55%,#d9a64f);color:var(--navy);font-family:Oswald;font-weight:500;font-size:clamp(.82rem,3.4vw,1.15rem);letter-spacing:.2em;text-transform:uppercase;clip-path:polygon(0 0,100% 0,calc(100% - 16px) 50%,100% 100%,0 100%,16px 50%)}
+.ribbon .fl{width:14px;height:14px}
+.stamp{position:absolute;top:18px;right:max(14px,calc(50% - 520px));transform:rotate(9deg);padding:7px 10px 6px;border:2px solid var(--red);outline:1px solid var(--red);outline-offset:3px;color:var(--red);font-family:Oswald;font-weight:600;font-size:.8rem;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.stamp small{display:block;font-weight:400;font-size:.55rem;letter-spacing:.16em;margin-top:3px}
+.alps{display:block;width:calc(100% + 32px);margin-left:-16px;height:clamp(90px,16vw,150px);margin-top:18px}
+.badge{position:absolute;right:max(12px,calc(50% - 500px));bottom:18px;width:clamp(116px,24vw,160px);aspect-ratio:1;border-radius:50%;background:var(--red);color:#fff;display:grid;place-content:center;text-align:center;text-decoration:none;font-family:Oswald;font-weight:600;line-height:1.02;text-transform:uppercase;box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--red),0 6px 18px rgba(0,0,0,.25);transform:rotate(-6deg)}
+.badge::before{content:"";position:absolute;inset:6px;border:1.5px dashed rgba(255,255,255,.6);border-radius:50%}
+.badge small{font-size:clamp(.55rem,1.9vw,.7rem);letter-spacing:.12em}
+.badge b{font-size:clamp(1.6rem,6vw,2.3rem);font-weight:600}
+
+/* ---------- barra fija: momentos + secciones ---------- */
+.top{position:sticky;top:0;z-index:20;background:var(--paper);box-shadow:0 4px 12px rgba(28,46,92,.12)}
+.top::after{content:"";display:block;height:6px;background:var(--raute) 0 0/14px 8px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;border-bottom:2px solid var(--navy)}
+.tab{padding:9px 4px 7px;font-family:Oswald;font-weight:500;font-size:clamp(.74rem,2.9vw,.95rem);letter-spacing:.1em;line-height:1.1;text-transform:uppercase;transition:background .2s,color .2s}
+.tab small{display:block;font-family:Lora;font-style:italic;font-size:.68rem;letter-spacing:0;text-transform:none;opacity:.75}
+.tab+.tab{border-left:1px solid rgba(28,46,92,.2)}
+.tab.okt{color:var(--red)}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--paper)}
+.tab.okt[aria-selected="true"]{background:var(--red);color:#fff}
+.chips{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:8px 16px;max-width:1100px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{display:block;white-space:nowrap;padding:5px 11px 4px;border:1.5px solid var(--navy);color:var(--navy);font-family:Oswald;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s}
+.chips a[aria-current="true"]{background:var(--navy);color:var(--paper)}
+
+/* ---------- secciones ---------- */
+main{padding:30px 0 10px;min-height:60vh}
+.grid{columns:2 440px;column-gap:40px}
+.sec{break-inside:avoid;margin-bottom:38px}
+.sec-h{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--red);font-family:Oswald;font-weight:600;font-size:clamp(1.55rem,6.4vw,2.1rem);letter-spacing:.02em;line-height:1.1;text-transform:uppercase;text-align:center;margin-bottom:6px}
+.sec-note{text-align:center;font-style:italic;font-size:.88rem;color:var(--mute);margin-bottom:10px}
+.items{list-style:none;border-inline:1.5px solid var(--red);padding:6px 18px;margin-top:10px}
+.it{padding:7px 0}
+.it+.it::before{content:"";display:block;width:140px;height:12px;margin:0 auto 8px;background:var(--div) center/contain no-repeat}
+.ln{display:flex;align-items:baseline;gap:6px}
+.ln h3{font-family:Oswald;font-weight:500;font-size:1.14rem;letter-spacing:.02em;line-height:1.2;text-transform:uppercase}
+.ln i{flex:1;min-width:14px;border-bottom:2px dotted rgba(28,46,92,.55);position:relative;top:-.25em}
+.pr{font-family:Oswald;font-weight:600;font-size:1.2rem;color:var(--red);white-space:nowrap}
+.pr.na{font-weight:400;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.it p{font-size:.92rem;line-height:1.4;color:var(--mute);margin-top:3px;max-width:52ch}
+.ex{display:flex;gap:10px;margin-top:7px;font-size:.86rem;color:var(--mute)}
+.ex b{font-family:Oswald;font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);padding-top:2px}
+.ex ul{flex:1;list-style:none;display:grid;gap:3px}
+.ex li{display:flex;align-items:baseline;gap:6px}
+.ex li i{flex:1;min-width:10px;border-bottom:1.5px dotted rgba(28,46,92,.4);position:relative;top:-.25em}
+.ex li span:last-child{font-family:Oswald;font-weight:500;color:var(--red);white-space:nowrap}
+
+/* ---------- Oktoberfest ---------- */
+.okt-h{position:relative;text-align:center;padding:4px 0 26px}
+.okt-h h2{font-family:'UnifrakturCook',serif;font-weight:700;font-size:clamp(3.4rem,15vw,6.6rem);line-height:.95;color:var(--navy);text-shadow:3px 3px 0 rgba(42,92,170,.18)}
+.okt-h .ribbon{margin-top:4px;font-family:'DM Serif Display';text-transform:none;letter-spacing:.02em;font-size:clamp(1.2rem,5vw,1.7rem);padding:6px 40px 5px}
+.okt-h .stamp{top:-10px;right:0;transform:rotate(8deg)}
+.hh{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;align-items:center;margin-bottom:34px}
+.hh .badge{position:relative;inset:auto;width:178px;transform:rotate(-4deg)}
+.hh .badge b{font-size:3rem}
+.hh .badge strong{font-size:2rem;margin-top:4px}
+.feat{flex:1 1 300px;max-width:470px;padding:18px 20px;border:2px solid var(--navy);outline:1px solid var(--navy);outline-offset:-7px;background:#fbf4e3;text-align:center}
+.feat h3{display:flex;justify-content:center;align-items:center;gap:10px;font-family:Oswald;font-weight:600;font-size:1.7rem;text-transform:uppercase;line-height:1.1}
+.feat p{font-size:.95rem;line-height:1.4;color:var(--mute);margin:8px auto 6px;max-width:34ch}
+.feat .pr{font-size:2.1rem}
+
+/* ---------- pie ---------- */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;padding:4px 16px 34px}
+.info div{padding:14px 16px;border:1.5px solid var(--navy);background:#fbf4e3;text-align:center;font-family:Oswald;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.35}
+.info small{display:block;font-family:Lora;font-style:italic;letter-spacing:0;text-transform:none;color:var(--mute)}
+.foot{text-align:center;padding:0 0 calc(30px + env(safe-area-inset-bottom))}
+.foot .ribbon{margin:26px 16px 22px;letter-spacing:.12em;max-width:calc(100% - 32px)}
+.foot .brand{font-size:2.6rem}
+.foot .raute{height:42px;background-size:42px 24px}
+
+/* ---------- animaciones: solo transform/opacity, una vez por elemento ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.hero .brand span{animation:rise .8s calc(var(--i) * 60ms + .1s) cubic-bezier(.2,.7,.2,1) both}
+.hero .ribbon{animation:fade .8s .7s both}
+.hero .badge{animation:pop .7s 1s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes rise{0%{opacity:0;transform:translateY(40%)}100%{opacity:1;transform:none}}
+@keyframes fade{0%{opacity:0}100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.4) rotate(-30deg)}100%{opacity:1;transform:rotate(-6deg)}}
+@media (max-width:640px){
+  .hero{padding-top:58px}
+  .stamp{top:10px;font-size:.66rem}
+  .hero .badge{width:96px;bottom:8px;right:12px}
+  .hero .badge b{font-size:1.5rem}
+  .items{padding:4px 12px}
+  .ln h3{font-size:1.02rem}
+  .pr{font-size:1.1rem}
+  .okt-h{padding-top:30px}
+  .okt-h .stamp{top:-6px}
+}
+@media (max-width:400px){
+  .laurel{display:none}
+  .ribbon{letter-spacing:.08em;padding-inline:24px}
+  .okt-h .ribbon{white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="raute" aria-hidden="true"></div>
+<header class="hero">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="laurel" viewBox="0 0 60 60" fill="currentColor"><path d="M50 56C30 50 16 36 12 6" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="14" cy="16" rx="3.5" ry="8" transform="rotate(-30 14 16)"/><ellipse cx="22" cy="12" rx="3.5" ry="8" transform="rotate(40 22 12)"/><ellipse cx="18" cy="30" rx="3.5" ry="8" transform="rotate(-45 18 30)"/><ellipse cx="28" cy="27" rx="3.5" ry="8" transform="rotate(30 28 27)"/><ellipse cx="27" cy="43" rx="3.5" ry="8" transform="rotate(-60 27 43)"/><ellipse cx="38" cy="40" rx="3.5" ry="8" transform="rotate(20 38 40)"/></symbol></svg>
+  <div class="stamp">Pan hecho<br>como antes<small>Nostalgia panadera</small></div>
+  <div class="brand-row">
+    <svg class="laurel" viewBox="0 0 60 60" aria-hidden="true"><use href="#laurel"/></svg>
+    <h1 class="brand">Bäckerhaus</h1>
+    <svg class="laurel r" viewBox="0 0 60 60" aria-hidden="true"><use href="#laurel"/></svg>
+  </div>
+  <p class="ribbon"><i class="fl"></i>Sabemos de dónde venimos<i class="fl"></i></p>
+  <svg class="alps" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <pattern id="pin1" width="26" height="46" patternUnits="userSpaceOnUse"><path d="M13 0L25 46H1Z" fill="#2d5a3c"/></pattern>
+      <pattern id="pin2" width="20" height="34" patternUnits="userSpaceOnUse" x="9"><path d="M10 0L19 34H1Z" fill="#244a31"/></pattern>
+    </defs>
+    <path d="M0 110L90 52 150 80 250 20 340 78 420 44 520 96 610 30 700 84 790 40 880 70 980 18 1080 74 1140 50 1200 70V150H0Z" fill="#b7cbe4"/>
+    <path d="M250 20l-26 26 14-4 12 10 12-10 16 6ZM610 30l-24 22 12-2 12 10 12-10 14 4ZM980 18l-28 28 16-4 12 10 12-10 18 6Z" fill="#fff"/>
+    <path d="M0 120L130 76 230 104 360 64 470 108 580 70 700 110 820 72 930 106 1050 66 1200 100V150H0Z" fill="#7d9fca"/>
+    <rect y="86" width="1200" height="46" fill="url(#pin1)"/>
+    <rect y="104" width="1200" height="34" fill="url(#pin2)"/>
+    <rect y="132" width="1200" height="18" fill="#8fae5a"/>
+  </svg>
+  <a class="badge" href="#oktoberfest" data-tab="oktoberfest"><small>Oktoberfest</small><b>2x1</b><small>en cervezas<br>todo el día</small></a>
+</header>
+
+<div class="top">
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <ul class="chips" id="chips" aria-label="Secciones"></ul>
+</div>
+
+<main class="wrap" id="menu" role="tabpanel"></main>
+
+<section class="wrap info" aria-label="Información">
+  <div>10% off en efectivo<small>No acumulable con otras promociones</small></div>
+  <div>Consultá para festejar en nuestro local</div>
+</section>
+
+<footer class="foot">
+  <p class="brand">Bäckerhaus</p>
+  <p class="ribbon"><i class="fl"></i>Buena cerveza, comida alemana y momentos que se comparten<i class="fl"></i></p>
+  <div class="raute" aria-hidden="true"></div>
+</footer>
+
+<script>
+// ---------- datos (transcriptos de las cartas en PDF y del afiche de Oktoberfest) ----------
+// n nombre · d descripción · p precio (número, texto, o null = "Consultar") · x extras {t: título, o: [[nombre, precio]]}
+const JARRA = {o: [['Jarra litro', 12000]]};
+const CAFE_TRAD = [
+  {n: 'Espresso / Ristretto', p: 4000}, {n: 'Jarrito', p: 4000}, {n: 'Taza doble', p: 4300}, {n: 'Infusión Saint Gottard', p: 4300},
+];
+const BRUNCH = [
+  {n: 'Croque Madame', d: 'Sándwich caliente con tostadas francesas, jamón cocido y queso fundente, coronado con huevo.', p: 13500},
+  {n: 'Cheese Bomb', d: 'Sándwich tostado en pan de queso artesanal relleno de jamón cocido natural y queso, acompañado de mini ensalada de pepinillos encurtidos y tomates confitados.', p: null},
+  {n: 'Ciabatta de la Granja', d: 'Sándwich en pan ciabatta relleno de pollo asado, hojas verdes y mostaza de la casa, acompañado de papas al horno.', p: 15500},
+  {n: 'Focaccia Mediterránea', d: 'Sándwich en focaccia artesanal con tomates cherry, mortadela italiana, queso danbo, mix de hojas verdes y aceite de oliva.', p: 15000},
+  {n: 'Avocado Toast', d: 'Tostada de pan de masa madre con palta y huevo poché.', p: 11000},
+  {n: 'Brunch para dos', d: 'Focaccia mediterránea, sándwich del día en pan artesanal y porción de pastelería del día. Incluye infusiones tradicionales o limonadas de menta y jengibre y dos vermut Prudente.', p: 45000},
+];
+const MINUTAS = [
+  {n: 'Pizza de la casa entera', d: 'Pizza de masa madre con salsa filetto, mozzarella y hojas de albahaca.', p: 20000},
+  {n: 'Pizza de la casa media', d: 'Media pizza de masa madre con salsa filetto, mozzarella y hojas de albahaca.', p: 11000,
+   x: {t: 'Adicional', o: [['Especial (tomate y jamón)', 4000], ['Plus (rúcula y jamón crudo)', 4500], ['Gourmet (queso azul y champiñones)', 5000]]}},
+  {n: 'Hamburguesa de la casa', d: 'Hamburguesa artesanal en pan de papa con doble queso fundente, aderezo de pimientos ahumados, acompañada de papas rústicas horneadas y cazuela de curry.', p: 15000,
+   x: {t: 'Toppings', o: [['Especial (tomate, jamón y lechuga)', 5000], ['Plus (palta, tomates confitados y rúcula)', 5000], ['Gourmet (queso azul, champiñones y rúcula)', 5000]]}},
+  {n: 'Pancho alemán', d: 'Salchicha alemana en pan baguette con aderezo de mostaza de la casa, chucrut suave y papas al horno.', p: 15000},
+];
+const PRINCIPALES = [
+  {n: 'Rösti de papas', d: 'Rösti dorado y crocante, crema cítrica y ensalada fresca de hojas, cherry, crutones y pepino.', p: 23000},
+  {n: 'Pasta al limón, manteca y queso', d: 'Sorrentinos con manteca, limón, parmesano y pimienta negra.', p: 20000},
+  {n: 'Brat & Kartoffeln', d: 'Salchicha alemana grillada con papas aplastadas, pepinillos encurtidos, cebolla morada encurtida y aderezo de mostaza y cerveza negra.', p: 25000},
+  {n: 'Goulash con spätzle', d: 'Tierno guiso de res cocinado a fuego lento con cebolla y pimentón, servido sobre tradicionales spätzle (pasta fresca alemana) que absorben toda la esencia de su salsa.', p: 25000},
+];
+const SPRITZ = [
+  {n: 'Bellini Zero', d: 'Naranja, durazno y agua tónica. Fresco, cítrico y burbujeante.', p: 7700},
+  {n: 'Rosamarino Spritz', d: 'Frutos rojos, limón, almíbar de romero y soda. Frescura herbal con un toque cítrico y burbujeante.', p: 7700},
+];
+const LIMONADAS = [
+  {n: 'Limonada de menta y jengibre', p: 7000, x: JARRA},
+  {n: 'Limonada de hibiscus', p: null},
+  {n: 'Pomelada con frutillas', p: 7000, x: JARRA},
+];
+const GASEOSAS = [{n: 'Gaseosas', d: 'Línea Pepsi.', p: 4000}, {n: 'Aguas envasadas', p: 4000}];
+const POSTRES = [
+  {n: 'Bocha de helado', p: 10500}, {n: 'Budín de pan con lavanda y miel', p: 11000}, {n: 'Peras al vino tinto', p: null},
+  {n: 'Tartas', p: 11000}, {n: 'Tortas', p: 13000},
+];
+const VERMUT = [{n: 'El Prudente', p: 8500}, {n: 'Pingüino Prudente', p: 13000}, {n: 'Tradicional', p: 8000}, {n: 'Aperol Spritz', p: 8500}];
+
+const TABS = [
+ {id: 'oktoberfest', t: 'Oktoberfest', s: 'promos', okt: 1, secs: [
+  {t: 'Promos saladas', items: [
+   {n: 'Pancho y pinta', d: 'Pancho alemán en pan artesanal + 1 cerveza tirada.', p: 19000},
+   {n: 'Currywurst para brindar', d: '1 currywurst con papas + 2 cervezas tiradas.', p: 39000},
+   {n: 'Pretzel y pinta', d: 'Pretzel simple + 1 cerveza tirada.', p: 13000},
+   {n: 'Pretzel con mostaza', d: 'Pretzel clásico con mostaza.', p: 10000},
+   {n: 'Haus y pinta', d: '1 Pretzel Haus + 1 cerveza tirada.', p: 17500},
+   {n: 'Münich y pinta', d: '1 Pretzel Münich + 1 cerveza tirada.', p: 17500},
+   {n: 'Salchichas y pinta', d: 'Porción de salchichas alemanas con chucrut + 1 cerveza tirada.', p: 31000},
+   {n: 'Rosca y pinta', d: '1 rosca polaca con papas + 1 cerveza tirada.', p: 34000},
+   {n: 'Bavarian y pinta', d: '1 Bavarian Brot + 1 cerveza tirada.', p: 18500},
+   {n: '2 panchos + 2 cervezas', d: '2 panchos alemanes + 2 cervezas tiradas.', p: 35000},
+   {n: 'Dúo Bavarian', d: '2 Bavarian Brot + 2 cervezas tiradas.', p: 35000},
+  ]},
+  {t: 'Promos dulces', items: [
+   {n: 'Selva Negra y café', d: 'Porción de torta Selva Negra + 1 jarrito de café.', p: 13500},
+   {n: 'Strudel y café', d: 'Porción de strudel + 1 jarrito de café.', p: 13500},
+   {n: 'Streusel y café', d: 'Porción de streusel + 1 jarrito de café.', p: 13500},
+   {n: 'Merienda Selva para dos', d: '1 torta Selva Negra + 2 Pretzel Haus + 2 jarritos de café.', p: 23000},
+  ]},
+ ]},
+ {id: 'desayuno', t: 'Desayuno', s: '& merienda', secs: [
+  {t: 'Cafetería tradicional', note: 'Adicional leche vegetal: consultar.', items: [
+   ...CAFE_TRAD.slice(0, 3), {n: 'Flat White', p: 5000}, {n: 'Cappuccino', p: 5000}, {n: 'Chocolatada', p: 5000}, CAFE_TRAD[3],
+  ]},
+  {t: 'Cafetería especial', items: [
+   {n: 'Affogato Tiramisú', d: 'Helado de vainilla, vainillas caseras, shot de café y canela.', p: 6500},
+   {n: 'Café Antillano', d: 'Shot de café con ron dorado Havana y crema chantilly.', p: 6600},
+   {n: 'Café Bombón', d: 'Shot de café con leche condensada.', p: 7500},
+   {n: 'Cappuccino Brulé', d: 'Capuchino con una capa superior de azúcar caramelizada sopleteada, con canela y chocolate semiamargo.', p: 6600},
+   {n: 'Café Moca', d: 'Doble espresso con leche y chocolate.', p: 6600},
+   {n: 'Honey Matcha Latte', d: 'Matcha, miel y leche microespumada.', p: 7000},
+   {n: 'Café Vienés', d: 'Shot de café, miel y crema chantilly.', p: 6600},
+   {n: 'Café Bicciere', d: 'Shot de café con chocolate y espuma de leche.', p: 7500},
+   {n: 'Latte Caramel', p: 6000},
+  ]},
+  {t: 'Chocolates especiales', items: [
+   {n: 'Chocolate americano', d: 'Chocolate espeso con malvaviscos caseros.', p: 7900},
+   {n: 'Chocolate suizo', d: 'Con ganache de chocolate.', p: 7900},
+   {n: 'Submarino', d: 'Con chocolate Águila.', p: 6100},
+  ]},
+  {t: 'Combos', note: 'Incluyen una infusión tradicional o limonada.', items: [
+   {n: 'Del Barrio', d: 'Tostadas de masa madre o criollo acompañadas de dos dips untables a elección y jugo chico.', p: 10300,
+    x: {t: 'Adicional', o: [['Jamón cocido y queso danbo', 3100], ['Palta, cherrys y champiñones', 5200], ['Huevos revueltos', 3000]]}},
+   {n: 'Viajero Francés', d: 'Croissant relleno dulce o salado, consultar opciones del día.', p: 14500},
+   {n: 'Momento Dulce', d: 'Porción de torta del día a elección.', p: 17000},
+   {n: 'Tea Time', d: 'Selección de delicias: alfajor, budín, cuadrado individual y porción de tarta o torta, todo cortado para compartir.', p: 34000},
+  ]},
+  {t: 'Brunch', items: [
+   {n: 'Bowl de estación', d: 'Yogur natural con frutas de estación, granola artesanal y miel.', p: 10000},
+   {n: 'French Toast', d: 'Tostadas francesas de pan de molde artesanal, con frutas de estación y azúcar impalpable.', p: 11000,
+    x: {t: 'Adicional', o: [['Helado de vainilla', 4100], ['Crema de pistachos o avellanas', null]]}},
+   {n: 'Mafalda', d: 'Sándwich tostado en croissant o medialuna dulce con jamón cocido y queso danbo.', p: 8000},
+   {n: 'Egg Bagel', d: 'Bagel tostado con queso crema, jamón cocido y huevo poché. Opción veggie: palta, queso y mix de verdes.', p: 9000},
+   ...BRUNCH,
+  ]},
+  {t: 'Panadería y pastelería', items: [
+   {n: 'Alfajores', p: 4500}, {n: 'Croissants rellenos', p: 5000}, {n: 'Viennoiserie', p: 4500}, {n: 'Budines', p: 5000},
+   {n: 'Porción de torta', p: 'desde $13.500'}, {n: 'Porción de tarta', p: 11000},
+  ]},
+  {t: 'Licuados y sin alcohol', items: [
+   {n: 'Licuado de fruta', d: 'Con agua o con leche, consultar opciones de frutas.', p: 7000},
+   {n: 'Jugos', d: 'Jugo de naranja o cítricos. 500 ml.', p: 6600},
+   {n: 'Smoothies', d: 'Preparados con agua o leche. Opciones: durazno, naranja y miel · frutilla, albahaca y banana.', p: 7100},
+   ...SPRITZ, ...LIMONADAS, ...GASEOSAS,
+  ]},
+  {t: 'Vermutería y cerveza', note: 'Cervezas Stella Artois.', items: [
+   VERMUT[0], VERMUT[2], VERMUT[3], {n: 'Pinta de cerveza', p: 7500}, {n: 'Cerveza de litro', p: 13000}, {n: 'Cerveza sin alcohol', p: 7000},
+  ]},
+ ]},
+ {id: 'almuerzo', t: 'Almuerzo', s: '& brunch', secs: [
+  {t: 'Menú ejecutivo', note: 'De lunes a viernes de 12 a 15 hs, excepto feriados.', items: [
+   {n: 'Menú ejecutivo', d: 'Incluye appetizer, plato principal, bebida sin alcohol (limonada, agua o soda de cortesía) y postre o café.', p: 18000},
+   {n: 'Menú veggie', d: 'Consultar opciones.', p: null},
+   {n: 'Menú tarta', d: 'Consultar opciones.', p: null},
+  ]},
+  {t: 'Brunch', items: BRUNCH},
+  {t: 'Minutas', items: MINUTAS},
+  {t: 'Platos principales', items: PRINCIPALES},
+  {t: 'Spritz y sin alcohol', items: [...SPRITZ, ...LIMONADAS, ...GASEOSAS]},
+  {t: 'Vermutería y cervezas', note: 'Cervezas Stella Artois.', items: [
+   ...VERMUT, {n: 'Pinta de cerveza', p: 7500}, {n: 'Cerveza de litro', p: 13000}, {n: 'Cerveza sin alcohol', p: 7000},
+  ]},
+  {t: 'Postres', items: POSTRES},
+  {t: 'Cafetería', items: CAFE_TRAD},
+ ]},
+ {id: 'cena', t: 'Cena', s: '& picadas', secs: [
+  {t: 'Picoteo', items: [
+   {n: 'La Dolce Vita', d: 'Tabla con selección de jamón crudo, mortadela italiana y quesos, focaccia tibia, tomates confitados y aceitunas, con crema suave de ricota y limón.', p: 31000},
+   {n: 'Rincón de Baviera', d: 'Tabla de embutidos alemanes seleccionados, papas rústicas, chucrut suave y perejil fresco para terminar.', p: 36000},
+   {n: 'Currywurst & papas', d: 'Salchicha alemana grillada con salsa curry suave, papas rústicas y cebolla caramelizada.', p: 16000},
+  ]},
+  {t: 'Minutas', items: MINUTAS},
+  {t: 'Platos principales', items: [
+   ...PRINCIPALES,
+   {n: 'Marry Me Chicken', d: 'Suprema de pollo a la napolitana acompañada de papas a la provenzal.', p: 25000},
+   {n: 'Quiche Lorraine de la casa', d: 'Tarta tibia de panceta ahumada y queso, acompañada de ensalada fresca de hojas, peras asadas y vinagreta suave.', p: 27000},
+   {n: 'Ensalada de la casa Alpina', d: 'Hojas verdes, jamón crudo en láminas, peras asadas, queso semiduro, manzana verde y vinagreta de limón, mostaza y semillas de girasol tostadas.', p: 24720},
+   {n: 'Gnocchi con hongos y queso', d: 'Gnocchi con salsa de hongos y queso rallado.', p: 25000},
+  ]},
+  {t: 'Spritz', items: SPRITZ},
+  {t: 'Sin alcohol', items: [...LIMONADAS, ...GASEOSAS]},
+  {t: 'Vermutería y tragos', items: [
+   ...VERMUT, {n: 'Tintoretto', p: 8000}, {n: 'Citric Campari', p: 8500}, {n: 'Americano', p: 8000}, {n: 'Gin tónic', p: 8500},
+   {n: 'Negroni', p: 8500}, {n: 'Ferroviario', p: 8500}, {n: 'Cynar Julep', p: 8500}, {n: 'Fernet', p: 8500},
+  ]},
+  {t: 'Cervezas y vinos', note: 'Cervezas Stella Artois.', items: [
+   {n: 'Pinta de Patagonia', p: 8000}, {n: 'Pinta de Andes', p: 8000}, {n: 'Pinta de Stella', p: 8000}, {n: 'Cerveza de litro', p: 13000},
+   {n: 'Stella sin alcohol', p: 7700}, {n: 'Vino 3/4', p: 15400}, {n: 'Copa de vino', p: 7700},
+  ]},
+  {t: 'Postres', items: POSTRES},
+  {t: 'Cafetería', items: CAFE_TRAD},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$' + n.toLocaleString('es-AR');
+const price = p => typeof p === 'number' ? `<span class="pr">${money(p)}</span>` : `<span class="pr${p ? '' : ' na'}">${p ?? 'Consultar'}</span>`;
+const extras = x => `<div class="ex">${x.t ? `<b>${x.t}</b>` : ''}<ul>${x.o.map(([n, p]) => `<li><span>${n}</span><i></i><span>${p == null ? 'Consultar' : money(p)}</span></li>`).join('')}</ul></div>`;
+const item = it => `<li class="it">
+  <div class="ln"><h3>${it.n}</h3><i aria-hidden="true"></i>${price(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}${it.x ? extras(it.x) : ''}
+</li>`;
+const section = (s, id) => `<section class="sec" id="${id}" aria-labelledby="${id}-t">
+  <h2 class="sec-h" id="${id}-t"><i class="fl"></i>${s.t}<i class="fl"></i></h2>
+  ${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  <ul class="items">${s.items.map(item).join('')}</ul>
+</section>`;
+const OKT_HEAD = `<div class="okt-h">
+  <div class="stamp">Todo el mes<br>de octubre</div>
+  <h2>Oktoberfest</h2>
+  <p class="ribbon"><i class="fl"></i>en Bäckerhaus<i class="fl"></i></p>
+</div>
+<div class="hh">
+  <div class="badge"><small>Happy hour</small><b>2x1</b><small>en cervezas<br>todo el día</small><strong>${money(10000)}</strong></div>
+  <div class="feat"><h3><i class="fl"></i>Brunch alemán<i class="fl"></i></h3>
+    <p>Dos cervezas Stella Artois, dos Pretzel Haus, un pancho alemán, una mini torta vasca y dos cafés en jarrito.</p>
+    <span class="pr">${money(45000)}</span></div>
+</div>`;
+
+const menu = document.getElementById('menu'), tabsEl = document.getElementById('tabs'), chips = document.getElementById('chips');
+tabsEl.innerHTML = TABS.map(t => `<button class="tab${t.okt ? ' okt' : ''}" role="tab" data-tab="${t.id}">${t.t}<small>${t.s}</small></button>`).join('');
+
+let spy, rv, current;
+function show(id, scroll) {
+  const tab = TABS.find(t => t.id === id) || TABS[1];
+  tabsEl.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab.id));
+  menu.innerHTML = (tab.okt ? OKT_HEAD : '') + `<div class="grid">${tab.secs.map((s, i) => section(s, `${tab.id}-${i}`)).join('')}</div>`;
+  chips.innerHTML = tab.secs.map((s, i) => `<li><a href="#${tab.id}-${i}">${s.t}</a></li>`).join('');
+  history.replaceState(null, '', '#' + tab.id);
+  observe();
+  if (scroll) document.querySelector('.top').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}
+
+// pestaña inicial: la del link, o la que corresponde a la hora del día
+const h = new Date().getHours();
+show(location.hash.slice(1) || (h < 12 || (h >= 16 && h < 20) ? 'desayuno' : h < 16 ? 'almuerzo' : 'cena'));
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-tab]');
+  if (t) { e.preventDefault(); show(t.dataset.tab, true); }
+});
+
+// ---------- scroll-spy + aparición (se rearman al cambiar de pestaña) ----------
+function observe() {
+  spy?.disconnect(); rv?.disconnect(); current = null;
+  const links = [...chips.querySelectorAll('a')];
+  spy = new IntersectionObserver(es => es.forEach(e => {
+    const a = links.find(l => l.hash === '#' + e.target.id);
+    if (!e.isIntersecting || a === current) return;
+    current?.removeAttribute('aria-current');
+    a.setAttribute('aria-current', 'true');
+    current = a;
+    // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+    chips.scrollTo({left: a.offsetLeft - (chips.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+  }), {rootMargin: '-40% 0px -55% 0px'});
+  rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); rv.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
+  menu.querySelectorAll('.sec').forEach(s => { spy.observe(s); s.classList.add('rv'); rv.observe(s); });
+}
+// salto a sección sin ensuciar el historial
+chips.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+
+const logo = document.querySelector('.hero .brand');
+logo.setAttribute('aria-label', logo.textContent);
+logo.innerHTML = [...logo.textContent].map((ch, i) => `<span aria-hidden="true" style="--i:${i}">${ch}</span>`).join('');
+</script>
+</body>
+</html>
