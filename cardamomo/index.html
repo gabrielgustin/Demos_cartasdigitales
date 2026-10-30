@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cardamomo · Carta</title>
+<meta name="description" content="Carta de Cardamomo, panadería y café: cafetería, desayunos y meriendas, pastelería, ensaladas, sandwiches y bebidas.">
+<meta name="theme-color" content="#2d4b41">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#457468; --verde-2:#2d4b41; --verde-3:#6b8b80; --terra:#a96748; --mostaza:#e5a02e; --rojo:#c4623c;
+  --ink:#4f463f; --mute:#7a6f67; --line:#e6ddd5; --paper:#fff;
+  --g:rgba(45,75,65,.68);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:'Nunito Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* trama escocesa de la marca, hecha con gradientes */
+.tela{
+  background:
+    linear-gradient(90deg,transparent 38px,var(--mostaza) 38px 41px,transparent 41px) 0 0/64px 64px,
+    linear-gradient(0deg,transparent 18px,var(--rojo) 18px 20px,transparent 20px) 0 0/64px 64px,
+    linear-gradient(90deg,var(--g) 0 14px,transparent 14px) 0 0/32px 32px,
+    linear-gradient(0deg,var(--g) 0 14px,transparent 14px) 0 0/32px 32px,
+    #fff;
+}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding-bottom:28px}
+.hero .tela{height:112px}
+.hero img{display:block;width:min(420px,80vw);height:auto;margin:-52px auto 0;position:relative}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--verde-2);border-bottom:3px solid var(--mostaza)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1040px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#e8efec;text-decoration:none;font-weight:600;font-size:.86rem}
+.nav a[aria-current="true"]{background:var(--mostaza);border-color:var(--mostaza);color:var(--verde-2);font-weight:800}
+
+/* ---------- secciones ---------- */
+main{padding:34px 0 8px}
+.sec{margin-bottom:46px}
+.sec>h2{color:var(--terra);font-weight:800;font-size:clamp(1.5rem,5.4vw,2rem);letter-spacing:.03em;text-transform:uppercase;line-height:1.1}
+.sec>h2::after{content:"";display:block;height:8px;margin-top:10px;background:
+  linear-gradient(90deg,var(--mostaza) 0 28%,transparent 28% 32%,var(--rojo) 32% 60%,transparent 60% 64%,var(--verde-3) 64% 100%) 0 0/100% 2px no-repeat,
+  linear-gradient(90deg,var(--g) 0 100%) 0 5px/100% 3px no-repeat;opacity:.9}
+.sec-note{margin-top:12px;font-size:.88rem;color:var(--mute);font-style:italic}
+.cols{columns:2 420px;column-gap:44px;margin-top:20px}
+.grp{break-inside:avoid;margin-bottom:26px}
+.grp>h3{display:flex;align-items:baseline;gap:8px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px solid var(--terra);color:var(--verde);font-weight:800;font-size:.95rem;letter-spacing:.09em;text-transform:uppercase}
+.grp>h3 small{font-weight:400;font-style:italic;letter-spacing:0;text-transform:none;color:var(--mute);font-size:.82rem}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0}
+.it+.it{border-top:1px dashed var(--line)}
+.it h4{font-weight:800;font-size:.98rem;color:var(--terra);text-transform:uppercase;letter-spacing:.02em;line-height:1.25}
+.it .pr{font-weight:800;color:var(--verde);white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:600;font-size:.7rem;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.9rem;line-height:1.4;color:var(--ink)}
+.it p.q{font-style:italic;color:var(--mute)}
+.after{margin-top:8px;font-size:.88rem;font-style:italic;color:var(--mute)}
+
+/* ---------- cierre ---------- */
+.cierre{margin:10px 0 0}
+.cierre .tela{padding:clamp(22px,6vw,46px) clamp(14px,4vw,40px)}
+.cierre .card{background:#fff;padding:clamp(20px,5vw,40px) clamp(16px,4vw,44px);text-align:center;color:var(--verde);font-weight:600;line-height:1.5;font-size:clamp(.92rem,3.4vw,1.05rem)}
+.cierre .card p+p{margin-top:12px}
+.cierre .card .sep{font-weight:800;letter-spacing:.3em;margin:14px 0 0}
+.cierre img{display:block;width:min(240px,64%);height:auto;margin:20px auto 0}
+footer{padding:22px 16px 34px;text-align:center;font-size:.75rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="tela" aria-hidden="true"></div>
+  <img src="img/logo.webp" alt="Cardamomo, panadería y café" width="510" height="218">
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<section class="wrap cierre" aria-label="Mensaje final">
+  <div class="tela">
+    <div class="card">
+      <p>Descubrí <b>LA ESPECIALIDAD DEL DÍA.</b><br>Preguntanos por las opciones disponibles en cada sección de la carta.<br>Trabajamos con productos frescos, elaborados en el momento, con mucho amor.</p>
+      <p class="sep" aria-hidden="true">***</p>
+      <p>De <b>LUNES A VIERNES</b> te esperamos con nuestro <b>MENÚ DIARIO</b>, siempre con algo rico y distinto para disfrutar.</p>
+      <img src="img/gracias.webp" alt="Gracias por visitarnos" width="559" height="94" loading="lazy">
+    </div>
+  </div>
+</section>
+<footer>Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (transcriptos de la carta digital en PDF) ----------
+// p: número, o {etiqueta: precio}; q: "consultar" como aclaración en cursiva
+const SECS = [
+ {id: 'cafeteria', t: 'Cafetería', nav: 'Cafetería', groups: [
+  {g: 'Leche', items: [
+   {n: 'Lágrima chica', p: 4100},
+   {n: 'Lágrima en jarro', p: 4250},
+   {n: 'Lágrima doble leche', d: '+ 15 ml de café', p: 5300},
+   {n: 'Submarino', d: 'Leche + chocolate en barra', p: 5450},
+   {n: 'Chocolatada', d: 'Leche + chocolate en polvo / Nesquik', p: 5250},
+   {n: 'Taza de leche', d: '80 ml de leche', p: 2350},
+  ]},
+  {g: 'Té', items: [
+   {n: 'Té en hebras', q: 'Consultar variedad', p: 4650},
+   {n: 'Té en saquito', q: 'Consultar variedad', p: 2800},
+   {n: 'Iced tea', p: 5150},
+  ]},
+  {g: 'Café', items: [
+   {n: 'Ristretto', d: '15 ml de café', p: 3750},
+   {n: 'Espresso', d: 'Café chico - 30 ml de café', p: 3750},
+   {n: 'Lungo', d: 'Café en jarro - shot de espresso + agua', p: 3950},
+   {n: 'Doppio', d: 'Café en jarro intenso - 2 shots de espresso', p: 4500},
+   {n: 'Americano', d: 'Café doble - 2 shots de espresso + agua', p: 4700},
+   {n: 'Café con cardamomo', d: 'Infusión de cardamomo + 2 shots de espresso', p: 5750},
+   {n: 'Iced coffee', p: 5250},
+  ]},
+  {g: 'Café con leche', items: [
+   {n: 'Cortado chico', d: 'Shot de espresso + leche', p: 4100},
+   {n: 'Cortado en jarro', d: 'Shot de espresso + agua + leche', p: 4200},
+   {n: 'Macchiato', d: '2 shots de espresso + espuma de leche', p: 4550},
+   {n: 'Latte', d: 'Café con leche. Shot de espresso + leche texturizada', p: 5100},
+   {n: 'Flat white', d: 'Cortado doble / 2 shots de espresso + leche texturizada', p: 5400},
+   {n: 'Capuccino', d: 'Latte macchiato en capas / shot de espresso + leche + espuma de leche + cacao', p: 5450},
+   {n: 'Café de la casa', d: 'Latte doble en taza de 470 ml / 2 shots de espresso + cacao + leche texturizada', p: 5850},
+   {n: 'Iced capuccino', p: 5850},
+   {n: 'Iced latte', p: 5900},
+  ]},
+ ]},
+ {id: 'desayunos', t: 'Desayunos y meriendas', nav: 'Desayunos y meriendas', groups: [
+  {g: 'Desayunos y meriendas', items: [
+   {n: 'Simple', d: 'Infusión + 2 medialunas o 3 criollos', p: 9000},
+   {n: 'Completo', d: 'Infusión + 2 medialunas o 3 criollos + dulce de leche y manteca o mermelada casera + jugo natural de naranja', p: 11200},
+   {n: 'Light', d: 'Infusión + tostadas de pan integral + mermelada + cream cheese + jugo natural de naranja', p: 11200},
+   {n: 'Piolón', d: 'Infusión + tostadas de pan integral + queso crema + huevo revuelto + jamón cocido + queso tybo + jugo natural de naranja', p: 13400},
+   {n: 'Fifí', d: 'Infusión + porción de torta a elección + jugo natural de naranja', p: 14600},
+   {n: 'Paquetón', d: 'Infusión + tostadas de pan casero + queso crema + huevo revuelto + palta + jamón cocido + queso tybo + jugo natural de naranja', p: 14900},
+   {n: 'Pulenta', d: 'Infusión + ensalada de frutas + yogur + granola', p: 12100},
+  ]},
+ ]},
+ {id: 'pasteleria', t: 'Pastelería y laminados', nav: 'Pastelería', groups: [
+  {g: 'Budines', s: 'por porción', items: [
+   {n: 'Quesos', p: 6200}, {n: 'Zanahoria', p: 6200}, {n: 'Remolacha', p: 6200}, {n: 'Budín del día', p: 6200},
+  ]},
+  {g: 'Tartas', s: 'por porción', items: [
+   {n: 'Ricota', p: 9400}, {n: 'Coco', p: 10100}, {n: 'Key lime', p: 11100}, {n: 'Tarta del día', p: 10900},
+  ]},
+  {g: 'Tortas', s: 'por porción', items: [
+   {n: 'Cheesecake frutos rojos', p: 11250}, {n: 'Marquise', p: 11250}, {n: 'Devil\'s cake', p: 11600}, {n: 'Chocotorta', p: 11600},
+  ]},
+  {g: 'Alfajores y cookies', items: [
+   {n: 'Alfajor', q: 'Consultar variedad', p: 6100},
+   {n: 'Cookies', q: 'Consultar variedad', p: 5000},
+  ]},
+  {g: 'Laminados', items: [
+   {n: 'Danesas', p: 6200}, {n: 'Croissants', p: 5100}, {n: 'Croissant mafalda', p: 8100},
+  ], after: 'Consultar opciones especiales.'},
+  {g: 'Scones y chipá', items: [
+   {n: 'Scones', d: 'Dulces y salados', p: 5300},
+   {n: 'Chipá', p: 3700},
+  ]},
+ ], note: 'Sin TACC: consultar disponibilidad de productos.'},
+ {id: 'ensaladas', t: 'Ensaladas y degustaciones', nav: 'Ensaladas', groups: [
+  {g: 'Ensaladas', items: [
+   {n: 'Caesar', d: 'Mix de verdes, pollo en cubos, escamas de queso sardo, crutones y aderezo característico', p: 14200},
+   {n: 'Griega', d: 'Mix de verdes, aceitunas negras, cebolla morada, tomates cherry, queso saborizado, pepino y vinagreta', p: 14200},
+   {n: 'Cardamomo', d: 'Mix de verdes, tomates cherry, repollo morado, palta, crutones, huevo, zanahoria, semillas tostadas y vinagreta', p: 14200},
+  ]},
+  {g: 'Degustaciones', items: [
+   {n: '#1', d: 'Panes artesanales con 3 dips gourmet (cream cheese con ciboulette / guacamole / carrot / remolacha)', p: 9400},
+   {n: '#2', d: 'Panes artesanales con 3 dips clásicos (manteca, cream cheese, dulce de leche, mermelada casera de estación)', p: 8700},
+   {n: '#3', d: '"Barritas tentación" dulces, rellenos varios', p: 5000},
+  ]},
+ ]},
+ {id: 'sandwiches', t: 'Sandwiches, wraps y tostones', nav: 'Sandwiches', groups: [
+  {g: 'Sandwiches', items: [
+   {n: '#1', d: 'Focaccia, jamón crudo, queso pategrás, lechuga, tomate, mayo casera', p: 13700},
+   {n: '#2', d: 'Pan casero, jamón, queso tybo, tomate, lechuga, mayo casera', p: 12700},
+   {n: '#3', d: 'Pan casero, jamón crudo, queso pimentino, mayo casera', p: 13000},
+   {n: '#4', d: 'Pan casero, salame, queso pategrás, mayo casera', p: 13100},
+   {n: '#5', d: 'Pan integral, salame, queso pategrás, mayo casera', p: 13100},
+   {n: '#6', d: 'Vegetariano', p: 13600},
+  ]},
+  {g: 'Wraps', items: [
+   {n: 'De verdura', d: 'Se le puede adicionar pollo.', p: 14400},
+  ]},
+  {g: 'Tostones', items: [
+   {n: 'Tostones', q: 'Consultar variedad', p: 13100},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas', nav: 'Bebidas', groups: [
+  {g: 'Sin alcohol', items: [
+   {n: 'Agua saborizada', p: 3700},
+   {n: 'Agua mineral con/sin gas', p: 3700},
+   {n: 'Gaseosas', p: 3900},
+  ]},
+  {g: 'Limonada', items: [
+   {n: 'Limonada', d: 'Jugo natural de limón, menta, jengibre, almíbar', p: {'Chica (500 cc)': 5700, 'Grande (1 lt)': 8400}},
+  ]},
+  {g: 'Jugo natural', items: [{n: 'Naranja', p: 5900}]},
+  {g: 'Licuados', items: [
+   {n: 'Banana y leche', p: 6500},
+   {n: 'Banana y leche de almendras', p: 7200},
+   {n: 'Naranja y frutilla', p: 6500},
+   {n: 'Multifrutal', d: 'Naranja, banana, frutilla, manzana', p: 6500},
+   {n: 'Mix', d: 'Naranja, zanahoria, jengibre', p: 6500},
+  ]},
+  {g: 'Con alcohol', items: [
+   {n: 'Cerveza Stella Artois 1 lt', p: 10500},
+   {n: 'Cerveza Imperial 1 lt', p: 10500},
+   {n: 'Cerveza Corona 330 cc', p: 7500},
+   {n: 'Aperol Spritz', p: 6700},
+   {n: 'Fernet', p: 6700},
+   {n: 'Campari', p: 6700},
+   {n: 'Gin Tonic', p: 6900},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+
+const item = it => `<li class="it">
+  <h4>${it.n}</h4>
+  <div>${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}${it.q ? `<p class="q">${it.q}</p>` : ''}
+</li>`;
+
+const group = g => `<div class="grp">
+  <h3>${g.g}${g.s ? ` <small>/ ${g.s}</small>` : ''}</h3>
+  <ul class="items">${g.items.map(item).join('')}</ul>
+  ${g.after ? `<p class="after">${g.after}</p>` : ''}
+</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>
+  ${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
