@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>5 Elementos · Menú ejecutivo</title>
+<meta name="description" content="Menú ejecutivo de 5 Elementos Resto Bar: clásico, premium, especialidades del chef y opciones sin gluten. De lunes a viernes de 12 a 16 hs.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2b52;--naranja:#d9814a;--ink:#1d1d1f;--mute:#5f6670;--verde:#2fa83c;--line:#eadfd6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{position:relative;text-align:center;padding:44px 20px 26px;overflow:hidden}
+.hero .flores{position:absolute;top:0;left:0;width:clamp(110px,26vw,190px);height:auto;pointer-events:none}
+.hero .logo{display:block;width:88px;height:auto;margin:0 auto}
+.hero h1{margin-top:18px;font-weight:400;font-size:clamp(2rem,9vw,3.4rem);letter-spacing:.01em;line-height:1.05;color:var(--navy);text-transform:uppercase}
+.hero h1 b{font-weight:800}
+.hero p{margin:14px auto 0;max-width:520px;font-size:.84rem;line-height:1.55;color:var(--navy)}
+.hero p.aviso{font-style:italic;font-weight:700;font-size:.76rem}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-top:1px solid var(--line);border-bottom:2px solid var(--naranja)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1000px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 14px;border:1.5px solid var(--navy);border-radius:999px;color:var(--navy);text-decoration:none;font-weight:700;font-size:.78rem}
+.nav a[aria-current="true"]{background:var(--navy);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding:6px 0 8px}
+.sec{padding:42px 0 14px;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sec-h h2{font-weight:500;font-size:clamp(1.6rem,6.4vw,2.2rem);color:var(--navy);text-transform:uppercase;line-height:1.1}
+.sec-h .badge{height:70px;width:auto}
+.price{margin-top:4px;font-weight:700;font-style:italic;font-size:clamp(2.2rem,10vw,3.4rem);line-height:1;color:var(--naranja)}
+.incl{margin-top:8px;font-style:italic;font-weight:500;font-size:.8rem;color:var(--navy)}
+.cols{columns:2 400px;column-gap:48px;margin-top:26px}
+.grp{break-inside:avoid;margin-bottom:30px}
+.logos{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:14px}
+.logos img{height:44px;width:auto;max-width:46%}
+.logos img.tall{height:64px}
+.grp>h3{font-weight:800;font-size:1rem;color:var(--navy);text-transform:uppercase;margin-bottom:10px}
+.items{list-style:none}
+.it{padding:9px 0}
+.it h4{font-weight:700;font-size:.9rem;color:var(--naranja);text-transform:uppercase;line-height:1.3}
+.it p{margin-top:2px;font-size:.9rem;line-height:1.45}
+.it.bev{display:grid;grid-template-columns:1fr auto;gap:2px 16px;border-bottom:1px solid var(--line)}
+.it.bev .pr{font-weight:700;font-size:.9rem;white-space:nowrap}
+.it.bev p{grid-column:1/-1;font-size:.82rem;color:var(--mute)}
+.vg{display:inline-flex;align-items:center;gap:4px;margin-left:8px;vertical-align:1px;font-size:.62rem;font-weight:700;letter-spacing:.04em;color:var(--verde);text-transform:uppercase}
+.vg svg{width:17px;height:17px}
+.note{margin-top:6px;font-size:.8rem;font-style:italic;color:var(--mute)}
+
+footer{padding:26px 20px 34px;text-align:center}
+footer img{display:block;margin:0 auto 14px;width:84px;height:auto}
+footer p{font-size:.78rem;font-weight:700;font-style:italic;color:var(--navy)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img class="flores" src="img/flores-arriba.webp" alt="" width="360" height="245">
+  <img class="logo" src="img/logo.webp" alt="5 Elementos Resto Bar" width="260" height="252">
+  <h1><b>Menú</b> ejecutivo</h1>
+  <p>Válido de lunes a viernes de 12:00 hs a 16:00 hs. Incluye principal y postre o café.</p>
+  <p class="aviso">*No disponibles en feriados o fechas especiales.</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer>
+  <img src="img/flores-abajo.webp" alt="" width="300" height="335" loading="lazy">
+  <p>*No disponibles en feriados o fechas especiales.</p>
+</footer>
+
+<script>
+// ---------- datos (transcriptos de los 3 PDFs del menú ejecutivo) ----------
+// v: opción veggie (hoja verde en el PDF); precio del menú en la sección, de las bebidas en cada ítem
+const VG = '<span class="vg"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 12.5l3.2 3.2L17.5 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Veggie</span>';
+
+const SECS = [
+ {id: 'clasico', t: 'Clásico', price: 16900, groups: [
+  {logos: ['coppento', 'polidori:tall'], items: [
+   {n: 'Papardelles anchos', d: 'Papardelles anchos al huevo.'},
+   {n: 'Ñoquis de papa', d: 'Ñoquis de papa natural.'},
+   {n: 'Ñoquis mixtos', d: 'Ñoquis de papa natural, calabaza, espinaca y pimiento.'},
+   {n: 'Tarta de calabaza, espinaca y choclo', d: 'Rellena con espinaca, calabaza, choclo y queso muzzarella.', v: 1},
+   {n: 'Tarta de puerro y crocante de jamón crudo', d: 'Rellena de puerro, jamón crudo y queso muzzarella.'},
+   {n: 'Degustación de 3 empanadas', d: 'Degustación de 3 empanadas a elección (humita, carne suave, dulce, bondiola o pollo).'},
+  ]},
+  {logos: ['mitoshi'], items: [
+   {n: 'Gohan de pollo', d: 'Base de arroz, palta, pollo rebozado en semillas y cereales, queso Finlandia, verdeo, hongos salteados y tomates cherry.'},
+   {n: 'Tabla de sushi veggie (10 piezas)', d: 'Passion Veggie, Tamago Veggie, New Vegan, Veggie.', v: 1},
+   {n: 'Degustación de temakis (3 piezas)', d: 'Temaki Keiji (pollo crispy), Furai (langostino crispy) y Salke (salmón fresco).'},
+   {n: 'Wok yakimeshi de pollo', d: 'Arroz salteado con huevo, zanahorias, verdeo y pollo.'},
+   {n: 'Wok yakimeshi de hongos', d: 'Arroz salteado con huevo, zanahorias, verdeo y hongos, con salsa de soja y salsa teriyaki.', v: 1},
+  ]},
+  {logos: ['cinco', 'healthy'], items: [
+   {n: 'Wrap de pollo', d: 'Wrap de pollo en hebras, queso tybo, mix de hojas, tomates, cebolla y mayo de la casa.'},
+   {n: 'Wrap veggie', d: 'Tortilla rellena de zucchini y berenjena grillados, mix de hojas, coleslaw, cebolla encurtida y queso tybo, con mayo de la casa.', v: 1},
+   {n: 'Ensalada Valentina', d: 'Rúcula y radicchio con tomates cherry y palta, remolacha horneada y naranja al vivo, con arándanos, pasas y dressing de cítricos.', v: 1},
+   {n: 'Ensalada full veggie', d: 'Mix de hojas verdes con vegetales frescos, huevo duro y palta, acompañado de ricota especiada y dressing balsámico.', v: 1},
+   {n: 'Ensalada romana', d: 'Mix de verdes con garbanzos y quinoa, cabutia y zanahoria a la plancha, zucchini y almendras tostadas, con dressing romano.', v: 1},
+   {n: 'Pollo satay con meshi', d: 'Mix brochetta de pechuga de pollo con salsa satay, sobre una base de arroz meshi sazonado con salsa de soja y teriyaki.'},
+   {n: 'Pesca blanca en tempura con verdes', d: 'Pesca blanca en tempura frita con ensalada fresca de verdes de estación, tomates cherry frescos y asados con cebollas encurtidas y sazonado con aceite de albahaca.'},
+  ]},
+  {logos: ['madre'], items: [
+   {n: 'Suprema de pollo con guarnición', d: 'Suprema de pollo rebozada en panko, acompañada de puré, papas fritas o ensalada.'},
+   {n: 'Pizza margarita individual', d: 'Pizza con salsa de tomate, mozzarella y albahaca.'},
+   {n: 'Pizza napolitana individual', d: 'Pizza con salsa de tomate, mozzarella, tomate, ajo y orégano.'},
+  ]},
+ ]},
+ {id: 'premium', t: 'Premium', price: 18900, groups: [
+  {logos: ['cinco', 'healthy'], items: [
+   {n: 'Wrap de ternera braseada y verdes', d: 'Wrap de ternera braseada, aderezo de palta, cherrys frescos y confitados, parmesano y papas fritas.'},
+   {n: 'Merluza grillada al limón', d: 'Merluza grillada a la chapa marinada en limón, acompañada de puré, papas fritas o ensalada.'},
+   {n: 'Pechuga de pollo a la chapa', d: 'Pechuga de pollo grillada a la chapa, acompañada de puré, papas fritas o ensalada.'},
+   {n: 'Ragú de ternera al Malbec', d: 'Ragú de ternera y hierbas frescas al Malbec con papas rústicas.'},
+   {n: 'Bondiola braseada c/ chutney y puré', d: 'Bondiola braseada con puré de boniato, crocante de papa y chutney de frutos rojos.'},
+  ]},
+  {logos: ['coppento', 'polidori:tall'], items: [
+   {n: 'Capeletis de jamón', d: 'Capeletis de jamón, ricota y queso mozzarella.'},
+   {n: 'Ravioles de espinaca, ricota y ternera', d: 'Rellenos de espinaca fresca, ricota, ternera y queso mozzarella.'},
+   {n: 'Tarta de jamón y queso', d: 'Rellena de jamón cocido, queso muzzarella y huevo.'},
+  ]},
+  {logos: ['mitoshi'], items: [
+   {n: 'Tabla de sushi (10 piezas)', d: 'Buenos Aires, Spf, Feel, Placer Real y Honey.'},
+  ]},
+  {logos: ['madre'], items: [
+   {n: 'Suprema de pollo a la napolitana', d: 'Suprema rebozada en panko, gratinada con salsa de tomate, jamón, queso y tomates cherry. Acompañada de papas fritas o ensalada.'},
+   {n: 'Milanesa de nalga con guarnición', d: 'Milanesa de nalga rebozada, acompañada de puré, papas fritas o ensalada.'},
+   {n: 'Pizza jamón y morrón individual', d: 'Pizza individual de masa madre con salsa de tomate, mozzarella, jamón cocido, pimientos asados confitados y orégano fresco.'},
+  ]},
+ ]},
+ {id: 'chef', t: 'Especialidades del chef', nav: 'Del chef', price: 32900, groups: [
+  {items: [
+   {n: 'Salmón grillado mediterráneo', d: 'Salmón grillado con cremoso de papas y vegetales grillados y dressing de crema ácida.'},
+  ]},
+ ]},
+ {id: 'sg-clasico', t: 'Sin gluten · Clásico', nav: 'Sin gluten clásico', price: 18900, badge: 'singluten', groups: [
+  {items: [
+   {n: 'Empanadas de jamón & queso', d: '3 empanadas de jamón cocido, queso pategrás y queso tybo.'},
+   {n: 'Empanadas de choclo', d: '3 empanadas de choclo, queso pategrás y salsa blanca.'},
+   {n: 'Empanadas de espinaca', d: '3 empanadas de espinaca, queso pategrás y queso crema.', v: 1},
+   {n: 'Tarta de calabaza c/ ensalada', d: 'Con ensalada.'},
+   {n: 'Tarta de choclo y crema c/ ensalada', d: 'Tarta de choclo en granos, queso holanda, queso crema y queso mozzarella, con ensalada.'},
+   {n: 'Tarta de espinaca y morrón c/ ensalada', d: 'Tarta de espinaca, queso mozzarella, salsa blanca, cebolla y pimiento, con ensalada.'},
+   {n: 'Tarta de jamón & queso c/ ensalada', d: 'Tarta de jamón cocido, queso holanda y queso mozzarella, con ensalada.'},
+   {n: 'Tortilla de papa c/ ensalada', d: 'Tortilla de papa con ensalada de lechuga, cherrys y rúcula.'},
+   {n: 'Baguette de jamón y queso', d: 'Baguette de jamón y queso tostado.'},
+  ]},
+ ]},
+ {id: 'sg-premium', t: 'Sin gluten · Premium', nav: 'Sin gluten premium', price: 23900, badge: 'singluten', groups: [
+  {items: [
+   {n: 'Milanesa de pollo con ensalada', d: 'Milanesa de pollo con ensalada y huevo poché.'},
+   {n: 'Canelones de espinaca', d: 'Canelones de espinaca y ricota.'},
+   {n: 'Lasagna de espinaca y ricota', d: 'Lasagna de espinaca, ricota, jamón y queso.'},
+   {n: 'Sandwich de milanesa', d: 'Sandwich de milanesa con lechuga y tomate.'},
+   {n: 'Pizza de rúcula y jamón crudo', d: 'Pizza de rúcula y jamón crudo.'},
+   {n: 'Pizza fugazzetta', d: 'Pizza fugazzetta.', v: 1},
+   {n: 'Pizza napolitana', d: 'Pizza napolitana.', v: 1},
+   {n: 'Pizza muzzarella', d: 'Pizza muzzarella.', v: 1},
+   {n: 'Pizza jamón & queso', d: 'Pizza de jamón cocido y queso.'},
+  ]},
+  {g: 'Pastas al horno', logos: ['luben'], items: [
+   {n: 'Ravioles de pollo y verduras', d: 'Ravioles de pollo desmenuzado con una excelente selección de verduras.'},
+   {n: 'Ravioles de calabaza y muzzarella', d: 'Ravioles de calabaza y muzzarella.'},
+   {n: 'Ravioles de espinaca y ricota', d: 'Ravioles que combinan la frescura de la espinaca y la cremosidad de la ricota.'},
+   {n: 'Sorrentinos de jamón y queso', d: 'Sorrentinos de jamón seleccionado y muzzarella que se funde en cada bocado.'},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas', sub: 'No incluidas en el menú', groups: [
+  {g: 'Bebidas', items: [
+   {n: 'Agua mineral Bonaqua 600 cc', d: 'Con o sin gas.', p: 5000},
+   {n: 'Agua saborizada Aquarius 500 cc', d: 'Manzana, pera o pomelo.', p: 5000},
+   {n: 'Gaseosas línea Coca-Cola c/s azúcar 350 cc', d: 'Coca-Cola, Sprite, Fanta, Schweppes pomelo, Schweppes tónica.', p: 5000},
+   {n: 'Limonada', d: 'Refresco a base de jugo de limón, almíbar de miel, jengibre y menta.', p: 5700},
+   {n: 'Limonada de maracuyá', d: 'Refresco a base de jugo de limón, almíbar de miel, maracuyá y menta.', p: 6000},
+   {n: 'Pomelada', d: 'Refresco a base de jugo de pomelo, almíbar de miel, jengibre y menta.', p: 5700},
+  ]},
+  {g: 'Bebidas del menú sin gluten', items: [
+   {n: 'Agua mineral Bonaqua 600 cc', d: 'Con o sin gas.', p: 5000},
+   {n: 'Gaseosas Cunnington', d: 'Cola, pomelo, tónica y lima limón.', p: 5000},
+   {n: 'Limonada', d: 'Refresco a base de jugo de limón, almíbar de miel, jengibre y menta.', p: 5700},
+   {n: 'Limonada de maracuyá', d: 'Refresco a base de jugo de limón, almíbar de miel, maracuyá y menta.', p: 6000},
+   {n: 'Pomelada', d: 'Refresco a base de jugo de pomelo, almíbar de miel, jengibre y menta.', p: 5700},
+   {n: 'Michelob Ultra sin TACC', d: 'Lata 473 cc.', p: 7200},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const logo = l => { const [f, c] = l.split(':'); return `<img src="img/${f}.webp" alt="" class="${c || ''}" loading="lazy">`; };
+
+const item = it => it.p
+  ? `<li class="it bev"><h4>${it.n}</h4><span class="pr">${money(it.p)}</span>${it.d ? `<p>${it.d}</p>` : ''}</li>`
+  : `<li class="it"><h4>${it.n}${it.v ? VG : ''}</h4>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+
+const group = g => `<div class="grp">
+  ${g.logos ? `<div class="logos">${g.logos.map(logo).join('')}</div>` : ''}
+  ${g.g ? `<h3>${g.g}</h3>` : ''}
+  <ul class="items">${g.items.map(item).join('')}</ul>
+</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <div class="sec-h"><div>
+    <h2 id="${s.id}-t">${s.t}</h2>
+    ${s.price ? `<p class="price">${money(s.price)}</p><p class="incl">Incluye: principal, y postre o café</p>` : ''}
+    ${s.sub ? `<p class="incl">${s.sub}</p>` : ''}
+  </div>${s.badge ? `<img class="badge" src="img/${s.badge}.webp" alt="Sin gluten" loading="lazy">` : ''}</div>
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
