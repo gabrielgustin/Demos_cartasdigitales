@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Losco · Bar & Café</title>
+<meta name="description" content="Carta de Losco Bar & Café: burgers, pizzas, sanguches, entradas, gins, tragos, cocktails, botellas y cervezas.">
+<meta name="theme-color" content="#111111">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111;--card:#1a1a1a;--card-2:#222;--rosa:#ff1493;--rosa-2:#ff5cb4;--txt:#fff;--mute:#b9b4b8;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:118px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* ---------- portada ---------- */
+.hero{position:relative;text-align:center;padding:56px 20px 44px;background:var(--bg) url(img/splat.webp) center/cover no-repeat;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:90px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.hero img{position:relative;z-index:1;display:block;width:min(330px,74vw);height:auto;margin:0 auto}
+.hero h1{position:relative;z-index:1;margin-top:26px;font-weight:900;font-size:clamp(2.6rem,12vw,4.4rem);letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.hero p{position:relative;z-index:1;margin-top:10px;font-weight:500;font-size:.9rem;color:var(--mute)}
+
+/* ---------- barra: chips + buscador ---------- */
+.bar{position:sticky;top:0;z-index:30;background:rgba(17,17,17,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--rosa)}
+.bar ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px 6px;max-width:900px;margin:0 auto;scrollbar-width:none}
+.bar ul::-webkit-scrollbar{display:none}
+.bar a{display:block;white-space:nowrap;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--txt);text-decoration:none;font-weight:700;font-size:.78rem}
+.bar a[aria-current="true"]{background:var(--rosa);border-color:var(--rosa)}
+.search{max-width:900px;margin:0 auto;padding:4px 16px 10px}
+.search input{width:100%;padding:9px 14px 9px 38px;border:1px solid var(--line);border-radius:999px;background:#1c1c1c url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b9b4b8' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") 13px center/17px no-repeat;color:var(--txt);font:inherit;font-size:.9rem}
+.search input::placeholder{color:var(--mute)}
+.search input:focus{outline:2px solid var(--rosa);outline-offset:1px}
+.vacio{display:none;padding:44px 0;text-align:center;color:var(--mute)}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding-top:30px}
+.banner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;min-height:170px;padding:18px;border-radius:18px;overflow:hidden;background:#1c1c1c var(--img,none) var(--pos,center)/cover}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.1),rgba(17,17,17,.86))}
+.banner>*{position:relative}
+.banner h2{font-weight:900;font-size:clamp(1.9rem,8vw,3rem);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.tag{align-self:flex-start;padding:4px 14px;background:var(--rosa);font-weight:700;font-size:.82rem}
+.sec-note{margin-top:14px;color:var(--mute);font-size:.85rem;line-height:1.5}
+.grp{margin-top:22px}
+.grp>h3{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;line-height:1.2}
+.grp>h3 em{font-style:normal;color:var(--rosa)}
+.grp>h3 .ic{width:34px;height:34px;object-fit:contain;flex:none}
+.sub{margin-top:2px;font-size:.82rem;color:var(--mute)}
+.items{list-style:none;margin-top:8px;border-top:1px solid var(--line)}
+
+/* fila: nombre + precio(s) alineados */
+.it{display:grid;gap:3px 12px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:700;font-size:.98rem;line-height:1.25}
+.it h4 .star{color:var(--rosa);margin-left:4px}
+.it p{grid-column:1/-1;font-size:.85rem;line-height:1.45;color:var(--mute)}
+.it .v{font-weight:500;font-size:.95rem;text-align:right;white-space:nowrap}
+.it .v.no{color:#555}
+.leg,.it{grid-template-columns:1fr repeat(var(--n,1),var(--w,auto))}
+.leg{display:grid;gap:0 12px;align-items:end;padding:10px 0 2px}
+.leg span{display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:700;font-size:.6rem;text-align:center;line-height:1.15;color:var(--mute)}
+.leg img{height:26px;width:auto;max-width:34px;object-fit:contain}
+.grp[data-n="2"]{--n:2;--w:76px}
+.grp[data-n="3"]{--n:3;--w:66px}
+
+/* chips: burgers y chopp */
+.chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.chip img{height:24px;width:auto;max-width:30px;object-fit:contain}
+.chip small{display:block;font-weight:700;font-size:.6rem;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.chip b{font-weight:800;font-size:.95rem}
+.it.big{display:block}
+.it.big h4{font-size:1.1rem}
+
+.marcas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 26px;margin:34px 0 8px;padding:14px 18px;background:#fff;border-radius:16px}
+.marcas img{height:30px;width:auto;max-width:110px;object-fit:contain}
+.mc{display:flex;align-items:center;gap:10px;margin-top:10px;color:var(--mute);font-size:.8rem}
+.mc img{height:30px;width:auto}
+
+footer{padding:38px 20px 52px;text-align:center}
+footer img{width:150px;height:auto}
+footer p{margin-top:12px;font-size:.78rem;color:var(--mute)}
+@media (min-width:760px){.banner{min-height:210px;padding:24px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="img/logo.webp" alt="Losco Bar & Café, desde 2024" width="520" height="318">
+  <h1>Menú</h1>
+</header>
+<div class="bar">
+  <ul id="nav"></ul>
+  <div class="search"><input id="q" type="search" placeholder="Buscar en la carta…" aria-label="Buscar en la carta" autocomplete="off"></div>
+</div>
+<main class="wrap" id="menu"></main>
+<p class="vacio wrap" id="vacio">No encontramos nada con esa búsqueda. Probá con otra palabra.</p>
+<div class="wrap"><div class="marcas" aria-label="Marcas">
+  <img src="img/martini.webp" alt="Martini" loading="lazy"><img src="img/bacardi.webp" alt="Bacardí" loading="lazy"><img src="img/gancia.webp" alt="Gancia" loading="lazy"><img src="img/bombay.webp" alt="Bombay Sapphire" loading="lazy"><img src="img/amargo.webp" alt="Amargo Obrero" loading="lazy">
+</div></div>
+<footer><img src="img/logo.webp" alt="" width="520" height="318" loading="lazy"></footer>
+
+<script>
+// ---------- datos (transcriptos de la carta de Losco) ----------
+// p: número, o lista de precios que se leen con g.cols (null = no aplica)
+const SECS = [
+ {id: 'burgers', t: 'Burgers', tag: 'Nuestra especialidad · incluye porción de papas', img: 'foto-burger', pos: '50% 36%', groups: [
+  {mode: 'chips', cols: [{l: 'Simple', ic: 'ic-simple'}, {l: 'Doble', ic: 'ic-doble'}, {l: 'Triple', ic: 'ic-triple'}], items: [
+   {n: 'Cheese', d: 'Pan brioche, queso cheddar o danbo, blend de carne, mayonesa.', p: [12600, 16800, 19800]},
+   {n: 'Cheese Bacon', d: 'Pan brioche, queso cheddar o danbo, crispy bacon, blend de carne, mayonesa.', p: [13800, 17800, 20800]},
+   {n: 'Crispy Bomb', d: 'Pan brioche, queso cheddar, blend de carne, crispy bacon, cebolla crispy y mayonesa.', p: [14200, 18200, 21200]},
+   {n: 'LOSCO American', d: 'Pan brioche, queso cheddar o danbo, blend de carne, lechuga, tomate, cebolla brunoise, doble salsa de la casa.', p: [13400, 17400, 20400]},
+   {n: 'LOSCO Smoked', d: 'Pan brioche, queso cheddar o danbo, cebolla y pimientos ahumados, blend de carne, salsa LOSCO ahumada.', p: [14600, 18600, 21600]},
+   {n: 'LOSCO Oklahoma', d: 'Pan brioche, queso cheddar, blend de carne smasheado con cebolla, salsa LOSCO ahumada.', p: [13200, 17200, 20200]},
+   {n: 'Onion', d: 'Pan brioche, queso cheddar o danbo, cebolla brunoise, blend de carne, ketchup, mostaza.', p: [12800, 16800, 20000]},
+  ]},
+  {g: 'Opcionales y extras', mode: 'chips', cols: [{l: 'Medallón extra', ic: 'ic-medallon'}, {l: 'Extra cheddar', ic: 'ic-cheddar'}, {l: 'Extra bacon', ic: 'ic-bacon'}, {l: 'Papas c/cheddar y bacon', ic: 'ic-papas'}], items: [
+   {n: 'Sumale a tu burger', p: [4200, 1600, 1600, 3200], big: 1},
+  ]},
+ ]},
+ {id: 'pizzas', t: 'Pizzas y sanguches', nav: 'Pizzas', tag: 'Masa madre y salsa casera', img: 'foto-pizza', pos: '50% 42%', groups: [
+  {g: 'Pipshasss', ic: 'ic-pizza', sub: 'Masa madre y salsa casera · 8 porciones', items: [
+   {n: 'Mozzarella', d: 'Abundante muzzarella y un toque de orégano.', p: 17200},
+   {n: 'Especial', d: 'Muzzarella, jamón cocido y aceitunas.', p: 18200},
+   {n: 'Calabresa', d: 'Muzzarella, rodajas de salame y aceitunas.', p: 19600},
+   {n: 'LOSCO', d: 'Muzzarella, pimientos y cebolla ahumados.', p: 20000},
+   {n: 'Napolitana', d: 'Muzzarella, rodajas de tomate y orégano.', p: 18600},
+   {n: 'Panceta y Verdeo', d: 'Muzzarella, panceta ahumada y un toque de verdeo.', p: 19000},
+  ]},
+  {g: 'Sanguches', ic: 'ic-sanguche', sub: 'Pan artesanal + porción de papas · 22 centímetros', items: [
+   {n: 'Lomo Clásico', d: 'Bife de lomo, huevo, tomate y lechuga frescos, jamón, queso y mayonesa casera.', p: 19000},
+   {n: 'Lomo Cheddar y bacon', d: 'Bife de lomo, huevo, tomate y lechuga frescos, queso cheddar, bacon crujiente y mayonesa casera.', p: 21000},
+   {n: 'Lomo LOSCO', d: 'Bife de lomo, huevo, tomate y lechuga frescos, cebollas y pimientos ahumados, jamón, queso y mayonesa casera.', p: 22400},
+   {n: 'Sanguche de Bondiola', d: '200 g de bondiola desmenuzada a la cerveza negra, queso danbo, mayonesa casera y verdeo fresco.', p: 21600},
+  ]},
+ ], note: 'Pedilo con chimi o salsa criolla ;)'},
+ {id: 'entradas', t: 'Entradas', tag: 'Para picar ;) · incluye salsa y/o aderezo a elección', img: 'foto-papas', pos: '50% 60%', mccain: 1, groups: [
+  {items: [
+   {n: 'Papas con cheddar y bacón', d: 'Papas con baño de cheddar, panceta ahumada y un toque de verdeo.', p: 13200},
+   {n: 'Papas con huevo y cebolla', d: 'Papas con huevos revueltos y cebolla caramelizada.', p: 14200},
+   {n: 'Papas con bondiola', d: 'Papas, con porción de bondiola desmenuzada a la cerveza negra y un toque de verdeo, acompañadas con aderezo a elección.', p: 22800},
+   {n: 'Papas clásicas', d: 'Papas acompañadas con aderezo a elección.', p: 11600},
+   {n: 'Aros de cebolla', d: 'Aros de cebolla rebozados, con un toque de perejil y acompañados con kétchup de la casa.', p: 11000},
+   {n: 'Triángulos de mozzarella', d: 'Triángulos rellenos de queso mozzarella rebozados, acompañados por aderezo de la casa.', p: 19000},
+   {n: 'Nuggets de pollo', d: 'Súper crocantes, ideales para acompañar con los aderezos de la casa.', p: 12400},
+   {n: 'Bocaditos de provolone', d: 'Bocaditos de queso provolone rebozados, acompañados por aderezo de la casa.', p: 20600},
+   {n: 'Tabla LOSCO', d: 'Aros de cebolla, triángulos de mozzarella, nuggets de pollo y bocaditos de provolone, acompañados por aderezos de la casa.', p: 20800},
+  ]},
+ ]},
+ {id: 'gins', t: 'Gins', tag: 'Destilados botánicos · copón', img: 'foto-gin', pos: '50% 40%', groups: [
+  {g: 'Nuestra selección', ic: 'ic-copon', items: [
+   {n: 'Bombay Sapphire London Dry', star: 1, d: 'Perfil clásico con un final ligero y especiado, gracias a la infusión al vapor de botánicos exóticos. Aromático, suave y equilibrado.', p: 12600},
+   {n: 'Spiritu Blu London Dry', d: 'Perfil clásico, con predominio de enebro y notas cítricas especiadas. Seco, equilibrado y de final limpio.', p: 9200},
+   {n: 'Brighton London Dry', d: 'Carácter fresco y herbal, con enebro bien definido y notas cítricas que aportan equilibrio y suavidad.', p: 9400},
+   {n: 'Gordon’s Dry', d: 'London Dry clásico con marcado carácter de enebro y notas cítricas. Seco, intenso y de final limpio.', p: 10400},
+   {n: 'Gordon’s Pink', d: 'Perfil frutal y dulce con notas de frutos rojos. Ligero, refrescante y muy accesible.', p: 11200},
+  ]},
+  {g: 'Gin Bar', ic: 'ic-copon', items: [
+   {n: 'Aconcagua Original Blue', d: 'Perfil fresco, cítrico y herbal. Con un final limpio y armonioso. Suave, aromático y ligeramente dulce.', p: 11400},
+   {n: 'Aconcagua Lime edition', d: 'Protagonismo de lima. Intensamente cítrico y herbal. Nítido, refrescante y con final vibrante.', p: 11400},
+   {n: 'Aconcagua Berries edition', d: 'Notas de frutos rojos, equilibrado, fresco y aromático. Sabor suave con tono frutal, dulce y floral.', p: 11400},
+   {n: 'Aconcagua Cardamom edition', d: 'Perfil clásico de enebro, cardamomo y cítricos. Sólido, fresco y equilibrado.', p: 11400},
+   {n: 'Apóstoles Yerba Mate', d: 'Gin argentino con yerba mate, pomelo rosado, menta y eucalipto. Herbal y cítrico, con un perfil fresco y distintivo.', p: 11000},
+   {n: 'Apóstoles Rosa Mosqueta', d: 'Versión floral y delicada: la rosa mosqueta se combina con yerba mate y pomelo. Aromático, suave y levemente frutal.', p: 10800},
+   {n: 'Merle Blueberry & Strawberry', d: 'Gin frutal con protagonismo de arándano, frutilla y notas dulces bien integradas. Fresco, aromático y fácil de tomar.', p: 9200},
+  ]},
+ ]},
+ {id: 'tragos', t: 'Tragos', tag: 'Vaso o jarra', img: 'foto-tragos', pos: '50% 38%', groups: [
+  {g: 'Clásicos', cols: [{l: '350/500 ml', ic: 'ic-trago'}, {l: '1,5 L', ic: 'ic-jarra'}], items: [
+   {n: 'Amargo Obrero Soda/Pomelo', p: [6000]}, {n: 'Aperol Tonic-Spritz', p: [9500]}, {n: 'Caipirinha', p: [7000]},
+   {n: 'Caipiroska', p: [6500]}, {n: 'Campari Orange/Tonic/Spritz', p: [9500]}, {n: 'Carpano con soda', p: [6000]},
+   {n: 'Daiquiri clásico', p: [8500]}, {n: 'Fernet Branca', p: [10000, 27000]}, {n: 'Gancia con Sprite', p: [8000, 22000]},
+   {n: 'Martini Rosso Soda/Tonic/Pomelo', p: [6000]}, {n: 'Mojito', p: [10000, 26000]}, {n: 'Mojito Frutos Rojos/Malibu', p: [10000, 26000]},
+   {n: 'Punt e Mes Tonic/Pomelo', p: [8500]}, {n: 'Ramazzotti Tonic/Spritz', p: [9500]}, {n: 'Sernova con Speed/Sprite', p: [7500]},
+   {n: 'Smirnoff/Skyy con Speed', p: [8500]}, {n: 'Smirnoff/Skyy con Sprite', p: [8000]}, {n: 'Vino blanco con Sprite', p: [6500]},
+  ]},
+ ]},
+ {id: 'cocktails', t: 'Cocktails', tag: 'Algunos, tenemos el que vos quieras ;)', img: 'foto-cocktail', pos: '50% 40%', groups: [
+  {g: 'Tragos selectos', ic: 'ic-cocktail', sub: 'Medidas', items: [
+   {n: 'Absolut con Speed', p: 15000}, {n: 'Absolut Shot', p: 9000}, {n: 'Chivas Regal 12 años', p: 18500}, {n: 'Cosmopolitan', p: 8000},
+   {n: 'Cuba Libre Bacardi', p: 10500}, {n: 'Hodlmoser con Speed', p: 11000}, {n: 'Jack Daniel’s vaso', p: 13500},
+   {n: 'Jägermeister con Speed/Naranja', p: 14000}, {n: 'Johnnie Walker Black vaso', p: 17500}, {n: 'Johnnie Walker Red vaso', p: 10000},
+  ]},
+  {g: 'Cocktail Bar', ic: 'ic-cocktail', items: [
+   {n: 'Margarita', p: 6000}, {n: 'Martini Dry', p: 7000}, {n: 'Negroni', p: 8500}, {n: 'Old Fashioned', p: 9500},
+   {n: 'Russian Spring Punch', p: 9500}, {n: 'Sex on the Beach', p: 8000}, {n: 'Tom Collins', p: 8500}, {n: 'Whisky con Coca', p: 6500},
+  ]},
+  {g: 'Tragos <em>LOSCO</em>', ic: 'ic-cocktail', items: [
+   {n: 'Caribean Malibu', p: 9000}, {n: 'Galaxy Spring Puff', p: 7000}, {n: 'Gin Puff', p: 7500}, {n: 'Loscopolitan', p: 8000},
+  ]},
+  {g: 'Mocktails <em>LOSCO</em>', ic: 'ic-cocktail', sub: 'Sin alcohol', items: [
+   {n: 'Mango doble', p: 6000}, {n: 'Passion Mint', p: 5500}, {n: 'Summer Kiss', p: 6500}, {n: 'Tropical ginger', p: 6000},
+  ]},
+ ]},
+ {id: 'botellas', t: 'Botellas', tag: 'Para compartir', img: 'foto-tragos', pos: '50% 70%', groups: [
+  {g: 'Con mezcla', ic: 'ic-botella', items: [
+   {n: 'Absolut + 2 Speed 250 cc', p: 72000}, {n: 'Campari + 1 L naranja', p: 41000}, {n: 'Fernet Branca + Coca 1,25 L', p: 48000},
+   {n: 'Gancia + Sprite 1,25 L', p: 27000}, {n: 'Gin Aconcagua + 4 tónicas', p: 57000}, {n: 'Gin Gordon’s + 4 tónicas', p: 52000},
+   {n: 'Gin Spiritu Blu + 4 tónicas', p: 42000}, {n: 'Hodlmoser + 2 Speed 250 cc', p: 61000}, {n: 'Jägermeister + 2 Speed 250 cc', p: 70000},
+   {n: 'Sernova + 5 Speed 250 cc', p: 35000}, {n: 'Skyy + 5 Speed 250 cc', p: 39000}, {n: 'Smirnoff + 5 Speed 250 cc', p: 40000},
+  ]},
+  {g: 'Champagne', ic: 'ic-botella', items: [
+   {n: 'Champagne Mumm', p: 27000}, {n: 'Champagne Navarro Correas', p: 23000}, {n: 'Champagne San Telmo dulce', p: 12000},
+  ]},
+  {g: 'Vinos', ic: 'ic-botella', items: [
+   {n: 'Vino Alaris variedades', p: 9000}, {n: 'Vino Alma Mora variedades', p: 12000}, {n: 'Vino Fond de Cave variedades', p: 21000},
+   {n: 'Vino Luigi Bosca', p: 37000}, {n: 'Vino Norton Cosecha Tardía', p: 12000}, {n: 'Vino Santa Julia Blanco Chenin', p: 20000},
+   {n: 'Vino Trapiche Medalla variedades', p: 33000}, {n: 'Vino Trapiche Reserva variedades', p: 18000},
+  ]},
+ ]},
+ {id: 'cervezas', t: 'Cerveza chopp', nav: 'Cervezas', tag: 'Media pinta o pinta', img: 'foto-cerveza', pos: '50% 30%', groups: [
+  {mode: 'chips', cols: [{l: '1/2 pinta', ic: 'ic-pinta'}, {l: 'Pinta', ic: 'ic-pinta2'}], items: [
+   {n: 'Golden', d: 'Ligera y refrescante, con presencia sutil de caramelo y un amargor suave con toque cítrico. Fácil de tomar, perfecta para arrancar la noche.', p: [5200, 7200]},
+   {n: 'APA (American Pale Ale)', d: 'Cerveza rubia, lupulada y aromática, con amargor intenso y maltas que equilibran su carácter.', p: [5400, 7400]},
+   {n: 'Blueberry Honey', d: 'Dorada con aroma a arándanos y miel. Dulzor equilibrado por leve acidez frutal y final semiseco.', p: [6000, 8000]},
+   {n: 'Scottish Export', d: 'Equilibrada y maltosa, con notas suaves a caramelo y leve tostado. Amargor bajo y final amable.', p: [5400, 7200]},
+   {n: 'Imperial Stout', d: 'Cerveza negra de mucho cuerpo, con notas de maltas tostadas, cacao y chocolate. Robusta e intensa, con espuma cremosa.', p: [5400, 7200]},
+   {n: 'Session IPA', d: 'Liviana pero con carácter. Perfil cítrico y herbal, buen amargor y alta tomabilidad. Una IPA más fresca y menos alcohólica.', p: [6400, 8800]},
+  ]},
+ ]},
+ {id: 'sinalcohol', t: 'Sin alcohol', tag: 'Opcional sin azúcar', img: 'foto-tragos', pos: '50% 30%', groups: [
+  {cols: [{l: 'Lata', ic: 'ic-lata'}, {l: 'Botella / vaso', ic: 'ic-soda'}, {l: '1,25 L / jarra', ic: 'ic-jarra'}], items: [
+   {n: 'Gancia s/alcohol', p: [null, 7400, null]}, {n: 'Corona s/alcohol', p: [null, 9800, null]},
+   {n: 'Coca-Cola / Fanta / Sprite', p: [null, 4400, 8400]}, {n: 'Aquarius', p: [null, 5600, null]},
+   {n: 'Speed 250 cc', p: [5000, null, null]}, {n: 'Limonada c/menta', p: [null, 4400, 12400]},
+   {n: 'Limonada frutos rojos', p: [null, 6000, 16800]}, {n: 'Schweppes Pomelo/Tónica', p: [4500, null, null]},
+   {n: 'Agua/Soda', p: [null, 3200, null]},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const icon = (ic, cls = '') => ic ? `<img src="img/${ic}.webp" alt="" class="${cls}" loading="lazy">` : '';
+
+const row = (it, g) => {
+  const cols = g.cols, list = Array.isArray(it.p) ? it.p : [it.p];
+  const head = `<h4>${it.n}${it.star ? '<span class="star" title="Favorito">★</span>' : ''}</h4>`, desc = it.d ? `<p>${it.d}</p>` : '';
+  if (g.mode === 'chips') {
+    const chips = list.map((v, i) => v == null ? '' : `<span class="chip">${icon(cols[i].ic)}<span><small>${cols[i].l}</small><b>${money(v)}</b></span></span>`).join('');
+    return `<li class="it big">${head}${desc}<div class="chips">${chips}</div></li>`;
+  }
+  const n = cols ? cols.length : 1;
+  const cells = Array.from({length: n}, (_, i) => list[i] == null ? '<span class="v no">–</span>' : `<span class="v">${money(list[i])}</span>`).join('');
+  return `<li class="it" style="--n:${n}">${head}${cells}${desc}</li>`;
+};
+
+const group = g => {
+  const n = g.mode === 'chips' ? 0 : (g.cols ? g.cols.length : 1);
+  const legend = n > 1 ? `<div class="leg" style="--n:${n}"><span></span>${g.cols.map(c => `<span>${icon(c.ic)}${c.l}</span>`).join('')}</div>` : '';
+  return `<div class="grp"${n > 1 ? ` data-n="${n}"` : ''}>
+    ${g.g ? `<h3>${icon(g.ic, 'ic')}<span>${g.g}</span></h3>` : ''}${g.sub ? `<p class="sub">${g.sub}</p>` : ''}
+    ${legend}<ul class="items">${g.items.map(it => row(it, g)).join('')}</ul>
+  </div>`;
+};
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <header class="banner" style="--img:url(img/${s.img}.webp);--pos:${s.pos}">
+    <h2 id="${s.id}-t">${s.t}</h2>${s.tag ? `<span class="tag">${s.tag}</span>` : ''}
+  </header>
+  ${s.mccain ? '<p class="mc"><img src="img/mccain.webp" alt="McCain" loading="lazy">Papas McCain</p>' : ''}
+  ${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  ${s.groups.map(group).join('')}
+</section>`;
+
+const menu = document.getElementById('menu');
+menu.innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- buscador ----------
+const q = document.getElementById('q'), vacio = document.getElementById('vacio');
+const norm = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+q.addEventListener('input', () => {
+  const term = norm(q.value.trim());
+  let any = false;
+  menu.querySelectorAll('.sec').forEach(sec => {
+    let secAny = false;
+    sec.querySelectorAll('.grp').forEach(g => {
+      let grpAny = false;
+      g.querySelectorAll('.it').forEach(it => { const ok = !term || norm(it.textContent).includes(term); it.hidden = !ok; grpAny ||= ok; });
+      g.hidden = !grpAny; secAny ||= grpAny;
+    });
+    sec.hidden = !secAny; any ||= secAny;
+  });
+  vacio.style.display = any ? 'none' : 'block';
+});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
