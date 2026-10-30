@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Galatea · Carta</title>
+<meta name="description" content="Carta de La Galatea: combos, café, licuados, sandwiches, pizzas, promos del mediodía y copas heladas.">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Oswald:wght@300;400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--oro:#e0c566;--oro-2:#b99f45;--txt:#f4f1e6;--mute:#a9a597;--line:rgba(224,197,102,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Roboto,system-ui,sans-serif;color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(circle at 12% 18%,rgba(224,197,102,.07) 0 60px,transparent 61px),radial-gradient(circle at 88% 46%,rgba(224,197,102,.06) 0 90px,transparent 91px),radial-gradient(circle at 20% 82%,rgba(224,197,102,.06) 0 70px,transparent 71px);background-attachment:fixed}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:34px 16px 26px;position:relative}
+.hero .ico{width:96px;height:auto;display:block;margin:0 auto}
+.hero .la{font-family:Oswald;font-weight:300;letter-spacing:.5em;margin-right:-.5em;font-size:.95rem;color:var(--mute);margin-top:6px}
+.hero h1{font-family:Oswald;font-weight:300;font-size:clamp(3rem,15vw,5.4rem);letter-spacing:.12em;margin-right:-.12em;line-height:1;text-transform:uppercase}
+.badge{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;font-size:.88rem;color:var(--oro)}
+.badge img{width:64px;height:64px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:#000;border-top:1px solid var(--line);border-bottom:2px solid var(--oro)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1040px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--txt);text-decoration:none;font-weight:700;font-size:.82rem}
+.nav a[aria-current="true"]{background:var(--oro);border-color:var(--oro);color:#111}
+
+/* ---------- secciones ---------- */
+main{padding:34px 0 8px}
+.sec{margin-bottom:44px;padding-bottom:34px;border-bottom:2px dotted var(--line)}
+.sec:last-child{border-bottom:0}
+.sec-h{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sec-h h2{font-family:Chewy,cursive;font-weight:400;color:var(--oro);font-size:clamp(2rem,8vw,2.9rem);line-height:1.05;letter-spacing:.02em;text-transform:uppercase}
+.sec-h img{height:64px;width:auto;flex:none}
+.sec-note{margin-top:12px;padding:10px 14px;border:1px solid var(--oro);color:var(--oro);font-weight:700;font-size:.92rem}
+.sec-sub{margin-top:8px;color:var(--mute);font-size:.9rem}
+.cols{columns:2 400px;column-gap:44px;margin-top:20px}
+.grp{break-inside:avoid;margin-bottom:26px}
+.grp>h3{font-family:Chewy,cursive;font-weight:400;color:var(--oro);font-size:1.5rem;letter-spacing:.03em;margin-bottom:4px;text-transform:uppercase}
+.grp>h3 small{font-family:Roboto;font-style:italic;font-size:.82rem;text-transform:none;letter-spacing:0;color:var(--mute);margin-left:6px}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0}
+.it+.it{border-top:1px solid rgba(224,197,102,.16)}
+.it h4{font-weight:700;font-size:.98rem;text-transform:uppercase;letter-spacing:.01em;line-height:1.3}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:700;color:var(--oro);white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:400;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.9rem;line-height:1.45;color:#d8d4c6}
+.it p.q,.after{font-style:italic;color:var(--mute)}
+.after{margin-top:8px;font-size:.88rem}
+.it .ask{color:var(--mute);font-weight:400;font-style:italic;font-size:.88rem}
+
+footer{padding:22px 16px 40px;text-align:center;font-size:.75rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img class="ico" src="img/logo.webp" alt="" width="191" height="240">
+  <div class="la" aria-hidden="true">— LA —</div>
+  <h1>Galatea</h1>
+  <div class="badge"><img src="img/off.webp" alt="" width="220" height="220"><span>10% OFF abonando la totalidad en efectivo</span></div>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer>Carta junio 2026 · Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (transcriptos de la carta de junio 2026) ----------
+// p: número, {etiqueta: precio} o 'ask' (sin precio en la carta); q: aclaración en cursiva
+const SECS = [
+ {id: 'combos', t: 'Combos', note: 'Latte XL +$2.500 (agrandalo en cualquier combo)', groups: [
+  {items: [
+   {n: 'Simple', d: 'Café o infusión + 2 medialunas o criollos.', p: 4800},
+   {n: 'Simple sin TACC', p: 6600},
+   {n: 'Completo', d: 'Café o infusión + jugo de naranja chico + 2 medialunas o criollos + dulce de leche y manteca.', p: 7700},
+   {n: 'Completo sin TACC', p: 9000},
+   {n: 'Light', d: 'Café o infusión + jugo de naranja chico + 3 tostadas de salvado + mermelada y queso untable.', p: 8800},
+   {n: 'Elicio', d: 'Café o infusión + jugo de naranja chico + 2 mafaldas.', p: 10500},
+   {n: 'Felipe', d: 'Café o infusión + jugo de naranja chico + 2 criollos rellenos de jamón y queso.', p: 8800},
+   {n: 'Galatea', d: 'Café o infusión + jugo de naranja chico + 2 crepes con dulce de leche.', p: 10500},
+   {n: 'Rosaura', d: 'Yogur natural + frutas secas y frescas + granola + jugo de naranja natural.', p: 10500},
+   {n: 'Teolinda', d: 'Café o infusión + jugo de naranja chico + carlito.', p: 13000},
+   {n: 'Florisa', d: 'Café o infusión + jugo de naranja chico + porción de torta.', p: 12400},
+   {n: 'Erastro', d: 'Licuado clásico o bebida + carlito.', p: 13800},
+   {n: 'Leonarda', d: 'Café o infusión + jugo de naranja chico + tostadas de campo + huevos revueltos + jamón y queso en fetas/dados + manteca y queso crema.', p: 14000},
+   {n: 'Leonarda con palta', p: 16500},
+  ]},
+ ]},
+ {id: 'cafe', t: 'Café', img: 'cafe', groups: [
+  {g: 'Café', items: [
+   {n: 'Chico', p: 2900}, {n: 'Jarrito', p: 3500}, {n: 'Doble', p: 4500}, {n: 'XL', p: 6000},
+  ]},
+  {g: 'Infusiones', items: [
+   {n: 'Saquitos', p: 3200}, {n: 'En hebras', p: 6000},
+  ]},
+  {g: 'Especiales', items: [
+   {n: 'Cappuccino', p: 5700}, {n: 'Moccacino', p: 6500}, {n: 'Submarino', p: 5700},
+   {n: 'Irlandés', p: 7200}, {n: 'Chocolatada', p: 3100}, {n: 'Affogato', p: 7200},
+  ]},
+  {g: 'Iced latte', items: [
+   {n: 'Clásico', p: 6600}, {n: 'Caramel', p: 7200}, {n: 'Vainilla', p: 7200}, {n: 'Amaretti', p: 7200}, {n: 'Avellana', p: 7200},
+  ]},
+ ]},
+ {id: 'licuados', t: 'Licuados y smoothies', nav: 'Licuados', img: 'licuado', groups: [
+  {g: 'Licuados', items: [
+   {n: 'Clásico', d: 'Banana - Ananá - Durazno - Frutilla', p: 7200},
+  ]},
+  {g: 'Frappuccinos', items: [
+   {n: 'Mocha', d: 'Batido de café, intenso chocolate, leche y crema', p: 7500},
+   {n: 'Caramelo', d: 'Batido de café, caramelo, leche y crema', p: 7500},
+   {n: 'Dulce de leche', d: 'Batido de café, dulce de leche, leche y crema', p: 7500},
+  ]},
+  {g: 'Smoothies', items: [
+   {n: 'Sublime', d: 'Kiwi, ananá, durazno', p: 7700},
+   {n: 'Blueberry Sunset', d: 'Arándano, frutilla, banana', p: 'ask'},
+   {n: 'Cool Mango', d: 'Mango, durazno, frutilla', p: 7700},
+   {n: 'Passion Blend', d: 'Maracuyá, ananá, durazno', p: 7700},
+  ]},
+  {g: 'Detox', items: [
+   {n: 'Orange Ninja', d: 'Zanahoria, jengibre, mango, ananá y durazno', p: 8400},
+   {n: 'Green Hulk', d: 'Kale, palta, apio, ananá y banana', p: 8400},
+   {n: 'Red Attack', d: 'Remolacha, tomate, arándanos, frambuesa y frutilla', p: 8400},
+  ]},
+ ]},
+ {id: 'jugos', t: 'Jugos y limonada', nav: 'Jugos', groups: [
+  {g: 'Jugo de naranja', items: [{n: 'Jugo de naranja', p: {Vaso: 6000, Jarra: 12000}}]},
+  {g: 'Limonada', items: [{n: 'Limonada', p: {Vaso: 6600, Jarra: 13000}}]},
+ ]},
+ {id: 'especialidades', t: 'Especialidades', img: 'torta', groups: [
+  {g: 'Especialidades', items: [
+   {n: 'Mafalda', p: 3700}, {n: 'Brownie', p: 6200}, {n: 'Muffins', p: 4300}, {n: 'Criollo', p: 1100}, {n: 'Medialuna', p: 1500},
+   {n: 'Budín', p: 6500}, {n: 'Brownie + helado', p: 8500}, {n: 'Crepes con dulce de leche', p: 6600},
+   {n: 'Tostadas (3 u.)', p: 5200}, {n: 'Medialunas sin TACC', p: 4900},
+  ]},
+  {g: 'Tortas y tartas', s: 'consultar variedad', items: [
+   {n: 'Tartas', p: 7400}, {n: 'Tortas', p: 8300},
+  ]},
+ ]},
+ {id: 'sandwiches', t: 'Sandwiches y wraps', nav: 'Sandwiches', img: 'wrap', groups: [
+  {g: 'Sandwiches', items: [
+   {n: 'Carlito', p: 9700},
+   {n: 'Jamón cocido y queso', d: 'En pan semillado o de campo tostado con queso dambo, jamón cocido, lechuga y tomate.', p: 13000},
+   {n: 'Jamón crudo y queso', d: 'En pan semillado o de campo tostado con queso dambo, jamón crudo y rúcula.', p: 13500},
+   {n: 'Bondiola y queso', d: 'En pan semillado o de campo tostado con queso dambo y bondiola.', p: 13000},
+   {n: 'Vegetariano', d: 'En pan semillado o de campo tostado con queso dambo, lechuga, rúcula, tomate y aceitunas.', p: 13000},
+   {n: 'Salame de la colonia', d: 'En pan semillado o de campo tostado con queso dambo y salame.', p: 13500},
+  ], after: 'Acompañados de papas copetín.'},
+  {g: 'Baguetín', items: [
+   {n: 'Baguetín de jamón cocido', d: 'En pan baguette tostado con queso dambo y jamón cocido.', p: 9500},
+   {n: 'Baguetín de jamón crudo', d: 'En pan baguette tostado con queso dambo y jamón crudo.', p: 10000},
+   {n: 'Adicionales', d: 'Lechuga, rúcula y/o tomate.', p: 2700},
+  ], after: 'Acompañados de papas copetín.'},
+  {g: 'Picada', items: [
+   {n: 'Picada', d: 'Jamón cocido, jamón crudo, salame, bondiola, queso dambo, queso pategrás, roquefort, aceitunas y pan de campo.', p: {'Para 2': 30500, 'Para 4': 52000}},
+  ]},
+  {g: 'Wraps', items: [
+   {n: 'Queso dambo, jamón cocido, lechuga y tomate', p: 10000},
+   {n: 'Queso dambo, jamón crudo, tomate y rúcula', p: 10700},
+   {n: 'Queso dambo, tomate, aceituna y albahaca', p: 10000},
+   {n: 'Queso dambo, lechuga, rúcula, tomate y aceitunas', p: 10000},
+  ]},
+ ]},
+ {id: 'ensaladas', t: 'Ensaladas', groups: [
+  {items: [
+   {n: 'Caesar', d: 'Hojas verdes, crutones, queso, panceta, salsa César y pollo.', p: 12000},
+   {n: 'Capresse', d: 'Tomate, queso en dados, aceitunas y albahaca.', p: 10900},
+   {n: 'Arcoíris', d: 'Tomate, lechuga, rúcula, palta, cebolla morada y queso en dados.', p: 10900},
+  ]},
+ ]},
+ {id: 'pizzas', t: 'Pizzas', img: 'pizza', groups: [
+  {items: [
+   {n: 'Muzza', p: {Entera: 14000, Media: 8800}},
+   {n: 'Especial', p: {Entera: 16500, Media: 9800}},
+   {n: '4 quesos', p: {Entera: 18000, Media: 11500}},
+   {n: 'Napolitana', p: {Entera: 16500, Media: 9800}},
+   {n: 'Rúcula', p: {Entera: 18000, Media: 11500}},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas', groups: [
+  {g: 'Sin alcohol', items: [
+   {n: 'Gaseosa 500 ml', p: 4700}, {n: 'Agua saborizada 500 ml', p: 4700},
+  ]},
+  {g: 'Cervezas', items: [
+   {n: 'Schneider 1 l', p: 8800}, {n: 'Andes 1 l', p: 10600}, {n: 'Imperial 1 l', p: 10600},
+   {n: 'Miller 1 l', p: 11600}, {n: 'Stella Artois 1 l', p: 11600}, {n: 'Heineken 1 l', p: 12000},
+   {n: 'Artesanales Calvù 473 cc', q: 'Consultar variedad', p: 6700},
+  ]},
+ ]},
+ {id: 'otros', t: 'Otros', groups: [
+  {items: [
+   {n: 'Porción de papas copetín', p: 5800}, {n: 'Ensalada de frutas', p: 7000},
+   {n: 'Porción de jamón y queso', p: 7300}, {n: 'Porción de huevo', p: 5300},
+   {n: 'Cazuela de palta', p: 3800},
+   {n: 'Untables', d: 'Manteca, mermelada, queso crema o dulce de leche.', p: 1700},
+  ]},
+ ]},
+ {id: 'promos', t: 'Promos mediodía', nav: 'Promos', sub: 'De 12 a 16 hs', groups: [
+  {items: [
+   {n: 'Muzza + 2 bebidas a elección', p: 17600},
+   {n: 'Ensalada + vaso de limonada', p: 14600},
+   {n: 'Wraps + vaso de limonada', p: 14600},
+   {n: '3 empanadas + bebida', p: 10400},
+   {n: 'Tarta individual + bebida', p: 10400},
+  ]},
+ ]},
+ {id: 'llevar', t: 'Para llevar', img: 'llevar', groups: [
+  {items: [
+   {n: 'Café', p: 3200},
+   {n: 'Café + medialuna o criollo', p: 4200},
+   {n: 'Café + 2 medialunas o criollos', p: 4800},
+   {n: 'Medialunas', p: {Docena: 9700, '1/2 docena': 4700}},
+   {n: 'Criollos', p: {Docena: 7100, '1/2 docena': 5200}},
+   {n: 'Licuado + carlito', p: 12000},
+  ]},
+ ]},
+ {id: 'helados', t: 'Copas heladas', nav: 'Helados', img: 'copa', groups: [
+  {items: [
+   {n: 'Chocolate', d: 'Helado de crema americana + helado de chocolate + almendras + salsa de chocolate.', p: 7700},
+   {n: 'Frutilla', d: 'Helado de crema americana + helado de frutilla + merengues + salsa de frutilla.', p: 7700},
+   {n: 'Dulce de leche', d: 'Helado de crema americana + helado de dulce de leche + nueces + salsa de dulce de leche.', p: 7700},
+  ]},
+  {g: 'Agregá los toppings que quieras', items: [
+   {n: 'Chips de chocolate', p: 500}, {n: 'Crocante de maní', p: 500}, {n: 'Mini rocklets', p: 1000},
+   {n: 'Minis Oreos', p: 1000}, {n: 'Ensalada de frutas', p: 1000}, {n: 'Frutos secos', p: 1000}, {n: 'Merenguitos', p: 1000},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p === 'ask' ? '<span class="ask">Consultar</span>'
+  : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+
+const item = it => `<li class="it">
+  <h4>${it.n}</h4>
+  <div class="prices">${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}${it.q ? `<p class="q">${it.q}</p>` : ''}
+</li>`;
+
+const group = g => `<div class="grp">
+  ${g.g ? `<h3>${g.g}${g.s ? ` <small>(${g.s})</small>` : ''}</h3>` : ''}
+  <ul class="items">${g.items.map(item).join('')}</ul>
+  ${g.after ? `<p class="after">${g.after}</p>` : ''}
+</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <header class="sec-h"><h2 id="${s.id}-t">${s.t}</h2>${s.img ? `<img src="img/${s.img}.webp" alt="" loading="lazy">` : ''}</header>
+  ${s.sub ? `<p class="sec-sub">${s.sub}</p>` : ''}${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
