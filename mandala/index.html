@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mandala · Menú</title>
+<meta name="description" content="Menú de Mandala: tortas, café, medialunas, cookies, alfajores y danesas.">
+<meta name="theme-color" content="#75150e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Mrs+Saint+Delafield&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--rosa:#e6cfc8;--rosa-2:#f1e3de;--granate:#75150e;--granate-2:#5a0f09;--titulo:#c96a7e;--ink:#2a1a17}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Lora,Georgia,serif;color:var(--ink);background:var(--rosa);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.script{font-family:'Mrs Saint Delafield','Segoe Script',cursive;font-weight:400}
+
+/* ---------- portada ---------- */
+.hero{background:var(--granate);color:var(--rosa-2);text-align:center;padding:34px 20px 54px;border-radius:0 0 50% 50% / 0 0 38px 38px}
+.hero img{display:block;width:min(420px,78vw);height:auto;margin:0 auto}
+.hero .menu{margin-top:6px;font-size:clamp(4rem,19vw,6.2rem);line-height:1}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--rosa);border-bottom:1px solid rgba(117,21,14,.25)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:860px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 15px;border:1px solid var(--granate);border-radius:999px;color:var(--granate);text-decoration:none;font-weight:500;font-size:.82rem}
+.nav a[aria-current="true"]{background:var(--granate);color:var(--rosa-2)}
+
+/* ---------- secciones ---------- */
+main{padding:6px 0 8px}
+.sec{padding:34px 0 10px}
+.sec>h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2rem,8vw,2.7rem);color:var(--titulo);line-height:1.1}
+.cols{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:4px 36px}
+.card{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:6px 14px;padding:10px 0}
+.cap{width:92px;height:116px;display:grid;place-items:center;background:var(--granate);border:4px solid #fff;border-radius:999px}
+.cap img{max-width:78px;max-height:92px;width:auto;height:auto;filter:drop-shadow(3px 4px 3px rgba(0,0,0,.5))}
+.card h3{font-size:clamp(2rem,8.4vw,2.4rem);line-height:.95;color:var(--granate);margin-bottom:2px}
+.card p{font-size:.88rem;line-height:1.4}
+.pill{display:inline-block;margin-top:8px;padding:5px 20px 6px;background:var(--granate);border:2px solid #fff;border-radius:999px;color:#fff;font-size:.98rem}
+.plain{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:4px 0}
+.plain h3{font-weight:400;font-size:1.05rem}
+.plain h3 small{font-size:.8rem;opacity:.8}
+.plain span{font-weight:500}
+.grp{position:relative}
+.grp>h3.t{font-family:'Playfair Display',serif;font-weight:400;font-size:1.9rem;color:var(--titulo);margin:14px 0 8px}
+.grp .taza{position:absolute;right:30%;top:30px;height:92px;width:auto;opacity:.3;pointer-events:none;z-index:0}
+.grp .plain{position:relative;z-index:1}
+
+footer{padding:34px 20px 44px;text-align:center}
+footer img{width:150px;height:auto;filter:invert(24%) sepia(75%) saturate(1500%) hue-rotate(345deg) brightness(.8)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="img/logo.webp" alt="Mandala" width="900" height="141">
+  <div class="menu script">Menú</div>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer><img src="img/logo.webp" alt="" width="900" height="141" loading="lazy"></footer>
+
+<script>
+// ---------- datos (transcriptos de la carta de feria) ----------
+// img: foto del plato (recortada del PDF); sin img = fila simple
+const SECS = [
+ {id: 'tortas', t: 'Tortas', cards: [
+  {n: 'Patagonia', d: 'Base de chocolate, dulce de leche con nueces, ganache de chocolate blanco y frutos rojos.', p: 6000, img: 'patagonia'},
+  {n: 'Hopie', d: 'Doble capa crocante de vainilla con chocolate blanco, crema, dulce de leche y dulce de maracuyá.', p: 6000, img: 'hopie'},
+  {n: 'Oreo Doble', d: 'Doble capa de Oreos, dulce de leche y crema.', p: 6000, img: 'oreo'},
+  {n: 'Dominga', d: 'Bizcocho húmedo de chocolate, dulce de leche con cacao, licor y almíbar de naranja.', p: 6000, img: 'dominga'},
+  {n: 'Cheesecake F.R', d: 'Cheesecake estilo New York, reducción de frutos rojos y frutos rojos.', p: 6000, img: 'cheesecake'},
+  {n: 'Margot', d: 'Cheesecake cremoso de limón, crema chantilly y reducción de frutillas.', p: 6000, img: 'margot'},
+ ]},
+ {id: 'cafe', t: 'Café y bebidas', groups: [
+  {g: 'Café 8oz', icon: 'taza', rows: [
+   {n: 'Americano', p: 4500}, {n: 'Latte', p: 5000}, {n: 'Flat White', p: 5300},
+   {n: 'Latte saborizado', d: 'avellana, vainilla, caramelo', p: 5300},
+  ]},
+  {g: 'Botellitas 330cc', rows: [
+   {n: 'Chocolatada', p: 4600}, {n: 'Limonada', p: 3500},
+  ]},
+ ]},
+ {id: 'medialunas', t: 'Medialunas y panes', nav: 'Medialunas', cards: [
+  {n: 'Medialuna clásica', d: 'De manteca.', p: 3200, img: 'medialuna'},
+  {n: 'Medialunas rellenas', d: 'De crema pastelera, dulce de leche o mixta.', p: 5500, img: 'rellenas'},
+  {n: 'Mafalda', d: 'Clásica de manteca con jamón y queso.', p: 6800, img: 'mafalda'},
+  {n: 'Trenza de queso', p: 4500, img: 'trenza'},
+  {n: 'Roll de canela', p: 5500, img: 'roll'},
+ ]},
+ {id: 'dulces', t: 'Cookies, alfajores y más', nav: 'Dulces', cards: [
+  {n: 'Cookie de pistacho', p: 6500, img: 'cookie-pistacho'},
+  {n: 'Cookie chocoavellana', p: 5500, img: 'cookie-choco'},
+  {n: 'Alfajor Mar del Plata', p: 5000, img: 'alfajor-mdp'},
+  {n: 'Alfajor almendra', p: 5000, img: 'alfajor-almendra'},
+  {n: 'Coco y dulce de leche', p: 3000, img: 'coco'},
+  {n: 'Brownie con nuez', p: 3000, img: 'brownie'},
+  {n: 'Frutos secos', p: 3000, img: 'frutos-secos'},
+ ]},
+ {id: 'danesas', t: 'Danesas', cards: [
+  {n: 'Danesa queso y papa', p: 5500, img: 'danesa-queso'},
+  {n: 'Danesa peras crumble', p: 5500, img: 'danesa-peras'},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const card = c => `<article class="card">
+  <div class="cap"><img src="img/${c.img}.webp" alt="${c.n}" loading="lazy"></div>
+  <div><h3 class="script">${c.n}</h3>${c.d ? `<p>${c.d}</p>` : ''}<span class="pill">${money(c.p)}</span></div>
+</article>`;
+const row = r => `<div class="plain"><h3>${r.n}${r.d ? ` <small>(${r.d})</small>` : ''}</h3><span>${money(r.p)}</span></div>`;
+const group = g => `<div class="grp"><h3 class="t">${g.g}</h3>${g.icon ? `<img class="taza" src="img/${g.icon}.webp" alt="" loading="lazy">` : ''}${g.rows.map(row).join('')}</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>
+  <div class="cols">${s.cards ? s.cards.map(card).join('') : s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
