@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Levels · Carta</title>
+<meta name="description" content="Carta digital de Levels: cervezas, cócteles, gin & tonic, vinos, comidas, burgers, lomitos, cafetería y meriendas.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@400;500;800;900&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--mute:#6f6a72;--plum:#6d3d5f;--pink:#e11d5a;--wine:#7f0a14;--line:#e4dde2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:34px 16px 22px}
+.hero img{display:block;width:min(260px,62vw);height:auto;margin:0 auto}
+.hero h1{margin-top:18px;font-weight:900;font-size:clamp(1.6rem,7.4vw,2.6rem);letter-spacing:.3em;margin-right:-.3em;text-transform:uppercase}
+.hero h1+i{display:block;width:130px;height:1px;margin:14px auto 0;background:repeating-linear-gradient(90deg,var(--plum) 0 2px,transparent 2px 4px)}
+.legend{max-width:560px;margin:16px auto 0;font-size:.78rem;line-height:1.5;color:var(--mute);letter-spacing:.04em}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-top:1px solid var(--plum);border-bottom:1px solid var(--plum)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:1040px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px 5px;border:1px solid var(--plum);color:var(--ink);text-decoration:none;font-family:'Bebas Neue';font-size:1.02rem;letter-spacing:.14em}
+.nav a[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding:10px 0 8px}
+.sec{padding:38px 0 14px;border-bottom:1px solid var(--plum)}
+.sec:last-child{border-bottom:0}
+.sec>h2{text-align:center;font-weight:900;font-size:clamp(1.35rem,6.2vw,2.1rem);letter-spacing:.22em;margin-right:-.22em;text-transform:uppercase;line-height:1.15}
+.sec>h2+i{display:block;width:130px;height:1px;margin:12px auto 0;background:repeating-linear-gradient(90deg,var(--plum) 0 2px,transparent 2px 4px)}
+.sub{margin-top:14px;text-align:center;font-family:'Courier New',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase}
+.sec-note{margin:14px auto 0;max-width:620px;text-align:center;font-size:.82rem;line-height:1.5;color:var(--mute);letter-spacing:.04em}
+.cols{columns:2 400px;column-gap:48px;margin-top:26px}
+.grp{break-inside:avoid;margin-bottom:30px}
+.grp>h3{font-family:'Bebas Neue';font-weight:400;font-size:1.65rem;letter-spacing:.14em;line-height:1.1;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:3px;margin-bottom:6px;display:inline-block}
+.grp>.gs{font-size:.78rem;letter-spacing:.08em;color:var(--mute);margin:2px 0 6px;text-transform:uppercase}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:8px 0}
+.it h4{font-family:Oswald;font-weight:300;font-size:1.08rem;letter-spacing:.04em;line-height:1.25;text-transform:uppercase}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-family:Oswald;font-weight:400;font-size:1.02rem;white-space:nowrap;text-align:right;letter-spacing:.03em}
+.it .pr small{display:block;font-family:Montserrat;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.it .nd{color:var(--pink);font-size:.78rem;font-family:Montserrat;letter-spacing:.06em;text-transform:uppercase}
+.it p{grid-column:1/-1;font-size:.74rem;line-height:1.55;letter-spacing:.06em;color:#2b2830}
+.tag{display:inline-block;margin-left:8px;vertical-align:2px;font-family:Montserrat;font-weight:500;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase}
+.tag.new,.tag.share{color:var(--pink)}
+.tag.st{padding:1px 5px;border:1px solid var(--plum);color:var(--plum)}
+.it.off h4,.it.off p{color:#a29ca5}
+.after{margin-top:6px;font-size:.78rem;letter-spacing:.06em;font-style:italic;color:var(--mute)}
+
+/* vinos: serif y rojo vino, como el PDF de vinos */
+.vino>h2{color:var(--wine)}
+.vino .grp>h3{font-family:Montserrat;font-weight:900;font-size:1rem;letter-spacing:.06em;border:0;padding:0;margin-bottom:2px}
+.vino .it h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.2rem;letter-spacing:.01em;text-transform:none}
+.vino .it .pr{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.15rem}
+
+footer{padding:26px 16px 40px;text-align:center;font-size:.72rem;letter-spacing:.06em;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="img/logo.webp" alt="Levels" width="520" height="137">
+  <h1>Carta digital</h1><i aria-hidden="true"></i>
+  <p class="legend">Las opciones con etiqueta <b>SIN TACC</b> se pueden pedir sin gluten: avisale a tu mozo que tu pedido es sin gluten.</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer>Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (carta del bar + carta de vinos + cafetería y meriendas) ----------
+// p: número, {etiqueta: precio}, 'nd' (no disponible) o sin p; st: se puede pedir sin TACC; nw: nuevo; share: para compartir
+const SECS = [
+ {id: 'cervezas', t: 'Cervezas', sub: 'Para tomar', groups: [
+  {g: 'Cerveza artesanal', s: '$7.000 cada pinta', items: [
+   {n: 'APA', d: 'IBU 33 · ABV 5.5%'}, {n: 'IPA', d: 'IBU 50 · ABV 7.5%'}, {n: 'Golden', d: 'IBU 22 · ABV 5.6%'},
+   {n: 'Wee Heavy', d: 'IBU 18 · ABV 9.5%'}, {n: 'Honey', d: 'IBU 15 · ABV 4.5%'}, {n: 'Session IPA', d: 'IBU 25 · ABV 6.5%'},
+   {n: 'Scottish Export', d: 'IBU 23 · ABV 4.7%'}, {n: 'Cream Stout', d: 'IBU 35 · ABV 5.5%'},
+  ]},
+  {g: 'Cerveza industrial', items: [
+   {n: 'Corona 710 cc', p: 13000}, {n: 'Corona 330 cc', p: 6500}, {n: 'Heineken 473 cc', p: 7500},
+   {n: 'Stella Artois 473 cc', p: 7500}, {n: 'Stella Artois 330 cc', p: 6500},
+  ]},
+  {g: 'Cerveza sin alcohol', items: [
+   {n: 'Corona sin alcohol 473 cc', p: 6500}, {n: 'Stella Artois sin alcohol 473 cc', p: 6500}, {n: 'Imperial Golden sin alcohol 473 cc', p: 6500},
+  ]},
+  {g: 'Cerveza sin TACC', items: [
+   {n: 'Michelob 473 cc', p: 7000},
+   {n: 'Caverna del Brujo 500 cc', d: 'IPA / Rubia / Roja', p: 7000},
+   {n: 'Stella Artois Pure Gold 330 cc', p: 6500},
+   {n: 'Stella Artois Pure Gold 473 cc', p: 7000},
+  ], after: 'Las cervezas sin TACC pueden contener menos gas que las clásicas.'},
+ ]},
+ {id: 'aperitivos', t: 'Vermut y Branca', nav: 'Aperitivos', groups: [
+  {g: 'Vermut', s: 'Pedilo con tónica o soda, naranja / pomelo o limón', items: [
+   {n: 'Ajenjo Rosso', p: 8500}, {n: 'Ajenjo Rojo', p: 8500}, {n: 'Carpano Rosso', p: 7500}, {n: 'Carpano Bianco', p: 7500},
+   {n: 'Cinzano Rosso', p: 7500}, {n: 'Punt e Mes', p: 7500}, {n: 'Lunfa Rosado', p: 9000}, {n: 'Lunfa Rojo Bitter', p: 9000},
+   {n: 'Lunfa Rosso Torino', p: 9000}, {n: 'Lunfa Bianco', p: 9000},
+  ]},
+  {g: 'Branca drinks', items: [
+   {n: 'Fernet Branca', d: 'Fernet, Coca-Cola, hielo.', p: 9500},
+   {n: 'Branca Menta', d: 'Branca Menta, tónica.', p: 8000},
+   {n: 'Branca Julep', d: 'Branca Menta, menta, jugo de limón y tónica.', p: 8000},
+   {n: 'Carpano Cup', d: 'Gin, tónica, Carpano, menta y pepino.', p: 8500},
+   {n: 'Espresso Borghetti', d: 'Espresso Borghetti, Sernova, almíbar y shot de espresso.', p: 9000},
+   {n: 'White Russian', d: 'Espresso Borghetti, Sernova y crema de leche.', p: 9000},
+  ]},
+ ]},
+ {id: 'cocteles', t: 'Cocktails clásicos', nav: 'Cócteles', groups: [
+  {g: 'Spritz / Aperitivos', items: [
+   {n: 'Aperol Spritz', d: 'Aperol, espumante, soda y naranja.', p: 12500},
+   {n: 'Campari Orange', d: 'Campari, jugo de naranja, rodaja de naranja.', p: 9500},
+   {n: 'Campari Tonic', d: 'Campari, tónica, rodaja de limón.', p: 9500},
+   {n: 'Cuba Libre', d: 'Ron Havana dorado, Coca-Cola, rodaja de limón.', p: 9500},
+   {n: 'Gancia Batido', d: 'Gancia, limón y almíbar.', p: 9500},
+   {n: 'Jager Red Bull', d: '2 oz Jager + 1 lata Red Bull.', p: 16500},
+  ]},
+  {g: 'Macerados', items: [
+   {n: 'Caipi Malibú', d: 'Ron Malibú, lima, azúcar.', p: 10500},
+   {n: 'Caipiroska', d: 'Vodka, lima, azúcar.', p: 9500},
+   {n: 'Cynar Julep', d: 'Cynar, menta, almíbar, jugo de pomelo.', p: 10500},
+   {n: 'Jager Julep', d: 'Jager, menta, limón, almíbar, jugo de naranja.', p: 14000},
+   {n: 'Mojito', d: 'Ron Havana, menta, limón, almíbar y soda.', p: 10500},
+   {n: 'Mojito Ron Barceló', d: 'Ron Barceló, menta, limón, almíbar y soda.', p: 12500},
+   {n: 'Mojito Malibú', d: 'Ron Malibú, menta, limón, almíbar y soda.', p: 11000},
+  ]},
+  {g: 'Clásicos internacionales', items: [
+   {n: 'Martini Dry', d: 'Martini, gin, aceituna.', p: 9500},
+   {n: 'Margarita', d: 'Tequila José Cuervo, triple sec, limón.', p: 14000},
+   {n: 'Negroni', d: '1 oz gin, 1 oz Carpano, 1 oz Campari.', p: 9500},
+   {n: 'Pisco Sour', d: 'Pisco, limón, almíbar, clara de huevo.', p: 11500},
+   {n: 'Tequila José Cuervo', d: '2 oz tequila, limón, sal.', p: 10500},
+   {n: 'Old Fashioned', d: 'Red Label, angostura y azúcar.', p: 12000},
+   {n: 'Ron Punch', d: 'Ron Havana, Ron Havana dorado, limón, naranja, ananá y granadina.', p: 10500},
+   {n: 'Tequila Sunrise', d: 'Tequila, jugo de naranja y granadina.', p: 12000},
+  ]},
+  {g: 'Refrescantes', items: [
+   {n: 'Daiquiri Frutilla', d: 'Frutilla, pulpa de frutilla, Ron Havana, almíbar, mucho hielo.', p: 12000},
+   {n: 'Tom Collins', d: 'Gin, limón, almíbar, soda.', p: 10500},
+   {n: 'Cucumber Collins', d: 'Gin, limón, almíbar, pepino, soda.', p: 11000},
+  ]},
+ ]},
+ {id: 'autor', t: 'Tragos de autor', nav: 'Autor', groups: [
+  {g: 'Cremosos', items: [
+   {n: 'Barbie Girl', d: 'Crema de leche, pulpa de frutilla, syrup de pomelo, naranja y frutilla, Cherry Brandy, Ron Havana dorado.', p: 12000},
+   {n: 'Cadbury', d: 'Baileys, syrup de vainilla y de chocolate, pulpa de frutilla.', p: 13500},
+   {n: 'Pasión de chocolate', d: 'Malibú, licor de café, Baileys y chocolate blanco.', p: 13500},
+   {n: 'Piña & Coco', d: 'Malibú, Cherry Brandy, jugo de ananá, syrup sexy, limón y crema de leche.', p: 12500},
+   {n: 'Tim Payne', d: 'Vodka, almíbar de avellana y café.', p: 12000, nw: 1},
+  ]},
+  {g: 'Dulces, frutales y frescos', items: [
+   {n: 'Burbujas de frambuesa', d: 'Vodka saborizado de pera, cordial de frambuesas, ananá, limón y champagne.', p: 12500},
+   {n: 'Capone', d: 'Gin, menta, almíbar, limón, clara de huevo.', p: 11500},
+   {n: 'Lavandula', d: 'Heráclito Macedonio, Lunfa Rosso, almíbar de lavanda e hibiscus, limón.', p: 12000},
+   {n: 'Lavender Collins', d: 'Aconcagua de Cardamomo, syrup de lavanda, limón, soda.', p: 12000},
+   {n: 'Malibú Spirit', d: 'Sernova maracuyá, Malibú, Aperol, syrup de naranja, pomelo y frutilla, menta, limón, soda.', p: 12500},
+   {n: 'Orange Cosmopolitan', d: 'Gin Merle Orange, cordial de frambuesa, limón, almíbar, angostura orange.', p: 12500},
+   {n: 'Ponche frutal', d: 'Ron dorado Havana, Malibú, syrup de maracuyá, frutos rojos, limón y jugo de manzana.', p: 12900},
+   {n: 'Rosemary', d: 'Smirnoff de lima y naranja, syrup de romero, Martini Dry, jugo de pera y limón.', p: 11500},
+   {n: 'Spring Sunset', d: 'Vino blanco chenin dulce, Smirnoff mandarina, Apricot y Cherry Brandy, syrup sexy, limón.', p: 12500},
+  ]},
+  {g: 'Tropicales', items: [
+   {n: 'Mango Dreams', d: 'Pisco, cordial de mango, apricot brandy y limón.', p: 12500},
+   {n: 'Tropical Tonic', d: 'Gin Merle Orange, vino blanco, limón, syrup de mango y dash de tónica.', p: 11900},
+   {n: 'Taster Mix', d: 'Gin Merle Mango, Sernova de ananá y coco, almíbar de lavanda e hibiscus y jugo de ananá.', p: 12900},
+   {n: 'Summer Beach', d: 'Vodka, durazno, licor de naranja, syrup passion, cerveza 330 cc.', p: 15500, share: 1},
+   {n: 'Summer Beach Frutilla', d: 'Vodka, frutilla, licor de naranja, syrup passion, cerveza 330 cc.', p: 16500, share: 1},
+   {n: 'Jägermeister House', d: 'Jägermeister, vodka, frutos rojos, limón, syrup passion y manzana.', p: 14500},
+   {n: 'Pisada de elefante', d: 'Vodka Elefante Castillo, tequila, mango, maracuyá y limón.', p: 13500},
+  ]},
+ ]},
+ {id: 'gin', t: 'Gin & Tonic', nav: 'Gin', sub: 'Armalo como quieras', groups: [
+  {g: 'Nacionales', items: [
+   {n: 'Aconcagua', d: 'Elaborado a base de agua de deshielo del Aconcagua con una delicada selección y combinación de botánicos.', p: 12500},
+   {n: 'Aconcagua Lima', d: 'Destilado en alambique de cobre y extraído a partir de 7 botánicos: lima, enebro, coriandro, lemon grass, angélica, regaliz y almendra.', p: 13000},
+   {n: 'Aconcagua Cardamomo', d: 'Destilado en alambique de cobre y extraído a partir de 7 botánicos: cardamomo, enebro, coriandro, lemon grass, angélica, regaliz y almendra.', p: 13000},
+   {n: 'Aconcagua Red Berries', d: 'Destilado en alambique de cobre y extraído a partir de 8 botánicos: frutos rojos, bayas de enebro, semillas de coriandro, raíz de angélica, raíz de regaliz, cáscara de limón, cassia y almendra.', p: 13000},
+   {n: 'Blu', d: 'Equilibrado y fresco, con enebro italiano, passiflora, cáscaras de limón y naranja, almendra, coriandro, raíces de angélica y de lirio.', p: 11500},
+   {n: 'Heráclito', d: 'Clásico London Dry de 13 botánicos: aroma firme de enebro y coriandro combinado con notas cítricas como el limón, la lima y la naranja Curazao.', p: 11500},
+   {n: 'Heráclito 40 botánicos', d: 'Combina 40 botánicos seleccionados por especialistas.', p: 12500},
+   {n: 'Heráclito Blend', d: 'En boca se percibe seco y con mucho cuerpo, aterciopelado, con una salida muy fresca generada por su armazón cítrico.', p: 13000},
+   {n: 'Heráclito Macedonio', d: 'Se caracteriza por la presencia de las flores rojas, combina 12 botánicos como enebro, coriandro y cardamomo.', p: 13000},
+   {n: 'Heredero', d: 'Se distingue por la frescura de la mandarina y sus notas aromáticas de romero y enebro.', p: 11500},
+   {n: 'Heredero London Dry', d: 'Enebro, pimienta de Jamaica, regaliz y raíz de angélica le dan cuerpo y profundidad, mientras el coriandro y la cáscara de limón lo llenan de frescura.', p: 11500},
+   {n: 'Heredero Pink', d: 'Destilada con boysenberry, lo que lo convierte en un destilado dulce, aromático y de fácil tomar.', p: 12500},
+   {n: 'Heredero Pomelo', d: 'Destacamos el sabor fresco del pomelo rosado proveniente de la Mesopotamia Argentina, cuidadosamente recolectado y combinado con bayas de enebro y hierbas aromáticas.', p: 12500},
+   {n: 'Heredero Limón y Jengibre', d: 'Gin sabor limón y jengibre.', p: 12500},
+   {n: 'Merle', d: 'Se elabora a partir de la combinación de 12 botánicos cuidadosamente seleccionados.', p: 11500},
+   {n: 'Merle Orange', d: 'Gin sabor naranja y mango.', p: 12000},
+   {n: 'Merle Pink', d: 'Las notas cítricas del enebro se mezclan sutilmente con la dulzura de la frutilla y el arándano.', p: 12000},
+  ]},
+  {g: 'Importados', items: [
+   {n: 'Beefeater', d: 'Intenso toque de enebro y fuertes notas cítricas.', p: 13500},
+   {n: 'Beefeater Blood Orange', d: 'Destilado con naranja.', p: 14000},
+   {n: 'Beefeater Pink', d: 'Beefeater London Dry más el aroma de fresa natural para darle un intenso y delicioso sabor a fresa.', p: 14000},
+   {n: 'Bombay Sapphire', d: 'Elaborado con infusión al vapor para realzar la frescura de sus 10 botánicos y garantizar el sabor más fresco.', p: 15000},
+   {n: 'Bulldog', d: 'Gin inglés destilado en alambique de cobre, filtrado e infusionado con 12 botánicos seleccionados.', p: 14500},
+   {n: 'Gordon\'s', d: 'Es un London Dry Gin con un sabor derivado del enebro, ingrediente botánico clave en su creación.', p: 11500},
+   {n: 'Hendrick\'s', d: 'Un gin inusual, con infusiones de pepino y rosas de Bulgaria.', p: 21900},
+   {n: 'Tanqueray', d: 'Esencia a enebro fresco y alcohol dulce que lo hace muy agradable en boca y nariz.', p: 13500},
+   {n: 'Tanqueray Sevilla', d: 'Gin elaborado con naranjas de Sevilla, flores de azahar, botánicos y color natural para ofrecer un sabor cítrico, afrutado y chispeante.', p: 14000},
+   {n: 'Tanqueray Dark Berry', d: 'Elaborada con cassis francés y sutiles notas de vainilla, que da como resultado un gin rico y frutado con una dulzura sutil y equilibrada.', p: 14500},
+   {n: 'Tanqueray Bossa Nova', d: 'Con guava brasilera y un toque de limón.', p: 14500},
+   {n: 'Tanqueray Nº Ten', d: 'Primera ginebra ultrapremium. Destilada en pequeños lotes con los cuatro botánicos originales de London Dry y pomelos enteros frescos, naranjas, limas y flores de manzanilla. Ofrece una explosión de cítricos frescos en cada sorbo.', p: 21900},
+  ]},
+ ]},
+ {id: 'destilados', t: 'Vodka, speed y whisky', nav: 'Vodka y whisky', groups: [
+  {g: 'Vodka & Speed', s: '2 oz + speed', items: [
+   {n: 'Absolut Blue + Speed', p: 14000},
+   {n: 'Absolut Raspberry + Speed', p: 14500},
+   {n: 'Sernova + Speed', p: 10500},
+   {n: 'Sernova saborizado + Speed', d: 'Frutos rojos, maracuyá, lima limón, manzana y pera, ananá y coco, candy.', p: 10500},
+   {n: 'Smirnoff + Speed', p: 11000},
+   {n: 'Smirnoff saborizado + Speed', d: 'Sandía, manzana verde, citrus, frambuesa. Citric: naranja y lima, mandarina, pomelo y lima.', p: 11000},
+   {n: 'Elefante Castillo + Speed', d: 'Vodka premium.', p: 10500},
+   {n: 'Sky + Speed', p: 10500},
+  ]},
+  {g: 'Whisky', s: '2 oz', items: [
+   {n: 'Black Label', p: 12500}, {n: 'Cutty Sark', p: 12500}, {n: 'Red Label', p: 11500},
+   {n: 'Wild Turkey', p: 13000}, {n: 'Jameson', p: 10500}, {n: 'Jack Daniel\'s', p: 12500},
+  ]},
+ ]},
+ {id: 'sinalcohol', t: 'Sin alcohol', groups: [
+  {g: 'Agua / Gaseosas', items: [
+   {n: 'Agua con/sin gas', p: 4000},
+   {n: 'Agua saborizada', d: 'Pomelo / manzana / naranja.', p: 4500},
+   {n: 'Gaseosa', d: 'Coca-Cola / Coca-Cola Zero / Sprite / Fanta.', p: 5000},
+   {n: 'Tónica lata 269 ml', p: 4000},
+  ]},
+  {g: 'Mocktails', items: [
+   {n: 'Limonada floral', d: 'Limón, menta, almíbar de lavanda, agua o soda, té de hibiscus y hielo.', p: 7000},
+   {n: 'Red iced tea', d: 'Té de hibiscus, canela, pimienta negra y manzana roja con jugo de pomelo, almíbar, touch de limón y hielo.', p: 8500},
+  ]},
+  {g: 'Limonadas', items: [
+   {n: 'Limonada', d: 'Limón, menta, almíbar, agua o soda y mucho hielo.', p: 6000},
+   {n: 'Limonada frutos rojos', d: 'Limón, menta, almíbar, agua o soda, frutos rojos y mucho hielo.', p: 7000},
+   {n: 'Pomelada / Naranjada', d: 'Limón, menta, almíbar, jugo de pomelo o naranja, agua o soda y hielo.', p: 6500},
+  ]},
+  {g: 'Energizantes', items: [{n: 'Speed', p: 5000}, {n: 'Red Bull', p: 7500}]},
+  {g: 'Jugos & licuados', items: [
+   {n: 'Jugo de naranja', p: 6500},
+   {n: 'Jugo de naranja & durazno', p: 8500},
+   {n: 'Jugo de naranja & frutos rojos', p: 10000},
+   {n: 'Licuado de banana o durazno', p: 9500},
+   {n: 'Licuado de frutilla o frutos rojos', p: 10500},
+  ]},
+ ]},
+ {id: 'vinos', t: 'Vinos', cls: 'vino', groups: [
+  {g: 'Bodega Salentein', items: [{n: 'Killka Art Wine Malbec Blanco', p: 13100}, {n: 'Salentein Reserva Malbec', p: 21500}, {n: 'Numina Malbec', p: 29500}]},
+  {g: 'Bodega Trapiche', items: [{n: 'Alaris Dulce Cosecha', p: 9000}, {n: 'Fond de Cave Malbec', p: 13500}, {n: 'Trapiche Reserva Malbec', p: 16700}]},
+  {g: 'Bodega Anaia', items: [{n: 'Anaia Sauvignon Blanc', p: 41900}, {n: 'Gran Anaia Malbec', p: 65700}]},
+  {g: 'Bodega Finca Las Moras', items: [{n: 'Alma Mora Malbec', p: 'nd'}, {n: 'Intocables Malbec', p: 12800}, {n: 'Intocables Red Blend', p: 12800}]},
+  {g: 'Bodega Petruele', items: [{n: 'Juan de Juana', p: 9000}]},
+  {g: 'Bodega Zuccardi', items: [{n: 'Santa Julia Chenin Dulce', p: 22500}]},
+  {g: 'Bodega Las Perdices', items: [{n: 'Malbec', p: 23600}, {n: 'Sauvignon Blanc', p: 23600}, {n: 'Reserva Cabernet Sauvignon', p: 35900}, {n: 'Ala Colorada Cabernet Franc', p: 45900}]},
+  {g: 'Bodega Luigi Bosca', items: [{n: 'La Linda Malbec', p: 22900}, {n: 'La Linda Chardonnay', p: 22900}, {n: 'Luigi Bosca Malbec', p: 37800}, {n: 'Luigi Bosca de Sangre Malbec D.O.C.', p: 47200}]},
+  {g: 'Bodega Norton', items: [{n: 'Cosecha Tardía', p: 12000}, {n: 'Sexy Fish Malbec', p: 10300}, {n: 'Norton D.O.C.', p: 27400}, {n: 'Altura Malbec', p: 30900}]},
+  {g: 'Bodega Colosso', items: [{n: 'Indomable Blend de Malbec', p: 26500}]},
+  {g: 'Bodega Los Haroldos', items: [{n: 'Estate Malbec', p: 16000}]},
+  {g: 'Espumosos', items: [{n: 'Salentein Brut Nature', p: 27800}, {n: 'Navarro Correas Extra Brut', p: 23000}, {n: 'New Age', p: 9000}, {n: 'Sidra 1888', p: 14000}]},
+ ]},
+ {id: 'comer', t: 'Para comer', groups: [
+  {g: 'Papas', s: 'Papas rústicas, 100% caseras, ideal para compartir', items: [
+   {n: 'Papas clásicas', p: 14500, st: 1}, {n: 'Papas con huevo', p: 15500, st: 1}, {n: 'Papas provenzal', p: 15500, st: 1},
+   {n: 'Papas cheddar', p: 16000, st: 1}, {n: 'Papas cheddar & bacon', p: 17000, st: 1},
+   {n: 'Papas rancheras', d: 'Con salchicha parrillera, huevo a la plancha, salsa ranch y verdeo.', p: 18500, st: 1},
+  ]},
+  {g: 'Nachos', items: [{n: 'Nachos', d: 'Con dips de cheddar y guacamole.', p: 12500, st: 1}]},
+  {g: 'Rebozados', items: [
+   {n: 'Rabas', p: 28000, st: 1}, {n: 'Nuggets de pollo', p: 18000, st: 1}, {n: 'Bastones de muzza', p: 18000, st: 1},
+  ]},
+  {g: 'Tablas', s: 'Comen dos, pican tres', items: [
+   {n: 'Tabla mixta', d: 'Rabas, langostinos, nuggets de pollo, albondiguitas caseras con barbacoa, bastones de muzzarella, acompañados con dips de salsas y papas fritas. No incluye pan.', p: 47000, st: 1},
+   {n: 'Tabla mediterránea', d: 'Jamón cocido, jamón crudo, salame de la colonia, queso tybo, gruyere y queso azul, mortadela con pistachos. Acompañado de aceitunas, pan y dips.', p: 45000, st: 1},
+   {n: 'Panera extra', d: '8 bollitos de manteca. Sin TACC: x4 pan sin TACC.', p: 3500},
+  ]},
+  {g: 'Platos', items: [
+   {n: 'Sorrentinos', d: 'Con salsa mixta, filetto o bolognesa. Rellenos: carne y verduras / muzza, tomate y albahaca / pollo y puerro / muzza y calabaza / ricota, jamón y nuez.', p: 21000},
+   {n: 'Milanesa de pollo clásica', d: 'Con papas fritas.', p: 21000, st: 1},
+   {n: 'Milanesa de pollo a caballo', d: 'Con huevo frito y papas fritas.', p: 22000, st: 1},
+   {n: 'Milanesa de pollo napolitana', d: 'A la napolitana con papas fritas.', p: 22000, st: 1},
+  ]},
+  {g: 'Pizzas', s: 'Entera / media', items: [
+   {n: 'Muzzarella', p: {Entera: 22000, Media: 12000}, st: 1},
+   {n: 'Panceta', d: 'Con panceta y huevo a la plancha.', p: {Entera: 26000, Media: 14300}, st: 1},
+   {n: 'Rúcula', d: 'Con jamón crudo.', p: {Entera: 29000, Media: 16000}, st: 1},
+   {n: 'Palmito', d: 'Con jamón, palmito, salsa golf, aceitunas negras.', p: {Entera: 27000}, st: 1},
+   {n: 'Ananá', d: 'Con jamón cocido, ananá, azúcar negra, aceitunas negras.', p: {Entera: 27000, Media: 14800}, st: 1},
+   {n: 'Cuatro quesos', p: {Entera: 27000, Media: 14800}, st: 1},
+   {n: 'Vegana', d: 'Hummus de berenjena, rúcula, berenjena asada con oliva, queso vegano "Felices las vacas".', p: {Entera: 29000, Media: 16000}, st: 1},
+  ]},
+  {g: 'Toppings', s: 'Armá tu pizza: elegí la que quieras y agregale los toppings que más te gusten', items: [
+   {n: 'Cada topping', d: 'Jamón cocido, salame, morrones, cebolla, tomate, roquefort.', p: 3000, st: 1},
+  ]},
+ ]},
+ {id: 'burgers', t: 'Burgers', sub: 'Salen con papas', groups: [
+  {g: 'Burgers', s: 'Pan de papa · doble medallón de 100 g', items: [
+   {n: 'Avocado Burger', d: 'Doble cheddar, cebolla, morrón caramelizado y guacamole.', p: 19000, st: 1},
+   {n: 'Big Delicious', d: 'Doble cheddar, pepinillos, lechuga y aderezo delicious con cebolla.', p: 17500, st: 1},
+   {n: 'Blue Cheese', d: 'Hummus de berenjena, queso azul, rúcula.', p: 18000, st: 1},
+   {n: 'Doble Bacon', d: 'Doble cheddar, doble bacon, aderezo delicious y cebolla.', p: 18000, st: 1},
+   {n: 'Doble Custom', d: 'Doble cheddar, rodajas de tomate, lechuga repollada, aros de cebolla morada, aderezo custom.', p: 17500, st: 1},
+   {n: 'Doble Egg', d: 'Doble cheddar, huevo, lechuga, cebolla, aderezo delicious.', p: 17500, st: 1},
+   {n: 'Veggie', d: 'Pan de papa, medallón vegetariano, doble cheddar, rodajas de tomate, lechuga repollada, aros de cebolla morada, aderezo.', p: 18000, st: 1},
+  ]},
+  {g: 'Extras burgers', s: '$3.500 cada extra', items: [
+   {n: 'Extras', d: 'Medallón 100 g / huevo / cheddar / pepinillos / bacon.'},
+  ]},
+  {g: 'Burgers de pollo', s: 'Pan de papa · medallón de pollo · queso tybo', items: [
+   {n: 'Avocado Burger Pollo', d: 'Cebolla, morrón caramelizado y guacamole.', p: 18000, st: 1},
+   {n: 'Big Delicious Pollo', d: 'Pepinillos, lechuga y aderezo delicious con cebolla.', p: 16500, st: 1},
+   {n: 'Blue Cheese Pollo', d: 'Hummus de berenjena, queso azul, rúcula.', p: 17000, st: 1},
+   {n: 'Doble Bacon Pollo', d: 'Doble bacon, aderezo delicious y cebolla.', p: 17000, st: 1},
+   {n: 'Doble Custom Pollo', d: 'Rodajas de tomate, lechuga repollada, aros de cebolla morada, aderezo custom.', p: 16500, st: 1},
+   {n: 'Doble Egg Pollo', d: 'Huevo, lechuga, cebolla, aderezo delicious.', p: 16500, st: 1},
+  ]},
+ ]},
+ {id: 'lomitos', t: 'Lomitos y lomipollo', nav: 'Lomitos', sub: 'Salen con papas', groups: [
+  {g: 'Lomitos', items: [
+   {n: 'Lomo simple', d: 'Pan, bife de lomo, lechuga, tomate, queso tybo y mayonesa casera.', p: 21000, st: 1},
+   {n: 'Lomo completo', d: 'Pan, bife de lomo, lechuga, tomate, queso tybo, huevo y mayonesa casera.', p: 23000, st: 1},
+   {n: 'Lomo chimi', d: 'Pan, bife de lomo, lechuga, tomate, queso tybo, jamón, morrón, huevo, chimichurri y mayonesa casera.', p: 24000, st: 1},
+   {n: 'Lomo mole', d: 'Pan, mayonesa casera, bife de lomo, provolone, jamón, morrón, huevo y guacamole.', p: 25000, st: 1},
+   {n: 'Lomo americano', d: 'Pan, bife de lomo, provolone, panceta, aros de cebolla morada, huevo revuelto, barbacoa y mayonesa casera.', p: 26000, st: 1, nw: 1},
+  ]},
+  {g: 'Lomipollo', items: [
+   {n: 'Lomi pollo simple', d: 'Pan, bife de pechuga de pollo, lechuga, tomate, queso tybo y mayonesa casera.', p: 19000, st: 1},
+   {n: 'Lomi pollo completo', d: 'Pan, bife de pechuga de pollo, lechuga, tomate, queso tybo, huevo y mayonesa casera.', p: 21000, st: 1},
+   {n: 'Lomi pollo chimi', d: 'Pan, bife de pechuga de pollo, lechuga, tomate, queso tybo, jamón, morrón, huevo, chimichurri y mayonesa casera.', p: 22000, st: 1},
+   {n: 'Lomi pollo mole', d: 'Pan, mayonesa casera, bife de pechuga de pollo, provolone, jamón, morrón, huevo y guacamole.', p: 23000, st: 1},
+   {n: 'Lomi pollo americano', d: 'Pan, bife de pechuga de pollo, provolone, panceta, aros de cebolla morada, huevo revuelto, barbacoa y mayonesa casera.', p: 24000, st: 1, nw: 1},
+  ]},
+  {g: 'Extra', items: [{n: 'Extra mayonesa casera', p: '+ $ 1.000'}]},
+ ]},
+ {id: 'sandwiches', t: 'Sándwiches y postres', nav: 'Sándwiches', groups: [
+  {g: 'Sándwich', s: 'Salen con papas', items: [
+   {n: 'Primavera', d: 'Pan baguette recién horneado, jamón cocido, queso dambo, tomate, rúcula, mayonesa casera.', p: 16000},
+   {n: 'Jamón y queso', d: 'Pan baguette recién horneado, jamón cocido, queso dambo y mayonesa casera.', p: 15500},
+   {n: 'Jamón crudo y queso', d: 'Pan baguette recién horneado, jamón crudo, queso dambo y mayonesa casera.', p: 17900},
+   {n: 'Mortadela & pistacho', d: 'Pan baguette recién horneado, mortadela con pistachos, queso provolone, rúcula, tomate, manteca y hummus de berenjena.', p: 17500},
+  ]},
+  {g: 'Tortas / Tartas', s: 'Por porción · disponible opción sin TACC', items: [
+   {n: 'Cheesecake c/ frutos rojos', p: 9500, st: 1},
+   {n: 'Keylime pie', p: 9500, st: 1},
+   {n: 'Tarta block', d: 'Base de dulce de leche, crema batida con pasta de Cofler Block y arriba ganache de chocolate con maní.', p: 9500, st: 1},
+   {n: 'Bombón', d: 'Bizcochuelo de chocolate, relleno de crema de chocolate, otro relleno de dulce de leche, cobertura de chocolate.', p: 'nd'},
+   {n: 'Patagónica', d: 'Bizcochuelo de chocolate, relleno de mermelada de frutos rojos, cobertura de crema chantilly.', p: 'nd'},
+  ]},
+ ]},
+ {id: 'cafeteria', t: 'Cafetería', sub: 'Todos los días desde las 18 hs', groups: [
+  {g: 'Just coffee', items: [
+   {n: 'Americano', p: {Chico: 3000, Jarro: 3500, Doble: 4000}},
+  ]},
+  {g: '± Milk', items: [
+   {n: 'Latte', d: 'Más leche que café.', p: {Chico: 3200, Jarro: 3800, Doble: 4500}},
+   {n: 'Flat white', d: '70% café, 30% leche.', p: {Chico: 3200, Jarro: 3800, Doble: 4500}},
+   {n: 'Lágrima', d: 'Mucha leche, poco café.', p: {Chico: 3200, Jarro: 3800, Doble: 4800}},
+   {n: 'Capuchino', d: 'Canela o cacao. Espresso, leche, espuma de leche.', p: {Doble: 5000}},
+  ]},
+  {g: 'Té o mate cocido', items: [
+   {n: 'En saquito', d: 'Consultar variedad de té.', p: 2500},
+   {n: 'Con leche', p: 3500},
+  ]},
+  {g: 'Especiales', s: '$5.500 cada uno', items: [
+   {n: 'Latte caramelo', d: 'Café con leche y crema de caramelo.', p: 5500},
+   {n: 'Latte avellana', d: 'Café con leche y syrup de avellana.', p: 5500},
+   {n: 'Latte vainilla', d: 'Café con leche y syrup de vainilla.', p: 5500},
+   {n: 'Submarino', d: 'Leche espumada y barrita de chocolate Águila.', p: 5500},
+   {n: 'Mocha', d: 'Café con leche espumada y chips de chocolate.', p: 5500},
+  ]},
+  {g: 'Iced coffee', items: [
+   {n: 'Iced latte', d: 'Café con leche espumada y hielo.', p: 4800},
+   {n: 'Iced americano', d: 'Café, agua y hielo.', p: 4200},
+   {n: 'Iced latte especial', d: 'Con syrup de caramelo, avellana o vainilla.', p: 5500},
+   {n: 'Espresso tonic', d: 'Café, agua tónica, hielo y rodaja de naranja.', p: 5500},
+   {n: 'Sweet dreams', d: 'Café con leche espumada, syrup de caramelo y dulce de leche.', p: 6000},
+  ]},
+ ]},
+ {id: 'meriendas', t: 'Meriendas', sub: 'Hasta las 20 hs', groups: [
+  {g: 'Combos', items: [
+   {n: 'Combo 1: Campero', d: 'Infusión clásica + tres tostadas de pan de molde + manteca y mermelada.', p: 9500},
+   {n: 'Combo 2: Brusqueta', d: 'Infusión clásica + dos brusquetas de jamón crudo.', p: 13500},
+   {n: 'Combo 3: Palta Love', d: 'Infusión clásica + dos brusquetas de palta.', p: 14500},
+   {n: 'Combo 4: Café + torta o tarta', p: 13500},
+   {n: 'Combo 5: Croissant', d: 'Infusión clásica + un croissant.', p: 9000},
+  ]},
+  {g: 'Combos sin TACC', items: [
+   {n: 'Combo 1: Campero sin TACC', d: 'Infusión clásica + tres tostadas de pan de molde sin TACC + manteca y mermelada.', p: 9500},
+   {n: 'Combo 2: Brusqueta sin TACC', d: 'Infusión clásica + brusqueta de jamón crudo sin TACC.', p: 13500},
+   {n: 'Combo 3: Palta Love sin TACC', d: 'Infusión clásica + brusqueta de palta sin TACC.', p: 14500},
+   {n: 'Combo 4: Café + torta / tarta sin TACC', p: 13500},
+  ]},
+  {g: 'Extras meriendas', items: [
+   {n: 'Brusqueta jamón crudo', d: 'Dos brusquetas de jamón crudo, queso, queso crema, rúcula y tomate.', p: 10000},
+   {n: 'Brusqueta de palta', d: 'Dos brusquetas con queso crema, huevo y palta.', p: 11000},
+   {n: 'Croissant', p: 4500},
+   {n: 'Extra infusión especial', p: '+ $ 1.500'},
+  ]},
+  {g: 'Croissant rellenos', items: [
+   {n: 'Croissant jamón y queso', p: 8000},
+   {n: 'Croissant jamón crudo', d: 'Relleno con queso crema, jamón crudo, tomate y rúcula.', p: 9000},
+   {n: 'Croissant con queso azul', d: 'Relleno con queso crema y queso azul, jamón cocido, olivas y rúcula.', p: 8500},
+  ]},
+  {g: 'Cositas dulces', s: 'Tortas / tartas por porción · disponible opción sin TACC', items: [
+   {n: 'Cheesecake c/ frutos rojos', p: 9500},
+   {n: 'Keylime pie', p: 9500},
+   {n: 'Bombón', d: 'Bizcochuelo de chocolate, relleno de crema de chocolate, otro relleno de dulce de leche, cobertura de chocolate.', p: 9500},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => typeof n === 'number' ? '$ ' + n.toLocaleString('es-AR') : n;
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p === undefined ? '' : p === 'nd' ? '<span class="nd">No disponible</span>'
+  : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+
+const item = it => `<li class="it${it.p === 'nd' ? ' off' : ''}">
+  <h4>${it.n}${it.nw ? '<span class="tag new">Nuevo</span>' : ''}${it.share ? '<span class="tag share">Para compartir</span>' : ''}${it.st ? '<span class="tag st">Sin TACC</span>' : ''}</h4>
+  <div class="prices">${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}
+</li>`;
+
+const group = g => `<div class="grp">
+  <h3>${g.g}</h3>${g.s ? `<p class="gs">${g.s}</p>` : ''}
+  <ul class="items">${g.items.map(item).join('')}</ul>
+  ${g.after ? `<p class="after">${g.after}</p>` : ''}
+</div>`;
+
+const section = s => `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2><i aria-hidden="true"></i>
+  ${s.sub ? `<p class="sub">${s.sub}</p>` : ''}${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
