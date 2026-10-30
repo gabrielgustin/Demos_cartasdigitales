@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casa Chacana · Carta</title>
+<meta name="description" content="Carta de Casa Chacana cafetería: cafés, filtrados, tés, combos, mostrador casero, panes y huevos, y sandwiches.">
+<meta name="theme-color" content="#f6f6f1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f6f1;--ink:#262624;--mute:#75756e;--line:#dcdcd3;--card:#fbfbf8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Poppins,system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:46px 20px 26px}
+.brand{display:flex;align-items:center;justify-content:center;gap:clamp(14px,5vw,40px);flex-wrap:wrap}
+.brand img{width:clamp(120px,32vw,170px);height:auto}
+.brand h1{font-weight:400;font-size:clamp(1.9rem,8vw,2.7rem);letter-spacing:.04em;line-height:1.1;text-transform:uppercase}
+.hero .aviso{max-width:470px;margin:30px auto 0;font-style:italic;font-weight:400;font-size:.82rem;line-height:1.6}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--bg);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:760px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:1px solid var(--ink);border-radius:999px;color:var(--ink);text-decoration:none;font-weight:400;font-size:.8rem;letter-spacing:.03em}
+.nav a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+
+/* ---------- secciones ---------- */
+main{padding:6px 0 8px}
+.sec{padding:46px 0 12px}
+.sec>h2{text-align:center;font-weight:400;font-size:clamp(1.25rem,5.4vw,1.55rem);letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
+.sub{margin-top:8px;text-align:center;font-weight:400;font-size:.85rem;color:var(--mute)}
+.sec-note{margin:18px auto 0;max-width:520px;text-align:center;font-size:.78rem;line-height:1.6;color:var(--mute)}
+.grp{margin-top:30px}
+.grp>h3{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px;font-weight:400;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;text-align:center}
+.grp>h3 img{height:46px;width:auto}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 18px;padding:11px 0;border-bottom:1px solid var(--line)}
+.it:last-child{border-bottom:0}
+.it h4{font-weight:500;font-size:.95rem;line-height:1.35}
+.it h4 small{font-weight:300;font-size:.82rem;color:var(--mute)}
+.it .prices{display:flex;gap:16px;align-items:flex-start}
+.it .pr{font-weight:400;font-size:.95rem;white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:300;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.85rem;line-height:1.55;color:#44443f}
+.tag{display:inline-block;margin-left:8px;padding:1px 7px;border:1px solid var(--mute);border-radius:999px;vertical-align:1px;font-weight:400;font-size:.62rem;letter-spacing:.04em;color:var(--mute);white-space:nowrap}
+.ask{font-size:.8rem;color:var(--mute);font-style:italic}
+
+footer{padding:34px 16px 44px;text-align:center;font-size:.72rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="brand">
+    <img src="img/logo.webp" alt="" width="410" height="260">
+    <h1>Casa<br>Chacana</h1>
+  </div>
+  <p class="aviso">Nuestros cafés se sirven a 70 grados. Si Ud. lo prefiere más caliente, por favor indíquelo a su camarero/a al momento de realizar el pedido.</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer>Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (transcriptos de la carta en PDF) ----------
+// p: número, {etiqueta: precio}, o 'ask' (consultar); gf: 1 = sin gluten, texto = sin gluten con adicional
+const GF = '+ $ 1.000';
+const SECS = [
+ {id: 'cafes', t: 'Cafés', groups: [
+  {g: 'Cafés sin leche', img: 'sinleche', items: [
+   {n: 'Espresso', p: 4300}, {n: 'Doble espresso', p: 4300}, {n: 'Long black', p: 4600}, {n: 'Americano', p: 4900},
+  ]},
+  {g: 'Cafés con leche', items: [
+   {n: 'Cortado', p: 4800}, {n: 'Piccolo', p: 4800}, {n: 'Flat white', p: 5200}, {n: 'Capuccino', p: 5000},
+   {n: 'Mocca', d: 'Con chocolate.', p: 5700}, {n: 'Latte', p: 5200}, {n: 'Caramel latte', p: 5900}, {n: 'Vainilla latte', p: 5900},
+  ]},
+ ], note: 'Adicional leche de avena $ 1.300 (100% vegetal y orgánica, sin gluten, no contiene lactosa ni azúcar añadida).'},
+ {id: 'frios', t: 'Cafés fríos', groups: [
+  {g: 'Cafés fríos', img: 'frios', items: [
+   {n: 'Cold brew', d: 'Maceración de café por 24 hs.', p: 5600},
+   {n: 'Iced latte', d: 'Espresso + leche + espuma.', p: 6000},
+   {n: 'Iced flat white', d: 'Doble espresso + leche.', p: 6000},
+   {n: 'Iced americano', d: 'Doble espresso + agua.', p: 6000},
+   {n: 'Sonic - Espresso tonic', d: 'Doble espresso + tónica.', p: 7000},
+   {n: 'Iced vainilla latte', d: 'Espresso + vainilla + leche.', p: 6600},
+   {n: 'Iced caramel latte', d: 'Espresso + caramelo + leche.', p: 6600},
+  ]},
+ ]},
+ {id: 'filtrados', t: 'Filtrados', sub: 'Método por goteo · consultar orígenes disponibles', groups: [
+  {g: '', img: 'filtrados', items: [
+   {n: 'Filtrado', d: 'Café caliente.', p: {'1 pax': 5800, '2 pax': 9800}},
+   {n: 'Flash brew', d: 'Con frutas y hielos (café frío).', p: {'1 pax': 6400, '2 pax': 10600}},
+  ]},
+ ]},
+ {id: 'tes', t: 'Tés en hebras', nav: 'Tés', groups: [
+  {g: '', img: 'tes', items: [
+   {n: 'Earl Grey', d: 'Base de té negro con aceite de bergamota.', p: 4900},
+   {n: 'Green Peach', d: 'Base de té verde con duraznos blancos.', p: 4900},
+   {n: 'Rubi Punch', d: 'Base de té negro, frutos rojos y patagónicos.', p: 4900},
+   {n: 'Debbies', d: 'Base de té negro, pétalos de rosas y frutos rojos.', p: 4900},
+  ]},
+ ]},
+ {id: 'jugos', t: 'Jugos naturales', nav: 'Jugos', groups: [
+  {g: '', items: [
+   {n: 'Vaso de jugo de naranja', p: 4900}, {n: 'Vaso de limonada', p: 4800}, {n: 'Vaso de pomelada', p: 4800},
+  ]},
+ ]},
+ {id: 'combos', t: 'Combos', groups: [
+  {g: '', img: 'combos', items: [
+   {n: 'Combo diario', d: 'Infusión mediana de café (flat white, cappuccino, latte o americano) o té en hebras y budín (carrot o remolacha con chocolate).', p: 11500, gf: 'opción'},
+   {n: 'Combo clásico', d: 'Infusión mediana de café (flat white, cappuccino, latte o americano) o té en hebras y porción de tostadas con mermelada y queso crema artesanal.', p: 11500, gf: 'opción'},
+  ]},
+ ]},
+ {id: 'mostrador', t: 'Mostrador bien casero', nav: 'Mostrador', groups: [
+  {g: '', items: [
+   {n: 'Medialunas de manteca', d: 'Consultar stock disponible.', p: 5400},
+   {n: 'Mafalda rellena de jamón y queso', p: 9900},
+   {n: 'Budín del día', d: 'Consultar variedad del día.', p: 9500},
+   {n: 'Budín sin gluten', d: 'Carrot o remolacha con chocolate.', p: 7000, gf: 1},
+   {n: 'Scon del día', d: 'Consultar variedad.', p: 7000},
+   {n: 'Chipá de queso común', p: 4700},
+   {n: 'Chipá de queso azul', p: 4700},
+   {n: 'Granola con frutas y yogurt', p: 9600},
+   {n: 'Platito de frutas de estación', p: 6500},
+   {n: 'Alfajores', d: 'Consultar variedad.', p: 8000},
+   {n: 'Roll de canela', d: 'Consultar stock disponible.', p: 6000},
+   {n: 'Cookie del día', d: 'Consultar variedad.', p: 5000},
+   {n: 'Torta del día', d: 'Consultar variedad.', p: 'ask'},
+  ]},
+ ]},
+ {id: 'panes', t: 'Panes y huevos', groups: [
+  {g: 'Tostones', items: [
+   {n: 'Tostón de palta y huevo en pan de masa madre', p: 14000, gf: GF},
+   {n: 'Tostón de palta, huevo, panceta y hongos en pan de masa madre', p: 18000, gf: GF},
+   {n: 'Tostón light de palta, huevo, queso crema en pan integral', p: 14000, gf: GF},
+   {n: 'Tostón de ricota Chacana', d: 'Tostada de masa madre con crema de ricota, peras y jamón crudo.', p: 17000},
+   {n: 'Tostón de ricota Chacana', d: 'Tostada de masa madre con crema de ricota, fruta del día y miel.', p: 15000},
+   {n: 'Tostón gravlax de trucha patagónica', d: 'Pan de molde, queso crema, rúcula, láminas de gravlax y alcaparras.', p: 17500},
+  ]},
+  {g: 'Más para elegir', items: [
+   {n: 'Mbejú con palta, encurtidos, huevo a la plancha', d: 'Tortilla plana de mandioca y queso.', p: 16500},
+   {n: 'French toast Chacana', d: 'Tostada francesa con Nutella y frutas del día.', p: 12000},
+   {n: 'Pancakes Chacana', d: 'Pancakes de avena y banana con miel, granola y crema.', p: 12000},
+   {n: 'Huevos rancheros Chacana', d: 'Huevos fritos con salsa picante, frijoles, palta, panceta y papas chips.', p: 12500},
+  ]},
+  {g: 'Huevos revueltos', items: [
+   {n: 'Con jamón cocido', d: 'Y una tostada.', p: 9200, gf: GF},
+   {n: 'Con panceta', d: 'Y una tostada.', p: 9200, gf: GF},
+   {n: 'Con hongos, queso crema', d: 'Y una tostada.', p: 9200, gf: GF},
+   {n: 'Huevos solos', d: 'Y una tostada.', p: 6600, gf: GF},
+  ]},
+  {g: 'Omelette', items: [
+   {n: 'Con hongos', p: 15000, gf: 1},
+   {n: 'Con jamón y queso', p: 16000, gf: 1},
+  ]},
+ ]},
+ {id: 'sandwiches', t: 'Sandwiches al estilo Chacana', nav: 'Sandwiches', groups: [
+  {g: '', items: [
+   {n: 'Tostado de jamón cocido y queso gouda', d: 'Pan brioche, jamón cocido, queso gouda y papas chips.', p: 16500, gf: GF},
+   {n: 'Tostado veggie', d: 'Pan brioche, palta, quesillo, chucrut, pasta de tomate y papas chips.', p: 15400, gf: GF},
+   {n: 'Sandwich Julieta', d: 'Pan brioche tostadito, manteca de hierbas, queso, mermelada de tomate y frutilla.', p: 16000, gf: GF},
+   {n: 'Grilled cheese', d: 'Pan brioche, mix de quesos, miel de caña, mostaza y papas chips.', p: 16000, gf: GF},
+   {n: 'Sandwich de mortadela', d: 'Pan de masa madre, mortadela, queso, rúcula, pesto de albahaca y papas chips.', p: 18000, gf: GF},
+   {n: 'Sandwich de jamón crudo', d: 'Pan de masa madre, jamón crudo, manteca de ajo, queso, pasta de tomate y papas chips.', p: 19500},
+   {n: 'Sandwich de milanesa', d: 'Pan brioche, queso, tomate, lechuga, alioli, huevo frito y papas chips.', p: 21000},
+   {n: 'Sandwich de pollo', d: 'Pan brioche, queso, tomate, lechuga, alioli, huevo frito y papas chips.', p: 18000, gf: GF},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p === 'ask' ? '<span class="ask">Consultar</span>'
+  : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+const gfTag = gf => !gf ? '' : `<span class="tag">${gf === 1 ? 'Sin gluten' : gf === 'opción' ? 'Opción sin gluten' : `Sin gluten ${gf}`}</span>`;
+
+const item = it => `<li class="it">
+  <h4>${it.n}${gfTag(it.gf)}</h4>
+  <div class="prices">${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}
+</li>`;
+
+const group = g => `<div class="grp">
+  ${g.g || g.img ? `<h3>${g.img ? `<img src="img/${g.img}.webp" alt="" loading="lazy">` : ''}${g.g}</h3>` : ''}
+  <ul class="items">${g.items.map(item).join('')}</ul>
+</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>
+  ${s.sub ? `<p class="sub">${s.sub}</p>` : ''}
+  ${s.groups.map(group).join('')}
+  ${s.note ? `<p class="sec-note">${s.note}</p>` : ''}
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
