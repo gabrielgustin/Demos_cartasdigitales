@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trigatti · Carta</title>
+<meta name="description" content="Carta de Trigatti: cafetería, panadería y pattisserie, desayunos y meriendas, sándwiches, menú ejecutivo, bebidas y smoothies.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--salvia:#a4c89f;--salvia-2:#6f9a6a;--ink:#2c2c2c;--mute:#777;--durazno:#d49a62;--line:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Oswald,system-ui,sans-serif;font-weight:300;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{display:flex;align-items:center;justify-content:center;gap:clamp(4px,3vw,34px);padding:18px 8px 6px}
+.hero .trigo{width:clamp(78px,22vw,210px);height:auto;flex:none}
+.hero .logo{width:clamp(130px,34vw,330px);height:auto;flex:none}
+.desc{text-align:center;color:var(--durazno);font-weight:400;font-size:.86rem;letter-spacing:.03em;padding:6px 16px 14px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-top:1px solid var(--line);border-bottom:2px solid var(--salvia)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:5px 14px;border:1px solid var(--salvia);border-radius:999px;color:var(--ink);text-decoration:none;font-weight:400;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--salvia);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding:6px 0 8px}
+.sec{padding:34px 0 12px}
+.sec>h2{font-weight:600;font-size:clamp(1.8rem,7.4vw,2.4rem);color:var(--salvia);text-transform:uppercase;line-height:1.1;letter-spacing:.01em}
+.nota{margin-top:6px;color:var(--durazno);font-weight:400;font-size:.86rem;line-height:1.5}
+.cols{columns:2 400px;column-gap:48px;margin-top:12px}
+.grp{break-inside:avoid;margin-bottom:22px}
+.grp>h3{font-weight:600;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;margin:6px 0 2px}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:0 18px;padding:7px 0}
+.it h4{font-weight:300;font-size:1rem;line-height:1.3;text-transform:uppercase}
+.it h4 b{font-weight:600}
+.it .pr{font-weight:400;font-size:1rem;white-space:nowrap;text-align:right}
+.it p{grid-column:1/-1;font-size:.88rem;line-height:1.4;color:var(--mute);text-transform:none}
+
+footer{padding:26px 16px 36px;text-align:center}
+footer p{color:var(--durazno);font-weight:400;font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="hero">
+    <img class="trigo" src="img/trigo-izq.webp" alt="" width="320" height="224">
+    <img class="logo" src="img/logo.webp" alt="Trigatti" width="520" height="143">
+    <img class="trigo" src="img/trigo-der.webp" alt="" width="320" height="224">
+  </div>
+  <p class="desc">Descuento por pago en efectivo 15%</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer><p>Descuento por pago en efectivo 15%</p></footer>
+
+<script>
+// ---------- datos (transcriptos de la carta del 21 de julio) ----------
+// p: número o {etiqueta: precio}; d: descripción (en la carta va entre guiones)
+const SECS = [
+ {id: 'cafeteria', t: 'Cafetería', groups: [
+  {items: [
+   {n: 'Café o cortado pequeño', p: 4000},
+   {n: 'Café jarrito', d: 'Lungo / Doppio.', p: 4400},
+   {n: 'Café con leche', d: 'Flat white / Latte.', p: 5200},
+   {n: 'Cappuccino', d: 'Shot de espresso, canela, cacao y leche.', p: 5500},
+   {n: 'Frappuccino', d: 'Shot de café, leche, chantilly, chocolate y hielo.', p: 7500},
+   {n: 'Iced latte', d: 'Shot de café, leche texturizada fría y hielo.', p: 6500},
+   {n: 'Espresso tonic', d: 'Shot de café, agua tónica y hielo.', p: 6900},
+   {n: 'Submarino', p: 6900},
+   {n: 'Infusiones', d: 'Té, mate cocido y otras variedades.', p: 4500},
+  ]},
+ ], nota: 'Nuestro café se extrae a una temperatura de 98 ºC, y la leche se texturiza a menos de 70 ºC. Si preferís tomarlo más caliente, por favor pedíselo a nuestro personal.'},
+ {id: 'panaderia', t: 'Panadería / Pattisserie', nav: 'Panadería', groups: [
+  {items: [
+   {n: 'Medialunas de manteca', p: 1990},
+   {n: 'Medialunas con Nutella', p: 4000},
+   {n: 'Medialunas con dulce de leche', p: 2300},
+   {n: 'Facturas', p: 2300},
+   {n: 'Vienesas', d: 'Masa hojaldre, pastelera o dulce de leche y frutas de estación.', p: 3500},
+   {n: 'Criollitos', d: 'Hojaldre o comunes.', p: 1900},
+   {n: 'Porción de tostadas', d: 'Pan casero o integral.', p: 2200},
+   {n: 'Porción de budín', d: 'Consultar variedad.', p: 4900},
+   {n: 'Porción pasta frola', d: 'Membrillo.', p: 5500},
+   {n: 'Alfajor de maicena / coco y dulce de leche', p: 5500},
+   {n: 'Porción tarta coco y dulce de leche', p: 5900},
+   {n: 'Especialidades x 100 gr', p: 5500},
+   {n: 'Porción torta / tarta', d: 'Consultar variedad.', p: 8900},
+   {n: 'Sin TACC', d: 'Cuadrado de pastafrola, coco y ddl, brownie, etc.', p: 8500},
+  ]},
+ ]},
+ {id: 'desayunos', t: 'Desayunos y meriendas', nav: 'Desayunos', groups: [
+  {items: [
+   {n: 'Colazione', d: 'Infusión, dos medialunas, o criollos.', p: 8500},
+   {n: 'Piacere', d: 'Infusión, medialunas o criollos, manteca, mermelada y jugo de naranja pequeño.', p: 8900},
+   {n: 'Light', d: 'Infusión, tostadas de pan integral casero, queso untable, mermelada casera, jugo pequeño.', p: 8900},
+   {n: 'Campo', d: 'Infusión, pan de campo caliente, manteca, mermelada o dulce de leche, fetas de jamón y queso y jugo pequeño.', p: 16900},
+   {n: 'XXL', d: 'Infusión en taza XL, 3 medialunas o 3 tostadas pan de la casa, doble ración de manteca y mermelada, jugo mediano.', p: 17500},
+   {n: 'Fit', d: 'Infusión, yogurt, cereales, tostadas de pan integral, jugo de naranja mediano, fetas de Port Salut, queso untable, ensalada de frutas.', p: 18900},
+   {n: 'Paradiso', d: 'Infusión, tostadas integrales, queso untable, huevos revueltos, jamón y queso, cazuela de tomates con oliva y jugo de naranja.', p: 17900},
+   {n: 'Avocado toast / Croissant', d: 'Infusión, tostón de pan de molde o croissant, queso crema, palta, tomates cherry, huevos revueltos, oliva, pimienta negra y jugo de naranja.', p: 19500},
+  ]},
+  {g: 'Opciones sin TACC', items: [
+   {n: 'Combo sin TACC', d: 'Infusión, tostadas de pan de molde sin TACC, huevos revueltos, palta, jamón, queso y jugo pequeño.', p: 17500},
+   {n: 'Combo sin TACC dulce', d: 'Infusión, cuadrado sin TACC (brownie, coco y ddl, frola, alfajor) y jugo pequeño.', p: 17500},
+   {n: 'Agregale palta o huevo a tu pedido', p: 3200},
+  ]},
+ ]},
+ {id: 'salados', t: 'Sándwiches y delicias saladas', nav: 'Salados', groups: [
+  {g: 'Mafaldas', items: [
+   {n: 'Jamón y queso', p: 5500}, {n: 'Lomo ahumado, queso y rúcula', p: 6500},
+  ]},
+  {items: [
+   {n: 'Sándwich de pan de campo casero', d: 'Lomo ahumado, napolitano, pollo, bondiola y queso, jamón y queso, veggie.', p: 12500},
+   {n: 'Sándwich en pan brioche / pan árabe', p: 12000},
+   {n: 'Sándwich de croissant', d: 'Crujiente croissant, palta, hojas verdes, jamón, queso y tomate.', p: 13500},
+   {n: 'Tostado de jamón y queso', d: 'Para compartir.', p: 11500},
+   {n: 'Tartas individuales', d: 'Consultar variedad del día.', p: 9900},
+   {n: 'Ensaladas', d: 'Consultar variedad del día.', p: 9500},
+   {n: 'Cazuelas de fiambres', d: 'Individuales: lomo ahumado / bondiola / jamón / queso. Acompañada por pan casero o pan integral.', p: 5500},
+   {n: 'Tabla de fiambre y queso para 2 personas', d: 'Bondiola, jamón, queso, lomo ahumado, tomates cherry, pan casero o pan integral.', p: 24900},
+  ]},
+ ]},
+ {id: 'ejecutivo', t: 'Menú ejecutivo', nav: 'Ejecutivo', groups: [
+  {items: [
+   {n: 'Combo del día', d: 'Tarta, ensalada o sándwich de campo, agua saborizada o limonada y café.', p: 15900},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas', groups: [
+  {items: [
+   {n: 'Agua mineral 500 cc', p: 3700}, {n: 'Gaseosas 500 cc', p: 4500}, {n: 'Gaseosas en lata', p: 3900},
+   {n: 'Aguas saborizadas 500 cc', p: 4500}, {n: 'Stella Artois lata 473 cc', p: 6500}, {n: 'Andes lata 473 cc', p: 6300},
+   {n: 'Corona 330 cc', p: 5900}, {n: 'Stella Artois 1 lt', p: 11000}, {n: 'Andes 1 lt', p: 10500},
+   {n: 'Quilmes o Brahma 1 lt', p: 9900},
+   {n: 'Gin tonic', d: 'Gin, lata de agua tónica, hielo.', p: 9900},
+   {n: 'Cinzano Rosso con soda', p: 5900}, {n: 'Cinzano Bianco con soda', p: 5900}, {n: 'Campari con soda', p: 5900},
+   {n: 'Fernet con Coca-Cola', d: 'Fernet, lata de Coca-Cola, hielo.', p: 9900},
+  ]},
+ ]},
+ {id: 'jugos', t: 'Jugos, limonadas y smoothies', nav: 'Jugos', groups: [
+  {items: [
+   {n: 'Jugo de naranja exprimido', p: 6900}, {n: 'Limonada clásica', p: 5900},
+   {n: 'Limonada con menta y jengibre', p: 5900}, {n: 'Jarra de limonada', p: 12500},
+   {n: 'Smoothies', d: 'Consultar variedad de combinaciones y frutas disponibles.', p: 8900},
+   {n: 'Licuados', d: 'Frutas y pulpas mixeadas con jugo o leche.', p: 8900},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const item = it => `<li class="it"><h4>${it.n}</h4><span class="pr">${money(it.p)}</span>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp">${g.g ? `<h3>${g.g}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>
+  ${s.nota ? `<p class="nota">${s.nota}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
