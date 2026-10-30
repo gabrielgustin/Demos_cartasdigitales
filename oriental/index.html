@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confitería Oriental · Carta</title>
+<meta name="description" content="Carta de Confitería Oriental, desde 1863: cafetería, combos, crepes, sandwiches, minutas, pastas, pizzas, ensaladas, cervezas y tragos.">
+<meta name="theme-color" content="#550e1f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--vino:#550e1f;--vino-2:#3f0a17;--oro:#d4a45f;--oro-2:#ebd7ba;--papel:#fbfaf6;--ink:#141012;--mute:#6f6168}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Poppins,system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--papel);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{background:var(--vino);padding:clamp(16px,4vw,34px)}
+.hero .marco{border:1px solid var(--oro);outline:1px solid var(--oro);outline-offset:-9px;padding:clamp(40px,12vw,96px) 20px}
+.hero img{display:block;width:min(360px,76vw);height:auto;margin:0 auto}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:var(--vino);border-bottom:2px solid var(--oro)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:1px solid var(--oro);border-radius:999px;color:var(--oro-2);text-decoration:none;font-weight:400;font-size:.8rem;letter-spacing:.03em}
+.nav a[aria-current="true"]{background:var(--oro);border-color:var(--oro);color:var(--vino);font-weight:500}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:34px 0 8px}
+.orn{display:block;width:min(300px,70%);height:auto;margin:0 auto 18px}
+.sec-h{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+.sec-h h2{font-family:'Great Vibes',cursive;font-weight:400;color:var(--vino);font-size:clamp(2.6rem,11vw,3.6rem);line-height:1.1}
+.sec-h img.ic{height:clamp(70px,20vw,110px);width:auto;flex:none}
+.note{margin-top:6px;font-style:italic;font-size:.88rem;color:var(--mute)}
+.cols{columns:2 400px;column-gap:56px;margin-top:14px}
+.grp{break-inside:avoid;margin-bottom:26px}
+.grp>h3{font-family:'Great Vibes',cursive;font-weight:400;color:var(--vino);font-size:clamp(1.9rem,7vw,2.3rem);line-height:1.15;margin-bottom:2px}
+.grp>h3 small{font-family:Poppins;font-size:.8rem;font-style:italic;color:var(--mute)}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:1px 16px;padding:10px 0;border-bottom:1px solid var(--oro-2)}
+.it:last-child{border-bottom:0}
+.it h4{font-weight:400;font-size:1rem;line-height:1.3}
+.it h4 small{font-weight:300;font-size:.8rem;color:var(--mute)}
+.it .pr{font-weight:700;font-style:italic;white-space:nowrap;text-align:right;line-height:1.3}
+.it .pr small{display:block;font-weight:300;font-size:.68rem;letter-spacing:.04em;color:var(--mute)}
+.it p{grid-column:1/-1;font-style:italic;font-size:.84rem;line-height:1.5;color:#3c3237}
+.it p.q{color:var(--mute)}
+.ask{font-weight:300;font-style:italic;font-size:.85rem;color:var(--mute)}
+
+/* ---------- cierre ---------- */
+.cierre{margin-top:34px;background:var(--vino);padding:clamp(16px,4vw,34px)}
+.cierre .marco{border:1px solid var(--oro);outline:1px solid var(--oro);outline-offset:-9px;padding:44px 20px;text-align:center}
+.cierre img{display:block;width:min(260px,64vw);height:auto;margin:0 auto 26px}
+.cierre ul{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 36px;list-style:none}
+.cierre a{display:inline-flex;align-items:center;gap:9px;color:var(--oro);text-decoration:none;font-style:italic;font-size:1.02rem}
+.cierre svg{width:22px;height:22px;flex:none}
+</style>
+</head>
+<body>
+<header class="hero"><div class="marco">
+  <img src="img/escudo.webp" alt="Confitería Oriental, desde 1863" width="520" height="461">
+</div></header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<section class="cierre" aria-label="Contacto"><div class="marco">
+  <img src="img/escudo.webp" alt="" width="520" height="461" loading="lazy">
+  <ul>
+    <li><a href="https://wa.me/5493515514296"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2.2-1-.9.9c-1-.4-2-1.4-2.4-2.4l.9-.9-1-2.2z" fill="currentColor" stroke="none"/></svg>351 551 4296</a></li>
+    <li><a href="https://wa.me/5493513142476"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2.2-1-.9.9c-1-.4-2-1.4-2.4-2.4l.9-.9-1-2.2z" fill="currentColor" stroke="none"/></svg>351 314 2476</a></li>
+    <li><a href="https://instagram.com/confiteria.oriental"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>confiteria.oriental</a></li>
+    <li><a href="https://instagram.com/oriental.plaza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>oriental.plaza</a></li>
+  </ul>
+</div></section>
+
+<script>
+// ---------- datos (transcriptos de la carta de febrero, páginas 2 a 10) ----------
+// p: número, [a, b] (se muestra "a / b"), {etiqueta: precio}, o sin p cuando la carta no lo trae
+const SECS = [
+ {id: 'cafeteria', t: 'Cafetería', img: 'tazas', groups: [
+  {g: 'Cafetería clásica', items: [
+   {n: 'Té', p: 3800}, {n: 'Té con limón o con leche', p: 4400}, {n: 'Café o cortado chico', p: 3800},
+   {n: 'Café o cortado en jarro', p: 4400}, {n: 'Café doble o café con leche', p: 4700}, {n: 'Ristretto', p: 3800}, {n: 'Adicional crema', p: 2300},
+  ]},
+  {g: 'Cafetería de especialidad', items: [
+   {n: 'Café Gran Oriental', d: 'Licor de naranjas, crema y chocolate blanco.', p: 12500},
+   {n: 'Café Oriental', d: 'Dulce de leche, licor y crema.', p: 12500},
+   {n: 'Café Vienés', d: 'Crema, helado de vainilla y cereza.', p: 13500},
+   {n: 'Café Irlandés', d: 'Whisky, crema y canela.', p: 13500},
+   {n: 'Café Frappé', d: 'Café helado servido en trago largo.', p: 9500},
+   {n: 'Capuchino', p: 11500}, {n: 'Submarino', p: 8500},
+  ]},
+ ]},
+ {id: 'dulces', t: 'Cosas dulces', groups: [
+  {items: [
+   {n: 'Alfajor de maicena', p: 3500}, {n: 'Alfajor de chocolate', p: 3500}, {n: 'Frolitas', p: 3500}, {n: 'Medialunas', p: 2200},
+   {n: 'Facturas / Vienesas'},
+   {n: 'Croissant', p: 3800},
+   {n: 'Croissant de jamón y queso', d: 'Con papas de copetín.', p: 13000},
+   {n: 'Croissant con peras', d: 'Caramelizadas, roquefort y nueces.', p: 15500},
+   {n: 'Criollo', p: 1500}, {n: 'Churros', d: '3 unidades.', p: 4600},
+   {n: 'Mafalda', d: 'Medialuna con jamón y queso.', p: 6000},
+   {n: 'Tostadas', d: '3 unidades.', p: 4500},
+   {n: 'Tortas y tartas', d: 'Consultar variedades.', p: 11500},
+   {n: 'Licuados', d: 'Con leche o con agua. Multifruta. Consultar variedades.', p: [8500, 9500]},
+  ]},
+ ]},
+ {id: 'combos', t: 'Combos', groups: [
+  {items: [
+   {n: 'Simple', d: 'Infusión, 2 criollos o 2 medialunas.', p: {Común: 7700, 'Sin TACC': 9500}},
+   {n: 'Completo', d: 'Infusión, 2 criollos o 2 medialunas, manteca, mermelada y jugo de naranja.', p: {Común: 9300, 'Sin TACC': 11000}},
+   {n: 'Light', d: 'Infusión, tostadas, queso untable, mermelada light y jugo de naranja.', p: {Común: 9500, 'Sin TACC': 12000}},
+   {n: 'Tradicional tostón Oriental', d: 'Infusión, tostón con queso crema, palta y huevo revuelto.', p: 13500},
+   {n: 'Fitness', d: 'Infusión, tostadas, queso untable, palta, huevo revuelto, ensalada de frutas y jugo de naranja.', p: 17000},
+   {n: 'Proteico', d: 'Infusión, omelette de queso y tomate, ensalada de frutas y jugo de naranja.', p: 17000},
+   {n: 'Clásico', d: 'Jugo o licuado con tostado de jamón y queso triple con papas copetín.', p: 19500},
+   {n: 'Combinado', d: 'Infusión, medio tostado triple de jamón y queso con papas copetín, mafalda y porción de torta.', p: 23000},
+   {n: 'Super Campestre', d: 'Tazón de infusión, tostadas, manteca, mermeladas, jamón, queso, ensalada de frutas y jugo de naranja.', p: 19500},
+  ]},
+ ], note: 'Los combos Simple, Completo y Light tienen opción sin TACC.'},
+ {id: 'crepes', t: 'Crepes', groups: [
+  {items: [
+   {n: 'Pekín', d: 'Crema de champiñones con queso al gratén.', p: 24500},
+   {n: 'Napolitano', d: 'Salsa de tomate oreganada, jamón y queso.', p: 24500},
+   {n: 'Tropical', d: 'Dulce de leche, helado de vainilla y frutas.', p: 24500},
+   {n: 'Tokio', d: 'Dulce de leche, crocante de almendras y charlotte.', p: 24500},
+  ]},
+ ]},
+ {id: 'sandwiches', t: 'Sandwiches', groups: [
+  {g: 'Fríos o calientes', items: [
+   {n: 'Jamón y queso', p: 12500}, {n: 'Jamón, queso y tomate', p: 13000}, {n: 'Jamón crudo y queso', p: 15800},
+   {n: 'Ternera y queso', p: 15800},
+   {n: 'Vaquero', d: 'Ternera, lechuga, tomate, salsa inglesa.', p: 15800},
+   {n: 'Primavera', d: 'Jamón, queso, tomate, lechuga y huevo.', p: 15800},
+   {n: 'Trotamundos', d: 'Jamón cocido, palmitos, morrones, queso, tomate, aceitunas, servido de canapés.', p: 17000},
+  ]},
+ ], note: 'Servidos en pan miga, árabe o ciabatta.'},
+ {id: 'lomitos', t: 'Lomitos & hamburguesas', nav: 'Lomitos', groups: [
+  {items: [
+   {n: 'Lomo completo', d: 'Lomo, lechuga, tomate, huevo, jamón, queso y papas fritas.', p: 24900},
+   {n: 'Lomo doble', d: 'Doble carne, doble jamón y queso, lechuga, tomate, huevo y papas fritas con huevo revuelto.', p: 38500},
+   {n: 'Milanesa completa', d: 'Jamón, queso, lechuga, tomate, huevo y papas fritas.', p: 24900},
+   {n: 'Especial de pollo', d: 'Pollo asado, paltonesa, lechuga y tomate con papas fritas.', p: 17500},
+   {n: 'Bondiola Oriental', d: 'Bondiola de cerdo braseada, cebolla caramelizada, mostaneza, acompañado con papas fritas.', p: 17500},
+   {n: 'Hamburguesa simple', d: 'Medallón de carne, queso cheddar, lechuga, tomate, acompañado con papas fritas.', p: 17500},
+   {n: 'Hamburguesa doble', d: 'Dos medallones de carne, jamón, queso, huevo, tomate, lechuga, acompañado de papas fritas.', p: 22000},
+  ]},
+ ]},
+ {id: 'picadas', t: 'Picadas', groups: [
+  {items: [
+   {n: 'Completa', d: 'Queso, jamón cocido, queso roquefort, salame, maní, papas saladas, aceitunas y pickles.', p: {'1 pers.': 45000, '2 pers.': 80000}},
+   {n: 'Batería Oriental caliente', d: 'Rabas, langostinos, bastones de muzzarella, papas fritas, milanesa de ternera y de pollo.', p: {'1 pers.': 75000, '2 pers.': 140000}},
+   {n: 'Batería Histórica', d: 'Albóndigas a la pomarola, riñoncitos al chablís, ciruelas en panceta, kanikamas, salchichas a la borgoña, sorrentinos fritos, crema de roquefort, pan caliente.', p: {'1 pers.': 75000, '2 pers.': 140000}},
+   {n: 'Rabas', p: {'12 unidades': 29000, '24 unidades': 49000}},
+   {n: 'Langostinos', p: {'8 unidades': 33000, '16 unidades': 59000}},
+  ]},
+ ]},
+ {id: 'minutas', t: 'Minutas', img: 'lomo', groups: [
+  {items: [
+   {n: 'Lomo al plato Oriental', d: 'Medallón de lomo con jamón, queso y huevo, papas fritas, lechuga y tomate.', p: 40000},
+   {n: 'Medallón de lomo grille (400 grs)', p: 34000}, {n: 'Bife de chorizo (400 grs)', p: 34000},
+   {n: '1/4 deshuesado de pollo grille', p: 15500}, {n: 'Suprema de pollo', p: 17000},
+   {n: 'Suprema de pollo a la napolitana', p: 22000}, {n: 'Suprema de pollo a caballo', p: 22000},
+   {n: 'Suprema de pollo 4 quesos', p: 22000}, {n: 'Suprema de pollo fugazzeta', p: 22000},
+   {n: 'Milanesa clásica de carne', p: 22000}, {n: 'Milanesa de carne a la napolitana', p: 27000},
+   {n: 'Milanesa de carne a caballo', p: 27000}, {n: 'Milanesa de carne 4 quesos', p: 27000},
+   {n: 'Milanesa de carne fugazzeta', p: 27000}, {n: 'Omelette de jamón y queso', p: 17000},
+  ]},
+  {g: 'Guarniciones', items: [
+   {n: 'Papas fritas', p: 6000}, {n: 'Puré de papas', p: 6000}, {n: 'Puré de calabacín', p: 6000}, {n: 'Arroz blanco', p: 6000},
+   {n: 'Papas noisette', p: 8500}, {n: 'Papas españolas', p: 6500}, {n: 'Panaché de vegetales', p: 9000},
+   {n: 'Adicional por porción', p: 4000},
+  ]},
+ ]},
+ {id: 'pastas', t: 'Pastas', img: 'pasta', groups: [
+  {g: 'Incluyen salsa mixta', items: [
+   {n: 'Canelones de choclo', p: 27000}, {n: 'Canelones de verdura', p: 23000}, {n: 'Spaguettis', p: 23000},
+   {n: 'Ravioles', p: 25000}, {n: 'Sorrentinos', d: 'Consultar variedad.', p: 27000},
+  ]},
+  {g: 'Adicional salsa', items: [
+   {n: '4 quesos', p: 5000}, {n: 'Bolognesa', p: 5000}, {n: 'Peceto', p: 9000},
+  ]},
+ ]},
+ {id: 'pizzas', t: 'Pizzas', img: 'pizza', groups: [
+  {items: [
+   {n: 'Muzzarella', d: 'Salsa de tomate, muzzarella, orégano y olivas.', p: 23000},
+   {n: 'Anchoas', d: 'Salsa de tomate, muzzarella, anchoas, olivas y orégano.', p: 27000},
+   {n: 'Napolitana', d: 'Salsa de tomate, muzzarella, tomate, ajo.', p: 27000},
+   {n: 'Champiñones', d: 'Salsa de tomate, muzzarella, champiñones, olivas.', p: 37500},
+   {n: 'Muzzarella doble', d: 'Salsa de tomate, doble muzzarella, olivas negras, orégano y olivas.', p: 37500},
+   {n: 'Fugazzeta', d: 'Muzzarella, salsa de tomate y cebollas.', p: 27000},
+   {n: '4 quesos', d: 'Salsa de tomate, parmesano, roquefort, muzzarella y provolone.', p: 30000},
+   {n: 'Especial', d: 'Salsa de tomate, jamón cocido, muzzarella, orégano, morrones y huevo.', p: 27000},
+   {n: 'Calabresa', d: 'Salsa de tomate, longaniza, calabresa y muzzarella.', p: 30000},
+   {n: 'Ananá', d: 'Salsa de tomate, muzzarella, jamón cocido, ananá caramelizada.', p: 37500},
+   {n: 'Rúcula', d: 'Muzzarella, rúcula, jamón crudo, salsa de tomate, parmesano y olivas.', p: 37500},
+   {n: 'Palmitos', d: 'Salsa de tomate, muzzarella, palmitos y salsa golf.', p: 37500},
+  ]},
+ ]},
+ {id: 'ensaladas', t: 'Ensaladas', img: 'ensalada', groups: [
+  {items: [
+   {n: 'Oriental', d: 'Canicama, jamón cocido, queso, lechuga, tomate, huevo duro, oliva y limón.', p: 23000},
+   {n: 'César', d: 'Hojas verdes, pollo, crutones, aceitunas negras, limón y salsa de anchoas, ajo y mostaza.', p: 20000},
+   {n: 'Waldorf', d: 'Manzana, jamón cocido, nueces, apio, aderezo de crema y limón.', p: 23000},
+   {n: 'Marinera', d: 'Atún, pimientos, arroz, arvejas y aderezo de mayonesa y limón.', p: 23000},
+   {n: 'Jamaiquino', d: 'Melón de estación o ananá, jamón crudo, palmitos, camarones, queso y salsa golf.', p: 38000},
+   {n: 'Ensalada 1', d: 'Lechuga, tomate, zanahoria, choclo, jamón cocido, queso, arvejas y huevo.', p: 20000},
+   {n: 'Ensalada 2', d: 'Rúcula, aceitunas negras, parmesano, jamón crudo y huevos.', p: 20000},
+   {n: 'Ensalada 3', d: 'Pollo, remolacha, arroz, repollo, tomate y huevos.', p: 20000},
+   {n: 'Ensalada 4', d: 'Apio, zanahoria, manzana verde, palmitos, nueces y repollo.', p: 23000},
+   {n: 'Ensalada 5', d: 'Rúcula, peras asadas, queso roquefort, nueces, aceitunas, bastones de muzzarella.', p: 23000},
+  ]},
+  {g: 'Opciones sin TACC', items: [
+   {n: 'Tarta de jamón y queso', p: 16500}, {n: 'Pizza muzzarella', p: 16500},
+  ]},
+ ]},
+ {id: 'chef', t: 'Recomendaciones del chef', nav: 'Del chef', img: 'chef', groups: [
+  {items: [
+   {n: 'Lomo al champiñón', d: 'En salsa crema de champiñones acompañado de papas noisette.', p: 45000},
+   {n: 'Lomo al Napoleón', d: 'Con jamón asado, ananá, cereza en salsa de miel y amapolas acompañado de papas noisette.', p: 45000},
+   {n: 'Lomo al verdeo', d: 'En salsa crema de verdeo acompañado con papas españolas.', p: 45000},
+   {n: 'Roulet de pollo a la campesina', d: 'Relleno de espinaca, panceta, champiñones y morrones en salsa demiglasse de apio acompañado de papas españolas.', p: 32000},
+   {n: 'Bife de chorizo gramajo', d: 'Revuelto de huevo, jamón y arvejas en papas fritas.', p: 45000},
+   {n: 'Bife de chorizo con risotto', d: 'En salsa demiglasse y risotto de queso azul.', p: 45000},
+   {n: 'Bife de chorizo con espárragos', d: 'Tomates gratinados y papas fritas.', p: 45000},
+   {n: 'Menú 1863 · Histórico Oriental', d: '2 empanadas criollas, aperitivo amargo obrero, cazuela de cordero, de postre zapallo en almíbar con queso de cabra y el trago Grapefruit (trago de Cárcano).', p: 48000},
+  ]},
+  {g: 'XXL', items: [
+   {n: 'Milanesa XXL napolitana', d: 'De pollo o ternera con papas fritas a caballo y papas con cheddar.', p: [88000, 98000]},
+   {n: 'Pizza Burger XXL', d: 'Masa de pizza a la tabla, carne, cheddar, cebolla caramelizada, bacón, lactonesa, muzzarella, acompañada con 2 porciones de papas fritas.', p: 88000},
+   {n: 'Pizza casera XXL', d: 'Variedades: 4 quesos, rúcula y jamón crudo, especial con huevo, muzzarella doble, fugazzeta.', p: 55000},
+  ]},
+ ]},
+ {id: 'cervezas', t: 'Cervezas', img: 'cerveza', groups: [
+  {items: [
+   {n: 'Quilmes clásica litro', p: 14000}, {n: 'Quilmes clásica 340 cc', p: 7500}, {n: 'Quilmes stout litro', p: 18000},
+   {n: 'Quilmes stout 340 cc', p: 8500}, {n: 'Andes original rubia', p: 18000}, {n: 'Andes original roja', p: 18000},
+   {n: 'Andes original IPA', p: 18000}, {n: 'Andes original negra', p: 18000}, {n: 'Corona 710 cc', p: 18000},
+   {n: 'Stella Artois lager 975 cc', p: 18000}, {n: 'Stella Artois pinta', p: 10000}, {n: 'Stella Artois Noire 975 cc', p: 22000},
+   {n: 'Patagonia Amber Lager 730 cc', p: 18000}, {n: 'Patagonia 24.7', p: 18000}, {n: 'Patagonia pinta', p: 12000},
+   {n: 'Chopera 2 lts', p: 40000},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas sin alcohol', nav: 'Bebidas', groups: [
+  {items: [
+   {n: 'Agua mineral', p: 4900}, {n: 'Agua saborizada', p: 4900}, {n: 'Gaseosa', p: 4900},
+   {n: 'Limonada en vaso (500 cc)', p: 4900}, {n: 'Limonada en jarra (2 lts)', p: 13500},
+   {n: 'Jugo natural de naranja', p: 8500}, {n: 'Jugo natural de pomelo', p: 8500}, {n: 'Energizante', p: 12000},
+  ]},
+ ]},
+ {id: 'postres', t: 'Postres', img: 'flan', groups: [
+  {items: [
+   {n: 'Ensalada de frutas', p: 12000}, {n: 'Flan', p: 7000}, {n: 'Budín de pan', p: 7000}, {n: 'Bombón helado', p: 8600},
+   {n: 'Postre Oriental', d: 'Frutas, helado, charlotte, obleas y cerezas.', p: 16900},
+   {n: 'Adicional crema / dulce de leche', p: 2300},
+  ]},
+ ]},
+ {id: 'tragos', t: 'Tragos y whiskey', nav: 'Tragos', img: 'trago', groups: [
+  {g: 'Tragos', items: [
+   {n: 'Mojito', p: 14500}, {n: 'Campari', p: 14500}, {n: 'Aperol', p: 14500}, {n: 'Negroni', p: 14500},
+   {n: 'Gancia', p: 12000}, {n: 'Vermouth', p: 12000}, {n: 'Fernet cordobés', p: 14500}, {n: 'Baileys', p: 18000},
+   {n: 'Amarula', p: 19500}, {n: 'Bombay', p: 18000}, {n: 'Gordon\'s', p: 14500}, {n: 'Beefeater', p: 18000},
+   {n: 'Tanqueray', p: 18000}, {n: 'Caipiroska', p: 14500}, {n: 'Gin tonic', p: 14500},
+   {n: 'Grapefruit', d: 'Trago Cárcano.', p: 15500},
+  ]},
+  {g: 'Whiskey', items: [
+   {n: 'Red label', p: 23500}, {n: 'Black label', p: 29000}, {n: 'Gold label', p: 36000}, {n: '18 años', p: 38500},
+   {n: 'Green label', p: 39500}, {n: 'Swing', p: 39500}, {n: 'White horse', p: 15000}, {n: 'J&B', p: 15000},
+   {n: 'Chivas Regal', d: '12 años | 18 años', p: [23500, 38500]}, {n: 'Buchanan\'s', p: 23500},
+   {n: 'Jim Beam | Honey', p: [23500, 38500]}, {n: 'Cardhu', p: 29000},
+   {n: 'Singleton', d: '12 | 15 | 18 años', p: [31000, 34500, 38500]}, {n: 'Jack Daniel\'s 7', p: 36000},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p === undefined ? '<span class="ask">Consultar</span>'
+  : Array.isArray(p) ? `<span class="pr">${p.map(money).join(' / ')}</span>`
+  : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+
+const item = it => `<li class="it">
+  <h4>${it.n}</h4>
+  <div style="display:flex;gap:14px;align-items:flex-start">${prices(it.p)}</div>
+  ${it.d ? `<p>${it.d}</p>` : ''}
+</li>`;
+
+const group = g => `<div class="grp">
+  ${g.g ? `<h3>${g.g}</h3>` : ''}
+  <ul class="items">${g.items.map(item).join('')}</ul>
+</div>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <img class="orn" src="img/ornamento.webp" alt="" loading="lazy">
+  <header class="sec-h"><h2 id="${s.id}-t">${s.t}</h2>${s.img ? `<img class="ic" src="img/${s.img}.webp" alt="" loading="lazy">` : ''}</header>
+  ${s.note ? `<p class="note">${s.note}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
