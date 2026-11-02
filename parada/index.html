@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parada Ambulante · Carta</title>
+<meta name="description" content="Carta de Parada Ambulante, café de especialidad: bebidas, obrador ambulante, menú ejecutivo y el especial del día.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--ol:#6d6f25;--ol-2:#4f5119;--ink:#3f4116;--mute:#6f7149;--line:rgba(109,111,37,.28);--fondo:#fbfbf4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;font-weight:400;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:30px 20px 18px}
+.hero img{display:block;width:min(170px,44vw);height:auto;margin:0 auto}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:2px solid var(--ol)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:900px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 15px;border:1px solid var(--ol);border-radius:999px;color:var(--ol);text-decoration:none;font-weight:600;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--ol);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:40px 0 10px}
+.pill{display:block;width:fit-content;max-width:100%;margin:0 auto;padding:.28em 1.2em .22em;border:2px solid var(--ol);border-radius:999px;font:400 clamp(1.7rem,7.6vw,2.6rem)/1.15 Lora,serif;color:var(--ol);text-align:center;text-transform:uppercase}
+.sec-sub{margin-top:10px;text-align:center;font-style:italic;font-weight:600;font-size:.8rem;color:var(--mute)}
+.cols{columns:2 400px;column-gap:48px;margin-top:6px}
+.grp{break-inside:avoid;margin-bottom:20px}
+.grp>h3{margin:24px 0 6px;text-align:center;font-style:italic;font-weight:700;font-size:1.2rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ol)}
+.grp>.gs{margin:-2px 0 6px;text-align:center;font-style:italic;font-size:.8rem;color:var(--mute)}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:700;font-size:.9rem;line-height:1.35;color:var(--ol)}
+.it h4 .tacc{display:inline-grid;place-items:center;width:18px;height:18px;margin-left:6px;vertical-align:-3px;border:1.3px solid var(--ol);border-radius:50%;font:700 .55rem/1 Montserrat}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:600;font-size:.9rem;white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.82rem;line-height:1.5;color:var(--ink)}
+.it .ask{font-size:.8rem;font-style:italic;color:var(--mute)}
+.box{margin:6px 0 0;padding:6px 20px 14px;border:2px solid var(--ol);border-radius:28px}
+.box .grp{margin-bottom:6px}
+.note{margin-top:16px;text-align:center;font-style:italic;font-size:.76rem;color:var(--mute)}
+
+/* ---------- ejecutivo ---------- */
+.ejec{position:relative;overflow:hidden}
+.ejec .mesa{position:absolute;right:-60px;bottom:10px;width:min(320px,70vw);height:auto;opacity:.12;pointer-events:none}
+.ejec>*{position:relative}
+.completo{margin:18px 0 0;text-align:center}
+.completo b{display:block;font-style:italic;font-weight:700;font-size:1.3rem;letter-spacing:.08em;color:var(--ol)}
+.completo span{display:block;margin-top:4px;font-style:italic;font-size:.88rem;color:var(--mute);letter-spacing:.04em}
+
+/* ---------- especial ---------- */
+.esp{margin-top:20px;overflow:hidden;border-radius:26px;border:2px solid var(--ol)}
+.esp img{display:block;width:100%;height:auto}
+.esp .cap{padding:16px 20px 20px;text-align:center}
+.esp h3{font:500 1.35rem/1.25 Lora,serif;color:var(--ol)}
+.esp p{margin-top:6px;font-style:italic;font-size:.82rem;color:var(--mute)}
+footer{padding:36px 20px 44px;text-align:center}
+footer img{width:84px;height:auto}
+footer p{margin-top:10px;font-size:.72rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero"><img src="img/logo.webp" alt="Parada Ambulante, café de especialidad" width="216" height="345"></header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer><img src="img/logo.webp" alt="" width="216" height="345" loading="lazy"><p>Precios en pesos argentinos.</p></footer>
+
+<script>
+// ---------- datos (carta, ejecutivo y especial) ----------
+// tacc: producto libre de T.A.C.C. en su receta · p: número, [a, b] (dos precios sin rótulo en la carta) o {etiqueta: precio}
+const SECS = [
+ {id: 'bebidas', t: 'Bebidas', groups: [
+  {g: 'Clásicos', items: [
+   {n: 'Espresso doble', p: 4000}, {n: 'Americano', p: 4500}, {n: 'Cortado chico', p: 4500}, {n: 'Flat white', p: 5000},
+   {n: 'Latte', p: [4500, 5000]}, {n: 'Capuccino', p: [4700, 5300]}, {n: 'Uno y Uno', d: 'Espresso y espresso con leche.', p: 5500},
+   {n: 'Chocolate caliente', p: 5500}, {n: 'Matcha latte', p: 5600},
+  ]},
+  {g: 'Fríos', items: [
+   {n: 'Jugo del día', d: 'Consultar variedad.', p: 5500}, {n: 'Limonada clásica', p: 5000}, {n: 'Exprimido de naranja', p: 5500},
+   {n: 'Gaseosa lata', p: 4500}, {n: 'Americano', p: 5000}, {n: 'Espresso tonic', p: 6500}, {n: 'Latte', p: 5300},
+   {n: 'Capuccino', p: 5300}, {n: 'Flat white', p: 5500}, {n: 'Matcha latte', p: 5900},
+  ]},
+  {g: 'Filtrados', items: [
+   {n: 'V60', p: {'1 taza': 6500, '2 tazas': 8800}}, {n: 'AeroPress', d: 'Consultar variedades.', p: {'1 taza': 6500}},
+  ]},
+  {g: 'Saborizados', s: 'podés pedirlos fríos :)', items: [
+   {n: 'Mocaccino', p: [5000, 5500]}, {n: 'Moca blanco', p: [5000, 5500]}, {n: 'Toffee latte', p: [5000, 5500]},
+   {n: 'Dulce de leche', p: [5000, 5500]}, {n: 'Bon o Bon crocante', p: [5100, 5600]},
+  ]},
+  {g: 'Con alcohol', items: [
+   {n: 'Vermut Lunfa Rosso', p: 6500}, {n: 'Gin tonic', p: 7000}, {n: 'Campari con naranja', p: 6500}, {n: 'Cerveza lata', p: 5500},
+  ]},
+  {g: 'Té · Mil Grullas', s: 'pueden servirse calientes o fríos', items: [
+   {n: 'Kafka en la orilla', d: 'Té verde con goji, arándanos, lemongrass y flores.', p: 4900},
+   {n: 'Ceylon', d: 'Té negro suave con notas especiadas.', p: 4900},
+   {n: 'My blueberry night', d: 'Té negro con frutos del bosque.', p: 4900},
+   {n: 'Bollywood Star', d: 'Té negro con clavo, vainilla, pétalos de rosas, canela, naranja y almendras.', p: 4900},
+  ]},
+  {g: 'Adicionales', items: [
+   {n: 'Shot de espresso', p: 1600}, {n: 'Leche vegetal', p: 600}, {n: 'Leche deslactosada', d: 'Sin cargo.'},
+  ]},
+ ]},
+ {id: 'obrador', t: 'Obrador Ambulante', nav: 'Obrador', groups: [
+  {g: 'Panadería', items: [
+   {n: 'Medialuna', p: 4300}, {n: 'Medialuna rellena de jamón y queso', p: 6500}, {n: 'Roll de canela', p: 5000},
+   {n: 'Chipá relleno', tacc: 1, d: 'De tomates secos y cebolla caramelizada, acompañado con paté de hongos.', p: 6400},
+   {n: 'Chipá clásico', tacc: 1, p: 4000},
+   {n: 'Pan de la casa', d: 'Tostadas de masa madre, queso crema, cremoso de arvejas y palta o mermelada.', p: 5800},
+  ]},
+  {g: 'Extras', items: [{n: 'Huevos revueltos', p: 2000}, {n: 'Champis salteados', p: 3000}, {n: 'Porción de tostadas', p: 2000}]},
+  {g: 'Pastelería', items: [
+   {n: 'Torta vasca', tacc: 1, d: 'De matcha, frutilla y tierra de sésamo.', p: 9200},
+   {n: 'Torta Bariloche', d: 'Bizcocho de chocolate y cerveza negra, crema Bariloche y mousse de arándanos.', p: 8500},
+   {n: 'Tarta de ricota', d: 'Naranja y frutos rojos.', p: 7000},
+   {n: 'Yogurt natural', tacc: 1, d: 'Granola casera y frutas de estación.', p: 9000},
+   {n: 'Cookie de limón', d: 'Con chocolate blanco y frutos rojos en hibiscus.', p: 4500},
+   {n: 'Cookie estilo americano', d: 'Con chips de chocolate.', p: 4500},
+   {n: 'Cookie tiramisú', d: 'Galleta de café, crema mascarpone y toffee de café.', p: 4500},
+  ]},
+  {g: 'Con nuestros panes', items: [
+   {n: 'Tostado de jamón y queso', d: 'Con manteca noisette.', p: 9000},
+   {n: 'Sánguche de huevo', d: 'Maní, palta, tomate, cilantro y lactonesa de sriracha.', p: 8800},
+   {n: 'Sánguche de jamón crudo', d: 'Queso brie, rúcula y relish dulce de tomate (opcional pan focaccia).', p: 9900},
+   {n: 'Sánguche de roast beef braseado', d: 'Lactonesa de aceitunas y pepinos encurtidos.', p: 12500},
+   {n: 'Tostón en pan de masa madre integral', d: 'Cremoso de ricota y albahaca, palta, tomates, huevo y girasol.', p: 10900},
+  ]},
+  {g: 'Combos', s: 'no acumulables con otros descuentos :)', items: [
+   {n: 'Clásico', d: 'Infusión mediana + medialuna.', p: 7400},
+   {n: 'Degustación de cookies', d: 'Cookie limón + cookie chips + cookie tiramisú.', p: 12500},
+   {n: 'Plato brunch', d: 'Infusión mediana + tostada de masa madre, jamón y queso, paté de hongos, huevos revueltos, yogurt con granola y frutas.', p: 16000},
+   {n: 'Brunch para compartir', d: '2 infusiones medianas + panadería + pastelería + tostón o sánguche a elección.', p: 30300},
+   {n: 'Bowl proteico (30 g de proteína)', d: '3 huevos revueltos, palta con aceite de oliva y semillas, jamón cocido + infusión mediana.', p: 13500},
+  ]},
+ ], foot: '<span class="tacc" style="display:inline-grid;place-items:center;width:18px;height:18px;border:1.3px solid var(--ol);border-radius:50%;font:700 .55rem/1 Montserrat;vertical-align:-4px;margin-right:6px">TA</span>Productos libres de T.A.C.C. en su receta.'},
+ {id: 'ejecutivo', t: 'Menú ejecutivo', nav: 'Ejecutivo', cls: 'ejec', mesa: 1, completo: ['Menú completo $ 16.000', 'Lunes a sábados de 12 a 15 hs · incluye agua con/sin gas libre y una limonada'], groups: [
+  {g: 'Entrada', items: [{n: 'Pan de focaccia', d: 'Hecho en casa, acompañado de cremoso del día. Incluido en el menú completo.'}]},
+  {g: 'Principales', s: 'a elección · cada uno con el menú completo', items: [
+   {n: 'Zapallitos rellenos', d: 'Gratinados con bechamel y salsa roja.', p: 16000},
+   {n: 'Suprema de pollo con puré de boniato', d: 'Opcional napolitana (salsa jamón y queso) + $ 3.000.', p: 16000},
+   {n: 'Sánguche de roast beef braseado', d: 'Lactonesa de aceitunas y pepinos encurtidos.', p: 16000},
+   {n: 'Adicional suprema napolitana', d: 'Salsa jamón y queso.', p: 3000},
+  ]},
+  {g: 'Postre', items: [{n: 'Café a elección + petit four', d: 'Espresso, americano o cortado chico. Incluido en el menú completo.'}]},
+ ]},
+ {id: 'especial', t: 'Especial', especial: 1, groups: []},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p === undefined ? '' : Array.isArray(p) ? `<span class="pr">${p.map(money).join(' / ')}</span>` : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}${it.tacc ? '<i class="tacc" title="Libre de T.A.C.C. en su receta">TA</i>' : ''}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp">${g.g ? `<h3>${g.g}</h3>` : ''}${g.s ? `<p class="gs">${g.s}</p>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
+
+const section = s => s.especial ? `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 class="pill" id="${s.id}-t">${s.t}</h2>
+  <article class="esp"${Pedido.attr('Alfa de cacao, ganache de pistacho y frutos rojos', undefined, {img: 'img/especial.webp'})}>
+    <img src="img/especial.webp" alt="Alfa de cacao, ganache de pistacho y frutos rojos" width="900" height="1067" loading="lazy">
+    <div class="cap"><h3>Alfa de cacao, ganache de pistacho y frutos rojos</h3><p>Consultá el precio con el mozo.</p></div>
+  </article>
+</section>` : `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-t">
+  ${s.mesa ? '<img class="mesa" src="img/mesa.webp" alt="" loading="lazy">' : ''}
+  <h2 class="pill" id="${s.id}-t">${s.t}</h2>
+  ${s.completo ? `<p class="completo"><b>${s.completo[0]}</b><span>${s.completo[1]}</span></p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+  ${s.foot ? `<p class="note">${s.foot}</p>` : ''}
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({theme: {btn: '#6d6f25', btnFg: '#ffffff', bg: '#ffffff', fg: '#3f4116', mute: '#6f7149', line: 'rgba(109,111,37,.28)', price: '#6d6f25', field: 'rgba(109,111,37,.08)', font: 'Montserrat,system-ui,sans-serif', head: 'Lora,serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>

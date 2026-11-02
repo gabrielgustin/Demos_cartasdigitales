@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Un Café · Carta</title>
+<meta name="description" content="Carta de Un Café: bebidas calientes y frías, galletaza, dulces, salados, sin TACC y promos. Obispo Oro 321, Obispo Trejo 347, Paseo del Jockey y Vélez Sarsfield 92.">
+<meta name="theme-color" content="#096345">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--verde:#096345;--verde-2:#0b7a55;--crema:#f4decd;--crema-2:#f9ecdf;--ink:#0a4a35;--line:rgba(9,99,69,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Raleway,system-ui,sans-serif;font-weight:500;color:var(--verde);background:var(--crema);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+/* ---------- portada ---------- */
+.hero{margin:14px 14px 0;padding:20px clamp(16px,4vw,34px);background:var(--verde);color:var(--crema);border-radius:0 0 22px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;max-width:calc(980px - 28px);margin-inline:auto}
+.hero h1{font-weight:900;font-size:clamp(3rem,15vw,5.4rem);line-height:.9;letter-spacing:-.02em;text-transform:uppercase}
+.hero .sed{display:grid;grid-template-columns:auto auto;gap:6px 22px;font-weight:600;font-size:.8rem;line-height:1.25;text-transform:uppercase}
+.hero .sed span+span{padding-left:16px;border-left:2px solid var(--crema)}
+.hero .ig{margin-left:auto;font-weight:800;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;color:var(--crema);text-decoration:none}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;margin-top:14px;background:rgba(244,222,205,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:2px solid var(--verde)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:2px solid var(--verde);border-radius:999px;color:var(--verde);text-decoration:none;font-weight:700;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--verde);color:var(--crema)}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:36px 0 8px}
+.sec-h{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sec-h h2{font-weight:800;font-size:clamp(1.5rem,6.6vw,2.1rem);line-height:1.1;text-transform:uppercase;letter-spacing:-.005em}
+.sec-h img{height:clamp(60px,17vw,92px);width:auto;flex:none}
+.cols{columns:2 400px;column-gap:44px;margin-top:6px}
+.grp{break-inside:avoid;margin-bottom:20px}
+.grp>h3{margin:14px 0 2px;font-weight:800;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:1px 12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:500;font-size:.95rem;line-height:1.3}
+.it h4 small{font-size:.66rem;opacity:.85}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:700;font-size:.95rem;white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:600;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.it p{grid-column:1/-1;font-size:.74rem;line-height:1.45;opacity:.85}
+.nota{margin-top:10px;font-size:.78rem;line-height:1.5;opacity:.9}
+
+/* tabla CH / M / G */
+.tbl{margin-top:10px;width:100%;border-collapse:collapse}
+.tbl th{padding:6px 4px;font-weight:800;font-size:.8rem;text-align:right;position:sticky;top:48px;background:rgba(244,222,205,.96)}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:8px 4px;border-bottom:1px solid var(--line);font-weight:700;font-size:.86rem;text-align:right;white-space:nowrap}
+.tbl td:first-child{text-align:left;white-space:normal;font-weight:500;font-size:.92rem}
+.tbl td small{display:block;font-weight:500;font-size:.68rem;opacity:.8}
+
+/* cajas redondeadas y promos (como el afiche) */
+.caja{margin-top:22px;padding:14px 18px 8px;border:2px solid var(--verde);border-radius:26px}
+.verde{margin-top:22px;padding:18px 20px;background:var(--verde);color:var(--crema);border-radius:24px;--pd-btn:var(--crema);--pd-btn-fg:var(--verde);--pd-bg:#0b7a55;--pd-fg:var(--crema);--pd-line:rgba(244,222,205,.45)}
+.verde h2{font-weight:900;font-size:1.5rem;letter-spacing:.02em;text-transform:uppercase}
+.verde .it{border-color:rgba(244,222,205,.35)}
+.verde .it .pr,.verde .it h4{color:var(--crema)}
+.promos{display:grid;gap:12px;margin:26px 0 8px;padding:20px;background:var(--verde);color:var(--crema);border-radius:24px;text-align:center}
+.promos div{font-weight:800;font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em}
+.promos small{display:block;margin-top:2px;font-weight:500;font-size:.74rem;text-transform:none;letter-spacing:0}
+.promos a{color:var(--crema);font-weight:800;font-size:1.1rem;text-decoration:none;text-transform:uppercase}
+footer{padding:14px 20px 42px;text-align:center;font-size:.74rem;opacity:.85}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Un Café</h1>
+  <div class="sed"><span>Obispo<br>Oro 321</span><span>Paseo del<br>Jockey (G305)</span><span>Obispo<br>Trejo 347</span><span>Vélez<br>Sarsfield 92</span></div>
+  <a class="ig" href="https://instagram.com/uncafe.ok">@uncafe.ok</a>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<div class="wrap"><div class="promos">
+  <div>Box de cookies<small>4 cookies a elección · $ 18.000</small></div>
+  <div>10% off<small>si venís con tu vaso reutilizable</small></div>
+  <div>10% off<small>si pagás en efectivo</small></div>
+  <a href="https://instagram.com/uncafe.ok">@uncafe.ok</a>
+</div></div>
+<footer>Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (transcriptos del afiche de Un Café) ----------
+// p: número o {etiqueta: precio} · img: ícono del afiche
+const SECS = [
+ {id: 'calientes', t: 'Bebidas calientes', nav: 'Calientes', img: 'caliente', table: {cols: ['CH', 'M', 'G'], rows: [
+  ['Magic', '', 4500, null, null], ['Americano', '', null, 4800, null], ['Latte saborizado', '', null, 5100, 5400], ['Capuccino', '', null, 5100, 5400],
+  ['Flat', '', null, 5000, null], ['Latte', '', null, 5000, 5300], ['Mocha B/N', '', null, 5200, 5500], ['Pistacho / Frambuesa', '', null, null, 5800],
+  ['Nutellatte / Oreo / Dulce de leche', 'Red Velvet / Peanut / Tiramisú', null, null, 5800], ['Matcha', '', null, null, 5000], ['Submarino', '', null, null, 5000],
+  ['Té clásico', '', null, 3000, null], ['Tés especiales', '', null, 3000, null]]},
+  nota: 'Tenemos leche entera, vegetal, descremada y deslactosada. No cobramos extra por leche vegetal.', groups: []},
+ {id: 'frias', t: 'Bebidas frías', nav: 'Frías', img: 'frio', groups: [
+  {items: [
+   {n: 'Espresso tonic', p: 5300}, {n: 'Iced americano', p: 5000}, {n: 'Shaked americano', p: 5000}, {n: 'Monster americano', p: 5000},
+   {n: 'Iced flat', p: 5400}, {n: 'Iced latte', p: 5200}, {n: 'Iced latte saborizado', p: 5400}, {n: 'Opcional crema', p: 1000},
+   {n: 'Iced cappuccino', p: 5400}, {n: 'Iced mocha', p: 5500},
+   {n: 'Iced pistacho / frambuesa', d: 'Nutellate / Oreo coffee / dulce de leche / red velvet / tiramisú / peanut.', p: 5800},
+   {n: 'Iced matcha', p: 5200}, {n: 'Iced chocolatada', p: 5200}, {n: 'Iced tea clásico', p: 3500}, {n: 'Iced tea caramel', p: 3800},
+   {n: 'Smoothies', p: {Común: 5300, 'Opcional proteico': 6000}}, {n: 'Limonada', p: 4500},
+   {n: 'Frappe Nutella / Kitkat', d: 'Cookies and cream / frutos rojos / açaí.', p: 5500},
+   {n: 'Profit latte', p: 5700},
+  ]},
+ ]},
+ {id: 'helados', t: 'Helados', img: 'helado', caja: 1, groups: [
+  {items: [
+   {n: 'Conito de helado', p: 2000}, {n: 'Sundae', p: 4000}, {n: 'Affogato', p: 4500}, {n: 'Cookies and cream', d: 'Opcional brownie.', p: 6500},
+  ]},
+ ]},
+ {id: 'galletaza', t: 'Galletaza', img: 'galletaza', groups: [
+  {items: [
+   {n: 'Galletaza chica', p: 5000}, {n: 'Galletaza grande', p: 6000},
+   {n: 'Tapuki', d: 'Agregale una Tapuki a tu café.', p: 2000},
+  ]},
+ ]},
+ {id: 'dulces', t: 'Dulces', img: 'dulce1', groups: [
+  {items: [
+   {n: 'Cookie', p: 5000}, {n: 'Medialuna', p: 1500}, {n: 'Pan de chocolate', p: 1500}, {n: 'Alfajor de maicena', p: 4000},
+   {n: 'Alfajores especiales', p: 4500}, {n: 'Budines', p: 4000}, {n: 'Roll de canela / nutella', p: 4500},
+  ]},
+ ]},
+ {id: 'salados', t: 'Salados', img: 'sandwich', groups: [
+  {items: [
+   {n: 'Criollitos', p: 500}, {n: 'Chipá', p: 1500}, {n: 'Scon', p: 2700}, {n: 'Tostadas c/ dips', p: 3500},
+   {n: 'Tostado árabe', d: 'Jamón y queso.', p: 5500}, {n: 'Tostado de chipá', d: 'Jamón y queso.', p: 6000},
+   {n: 'Tostado americano', d: 'Lomito y cheddar.', p: 5000}, {n: 'Roll salado', p: 4500}, {n: 'Mafalda', p: 2500},
+  ]},
+ ]},
+ {id: 'sintacc', t: 'Sin TACC', img: 'pan', groups: [
+  {items: [{n: 'Cookies', p: 6000}, {n: 'Scon de queso', p: 5000}, {n: 'Budín / brownie', p: 6500}]},
+ ]},
+ {id: 'combos', t: 'Mix & match', nav: 'Combos', verde: 1, groups: [
+  {items: [
+   {n: 'Mix & match', d: 'Bebida (americano / latte / flat) + algo rico (budín / tostadas / alfajor / scon / roll / mafalda). + $ 500 opción frío.', p: 7500},
+   {n: 'Café mediano + cookie', p: 8000},
+   {n: 'Box de cookies', d: '4 cookies a elección.', p: 18000},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp">${g.g ? `<h3>${g.g}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
+const table = t => `<table class="tbl"><thead><tr><th scope="col"></th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
+  const p = Object.fromEntries(t.cols.map((c, i) => [c, v[i]]));
+  return `<tr${Pedido.attr(n, p, {d})}><td data-pd-slot>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}</tr>`;
+}).join('')}</tbody></table>`;
+
+const section = s => {
+  const body = `<header class="sec-h"><h2 id="${s.id}-t">${s.t}</h2>${s.img ? `<img src="img/${s.img}.webp" alt="" loading="lazy">` : ''}</header>
+  ${s.nota ? `<p class="nota">${s.nota}</p>` : ''}${s.table ? table(s.table) : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>`;
+  return `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">${s.caja ? `<div class="caja">${body}</div>` : s.verde ? `<div class="verde">${body}</div>` : body}</section>`;
+};
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({theme: {btn: '#096345', btnFg: '#f4decd', bg: '#f9ecdf', fg: '#0a4a35', mute: '#3f7c63', line: 'rgba(9,99,69,.28)', price: '#096345', field: 'rgba(9,99,69,.08)', font: 'Raleway,system-ui,sans-serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
