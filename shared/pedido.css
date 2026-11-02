@@ -39,10 +39,13 @@ body.pd-lock{overflow:hidden}
 /* ---------- barra fija "Ver pedido" ---------- */
 .pd-bar{position:fixed;inset:auto 0 0 0;z-index:90;display:flex;justify-content:center;padding:0 16px max(16px,env(safe-area-inset-bottom));pointer-events:none}
 .pd-bar button{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;max-width:448px;padding:14px 20px;border:0;border-radius:999px;background:var(--pd-btn);color:var(--pd-btn-fg);font:600 .9rem var(--pd-font);cursor:pointer;box-shadow:0 12px 28px -8px rgba(0,0,0,.45)}
-.pd-bar .pd-l{display:flex;align-items:center;gap:10px;min-width:0}
+.pd-bar button{text-align:left;letter-spacing:0;text-transform:none}
+.pd-bar .pd-l{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 .pd-bar svg{width:19px;height:19px;flex:none}
-.pd-bar .pd-c{padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.75rem}
-.pd-bar .pd-t{font:700 .95rem var(--pd-head)}
+.pd-bar .pd-lt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pd-bar .pd-c{flex:none;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.75rem;white-space:nowrap}
+.pd-bar .pd-t{flex:none;font:700 .95rem var(--pd-head);white-space:nowrap}
+@media (max-width:420px){.pd-bar button{padding:13px 16px;gap:8px;font-size:.85rem}.pd-bar .pd-l{gap:8px}.pd-bar svg{display:none}.pd-bar .pd-c{padding:2px 8px;font-size:.7rem}}
 
 /* ---------- ventanas (producto y pedido) ---------- */
 .pd-ov{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:pd-fade .18s ease-out}

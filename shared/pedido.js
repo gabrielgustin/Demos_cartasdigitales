@@ -276,7 +276,7 @@ function paintBar() {
   document.body.style.paddingBottom = n ? '88px' : '';
   if (!n) return;
   barEl.firstChild.replaceChildren(
-    h('span', {class: 'pd-l'}, icon('list'), store.mode === 'none' ? T.view : T.dine, h('span', {class: 'pd-c'}, T.items(n))),
+    h('span', {class: 'pd-l'}, icon('list'), h('span', {class: 'pd-lt'}, store.mode === 'none' ? T.view : T.dine), h('span', {class: 'pd-c'}, T.items(n))),
     h('span', {class: 'pd-t'}, fmt(total())));
 }
 
