@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Numen · Carta</title>
+<meta name="description" content="Carta de Numen, café y comida simple: cafetería, fríos, limonadas, combos, pastelería, brunch all day, sándwiches y almuerzo.">
+<meta name="theme-color" content="#fbfaf6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--verde:#244634;--verde-2:#3b6b52;--menta:#cde8da;--crema:#f6eed9;--papel:#fbfaf6;--ink:#1c2a22;--mute:#5f6f65;--line:rgba(36,70,52,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Poppins,system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--papel);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:34px 20px 20px}
+.hero .logo{display:block;width:min(250px,60vw);height:auto;margin:0 auto}
+.hero .sub{margin-top:6px;font:500 .62rem Poppins;letter-spacing:.36em;margin-right:-.36em;text-transform:uppercase;color:var(--verde-2)}
+.hero .tit{display:block;width:min(330px,76vw);height:auto;margin:26px auto 0}
+.hero p{max-width:440px;margin:10px auto 0;font-style:italic;font-size:.86rem;line-height:1.6;color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:16px;font-size:.74rem;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,250,246,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:2px solid var(--verde)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:5px 15px;border:1px solid var(--verde);border-radius:999px;color:var(--verde);text-decoration:none;font:500 .82rem Poppins}
+.nav a[aria-current="true"]{background:var(--verde);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:40px 0 10px}
+.sec>h2{font-family:Lexend,sans-serif;font-weight:600;font-size:clamp(1.9rem,8vw,2.6rem);line-height:1.1;color:var(--verde);letter-spacing:-.01em}
+.sec>h2 img{display:block;height:clamp(46px,13vw,64px);width:auto}
+.sub-t{margin-top:4px;font-style:italic;font-size:.8rem;color:var(--mute)}
+.nota{margin-top:12px;font-style:italic;font-size:.8rem;line-height:1.55;color:var(--mute)}
+.nota b{font-weight:600;color:var(--ink)}
+.cols{columns:2 400px;column-gap:48px;margin-top:10px}
+.grp{break-inside:avoid;margin-bottom:22px}
+.grp>h3{margin:16px 0 2px;font-family:Lexend,sans-serif;font-weight:600;font-size:1.25rem;color:var(--verde)}
+.grp>h3 small{font:italic 300 .78rem Poppins;color:var(--mute);margin-left:6px}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:1px 14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:400;font-style:italic;font-size:.94rem;line-height:1.3;text-transform:uppercase;letter-spacing:.01em}
+.it h4 small{font-size:.7rem;text-transform:none;color:var(--mute)}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:600;font-size:.92rem;white-space:nowrap;text-align:right;color:var(--verde)}
+.it .pr small{display:block;font-weight:400;font-size:.62rem;letter-spacing:.04em;text-transform:lowercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-style:italic;font-size:.74rem;line-height:1.5;text-transform:uppercase;color:var(--mute);letter-spacing:.01em}
+.mk{display:inline-flex;align-items:center;justify-content:center;vertical-align:1px;margin-left:6px;min-width:18px;height:18px;padding:0 4px;border:1.3px solid var(--verde);border-radius:999px;font:600 .58rem/1 Poppins;font-style:normal;color:var(--verde);text-transform:none}
+.mk.sg{border:0;min-width:0;padding:0;font-size:.9rem;line-height:1}
+.mk.xl{border-radius:5px;letter-spacing:.04em}
+
+/* tabla de cafetería */
+.tbl{margin-top:12px;width:100%;border-collapse:collapse}
+.tbl th{padding:6px 4px;font:600 .68rem Poppins;text-align:right;color:var(--verde);vertical-align:bottom;position:sticky;top:48px;background:rgba(251,250,246,.96)}
+.tbl th small{display:block;font-weight:300;color:var(--mute)}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:9px 4px;border-bottom:1px solid var(--line);font-weight:600;font-size:.8rem;text-align:right;white-space:nowrap;color:var(--verde)}
+.tbl td:first-child{text-align:left;white-space:normal;font-weight:400;font-style:italic;font-size:.84rem;padding-left:0;text-transform:uppercase;color:var(--ink)}
+.tbl td:first-child small{display:block;font-size:.68rem;color:var(--mute);text-transform:uppercase}
+
+/* paneles de color del PDF */
+.panel{margin:34px -20px 0;padding:6px 20px 28px}
+.panel.menta{background:var(--menta)}
+.panel.crema{background:var(--crema)}
+.panel>.sec{padding-top:30px}
+.panel .it,.panel .tbl td{border-color:rgba(36,70,52,.25)}
+.panel .tbl th{background:transparent}
+@media (min-width:1000px){.panel{margin:34px 0 0;padding-left:28px;padding-right:28px;border-radius:22px}}
+
+/* ---------- pie ---------- */
+.pie{margin-top:40px;padding:26px 20px 40px;text-align:center}
+.pie .logo{width:150px;height:auto}
+.pie .sub{margin-top:4px;font:500 .56rem Poppins;letter-spacing:.34em;text-transform:uppercase;color:var(--verde-2)}
+.pie p{margin-top:12px;font-size:.88rem;color:var(--ink)}
+.pie a{color:var(--verde);font-style:italic;font-weight:500;text-decoration:none}
+.pie .cab{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:.8rem;color:var(--mute)}
+.pie .cab img{height:30px;width:auto}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img class="logo" src="img/logo.webp" alt="Numen" width="420" height="152">
+  <img class="tit" src="img/tit-carta.webp" alt="nuestra carta" width="520" height="51">
+  <p>Una propuesta con sabores caseros, ingredientes frescos y opciones para todos los gustos. Pensada para que hagas una pausa y disfrutes.</p>
+  <div class="legend"><span><i class="mk">V</i> vegetariano</span><span><i class="mk">VG</i> vegano</span><span><i class="mk sg">✱</i> receta sin gluten</span></div>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<footer class="pie">
+  <img class="logo" src="img/logo.webp" alt="Numen" width="420" height="152" loading="lazy">
+  <p>Sarmiento 1626 · Gral. Paz · <a href="https://instagram.com/numen.cafe">@numen.cafe</a></p>
+  <p>Eventos &amp; catering: celebrá con nosotros. ¡Pedilos para llevar!</p>
+  <div class="cab"><span>Café</span><img src="img/cabrales.webp" alt="Cabrales" width="380" height="103" loading="lazy"></div>
+  <p style="margin-top:22px;font-size:.7rem;font-style:italic;color:var(--mute);max-width:560px;margin-inline:auto;line-height:1.5">* Nuestra cocina es compartida. Hacemos lo posible por evitar contaminación cruzada. Utilizamos ingredientes que contienen trigo, avena, cebada, centeno, frutos secos, leche y huevos. Si tenés alguna condición nutricional específica, avisanos al momento de realizar tu pedido para que lo tengamos en cuenta.</p>
+</footer>
+
+<script>
+// ---------- datos (transcriptos de las 2 páginas de la carta 2026) ----------
+// v: vegetariano · vg: vegano · sg: receta sin gluten · xl: porción XL · p: número o {etiqueta: precio}
+const SECS = [
+ {id: 'cafeteria', t: 'cafetería', table: {cols: [['Chico', '85 ml'], ['Jarro', '180 ml'], ['Doble', '250 ml'], ['XL', '500 ml']], rows: [
+  ['Café', '', 3800, 4500, null, 6500], ['Café doble', '', null, null, 6000, null], ['Cortado', '', 3800, 4500, 6000, null],
+  ['Lágrima', '', 3800, 4500, 4800, 6800], ['Café con leche (latte)', '', null, null, 4800, 7500],
+  ['Latte especial', 'Caramel / avellana / vainilla', null, null, 6800, 9500], ['Capuchino', 'Canela, cacao', null, 5500, 6800, null],
+  ['Moccacino', 'Café, leche, cacao, chocolate', null, 5500, 6800, null], ['Chocolatada', '', null, null, 4800, 6800],
+  ['Submarino', '', null, null, 7000, null], ['Té / mate / infusión de hierbas', '', null, null, 3800, 4500],
+  ['Té con leche', '', null, null, 4500, null], ['Taza de leche', '', null, null, 3800, null]]},
+  groups: [
+   {g: 'Té en hebras Itacu', s: 'blends 100% agroecológicos · solicitar carta', items: [
+    {n: 'Tetera 250 ml', p: 5500}, {n: 'Tetera 650 ml', p: 8000}]},
+   {g: 'Agregados', items: [
+    {n: 'Leche de almendras o deslactosada', p: 1000}, {n: 'Crema', p: 1000}, {n: 'Syrup', p: 2000}]},
+  ]},
+ {id: 'frios', t: 'fríos', groups: [
+  {items: [
+   {n: 'Ice café', p: {'300 ml': 6000}}, {n: 'Ice latte', p: {'500 ml': 7000}}, {n: 'Ice capuchino', p: {'300 ml': 6800}},
+   {n: 'Chocolatada', p: {'500 ml': 6800}}, {n: 'Ice tea', d: 'Blend Cronopios, limón, naranja y dash de soda.', p: {'500 ml': 6500}},
+  ]},
+ ]},
+ {id: 'limonadas', t: 'limonadas y más', nav: 'Limonadas', groups: [
+  {g: 'Limonadas', items: [
+   {n: 'Clásica', p: {Vaso: 4000, Jarra: 9000}}, {n: 'Menta y jengibre', p: {Vaso: 4500, Jarra: 9500}},
+   {n: 'Lavanda y arándanos', p: {Vaso: 4500, Jarra: 9500}}, {n: 'Hibiscus', p: {Vaso: 4500, Jarra: 9500}},
+   {n: 'Refresco Serrano', d: 'Manzana verde, pepino, burro, cedrón, lemongrass.', p: {Vaso: 5000, Jarra: 10500}},
+   {n: 'Refresco Río', d: 'Zanahoria, maracuyá, suico, naranja, manzanilla.', p: {Vaso: 5000, Jarra: 10500}},
+  ]},
+  {g: 'Jugos y licuados', items: [
+   {n: 'Jugo de naranja', p: {'220 cc': 3500, '500 cc': 6500}}, {n: 'Licuado de banana', p: 6500}, {n: 'Licuado de durazno', p: 6500},
+  ]},
+  {g: 'Smoothies', items: [
+   {n: 'Mix 1', d: 'Ananá, frutilla, arándanos.', p: 6900}, {n: 'Mix 4', d: 'Frutilla, mango, durazno.', p: 6900},
+   {n: 'Mix 9', d: 'Melón, pepino, menta, jengibre.', p: 6900}, {n: 'Mix 10', d: 'Arándanos, frutilla, zanahoria.', p: 6900},
+  ]},
+  {g: 'Gaseosas y aguas', items: [
+   {n: 'Gaseosa', d: 'Línea Coca-Cola.', p: 4000}, {n: 'Agua con o sin gas', p: 3800}, {n: 'Agua saborizada', p: 4000},
+  ]},
+ ]},
+ {id: 'vinos', t: 'vinos y cerveza', nav: 'Vinos y cerveza', groups: [
+  {g: 'Vinos', items: [
+   {n: 'Botella', d: '3/8 · 3/4 — consultar variedades disponibles.', p: undefined}, {n: 'Copa de vino', p: 4500},
+  ]},
+  {g: 'Cerveza', items: [
+   {n: 'Stella Artois', p: {'330 cc': 6000, '1 lt': 13000}}, {n: 'Corona', p: {'330 cc': 7500}}, {n: 'Andes', p: {'1 lt': 11000}},
+   {n: 'Quilmes', p: {'330 cc': 6500}}, {n: 'Sin alcohol', p: {'330 cc': 6500}},
+  ]},
+  {g: 'Aperitivos', items: [
+   {n: 'Vermú Primmo', p: 7000}, {n: 'Vermú La Fuerza', p: 8500}, {n: 'Vermú Cinzano', p: 6500}, {n: 'Fernet con Coca', p: 9000},
+   {n: 'Campari naranja', p: 8500}, {n: 'Aperol', p: 9500}, {n: 'Gancia', p: 8000},
+  ]},
+ ]},
+ {id: 'combos', t: 'combos', panel: 'menta', nota: 'Café con leche, café jarro, cortado jarro, lágrima, chocolatada, té, mate o infusión de hierbas. <b>Elegir una opción.</b>', groups: [
+  {items: [
+   {n: 'Simple', d: 'Infusión, 1 criollo, 1 medialuna, untable a elección (manteca, mermelada, ddl).', p: 8000},
+   {n: 'Completo', d: 'Infusión, 2 medialunas / tostadas / criollos, jugo de naranja, manteca y mermelada.', p: 9500},
+   {n: 'Light', d: 'Infusión, 2 tostadas integrales, fruta, jugo de naranja, queso crema y mermelada light.', p: 11500},
+   {n: 'Proteico', d: 'Infusión, tostón de huevos revueltos, ensalada de fruta, jugo de naranja.', p: 13000},
+   {n: 'Sin harina', sg: 1, d: 'Infusión, huevos revueltos, queso, jamón, palta, ensalada de frutas y jugo de naranja.', p: 14500},
+   {n: 'Veggie', d: 'Infusión, bowl de yogurt, fruta y granola, jugo.', p: 13000},
+   {n: 'Antojo', d: 'Infusión, porción de torta o tarta a elección.', p: 13500},
+   {n: 'Fresco', d: 'Limonada o café con leche y tostado de jamón y queso.', p: 10500},
+  ]},
+ ]},
+ {id: 'pasteleria', t: 'pastelería & dulces', nav: 'Pastelería', groups: [
+  {items: [
+   {n: 'Medialuna', p: 1500}, {n: 'Medialuna jamón y queso', p: 3500}, {n: 'Criollo', p: 1500},
+   {n: 'Alfajores', d: 'Chocolate / nuez, naranja y ddl / choco blanco, frutos rojos y ddl.', p: 4500},
+   {n: 'Budines', vg: 1, d: 'Banana y chocolate / peras y chocolate / limón y jengibre.', p: 6000},
+   {n: 'Cookies', d: 'Chocolate · red velvet.', p: 4000}, {n: 'Croissant', p: 6000}, {n: 'Croissant jamón y queso', p: 8500},
+   {n: 'Pan de chocolate', p: 7000}, {n: 'Roll de canela', p: 6000},
+   {n: 'Torta o tarta porción', d: 'Torta bombón / key lime / cheesecake.', p: 9800},
+   {n: 'Carrot cake budín', p: 7000}, {n: 'Chipa', sg: 1, p: 2500}, {n: 'Scon de queso', p: 4500},
+  ]},
+ ]},
+ {id: 'brunch', t: 'brunch all day!', titleImg: 'tit-brunch', nav: 'Brunch', groups: [
+  {items: [
+   {n: 'Tostadas francesas', v: 1, d: 'Pan brioche embebido en huevo, leche, miel, canela. Frutas frescas, crema montada y mermelada de frutos rojos.', p: 12300},
+   {n: 'Panqueques de avena', v: 1, d: 'Panqueques de avena servidos con pasta de maní, frutas frescas, mermelada de frutos rojos.', p: 9600},
+   {n: 'Chia pudding', v: 1, d: 'Chía hidratada en leche vegetal, mermelada de frutos rojos, granola casera y frutas.', p: 7500},
+   {n: 'Bowl fruta y granola', v: 1, p: 7000}, {n: 'Huevos revueltos', v: 1, p: 5000}, {n: 'Huevos revueltos y panceta', p: 7500},
+  ]},
+  {g: 'Sin TACC', items: [
+   {n: 'Cuadrados', p: 6500}, {n: 'Conito DDL', p: 3600}, {n: 'Tostadas', p: 3500}, {n: 'Galletitas', p: 6800},
+  ], after: '* Productos envasados. No elaborados en nuestra cocina. Consultar más opciones disponibles.'},
+  {g: 'Yogurt', items: [
+   {n: 'Yogurt casero porción', v: 1, d: 'Sin azúcar o endulzantes.', p: 4500}, {n: 'Bowl con frutas y granola', v: 1, d: 'Hilos de miel.', p: 8500},
+  ]},
+  {g: 'Tostones', items: [
+   {n: 'Huevo revuelto', v: 1, d: 'Pan de masa madre, huevos revueltos, semillas de sésamo y oliva.', p: 8000},
+   {n: 'Avocado', v: 1, d: 'Pan de masa madre, queso crema, huevos revueltos, palta, semillas de sésamo y oliva.', p: 12000},
+   {n: 'Huevo y panceta', d: 'Pan de masa madre, huevos revueltos, panceta ahumada, tomates confitados, aceitunas, oliva.', p: 12300},
+   {n: 'Queso azul', v: 1, d: 'Pan de masa madre, cremoso de queso azul, peras caramelizadas, miel y nueces.', p: 11500},
+   {n: 'Berenjenas', vg: 1, d: 'Pan integral, hummus de garbanzos, escabeche de berenjenas, tomates confitados.', p: 10500},
+   {n: 'Vegano', vg: 1, d: 'Pan de masa madre, hummus de garbanzos, tomates asados, mix de verdes, semillas.', p: 10500},
+  ]},
+ ]},
+ {id: 'piqueo', t: 'piqueo y ensaladas', nav: 'Piqueo', groups: [
+  {g: 'Piqueo', items: [
+   {n: 'Picada', d: 'Jamón cocido, crudo, salame de la colonia, lomito de cerdo ahumado, queso pategrás, queso azul, escabeche de berenjena, alioli, maní, aceitunas, papas fritas.', p: 22500},
+   {n: 'Papas fritas', p: 6500}, {n: 'Papas fritas, huevo y verdeo', p: 8500},
+  ]},
+  {g: 'Ensaladas & bowls', items: [
+   {n: 'Ensalada de quinoa', vg: 1, d: 'Quinoa, vegetales asados, hummus de garbanzos, palta y ralladura de limón.', p: 14500},
+   {n: 'Vegetales asados', vg: 1, d: 'Mix de verdes, vegetales asados, croutones, semillas de girasol tostado y aliño.', p: 12500},
+   {n: 'Caesar', d: 'Mix de verdes, pollo a la plancha, croutones, láminas de queso y aderezo Caesar (contiene lácteos y anchoas).', p: 15500},
+   {n: 'Queso azul', v: 1, d: 'Mix de verdes, queso azul, nueces, manzana verde, aceto balsámico.', p: 13500},
+   {n: 'Ensalada fresca', v: 1, d: 'Mix de verdes, zanahoria, tomate, huevo duro.', p: 9500},
+  ]},
+ ]},
+ {id: 'sandwiches', t: 'sandwichs & burguers', nav: 'Sandwichs', groups: [
+  {items: [
+   {n: 'Tostado jamón y queso', p: 7500}, {n: 'Tostado crudo y queso', p: 8500},
+   {n: 'Sandwich de milanesa', xl: 1, d: 'Pan ciabatta, milanesa de ternera o pollo, mayonesa, queso, lechuga, tomate. Papas fritas.', p: 19800},
+   {n: 'Sandwich de mila pollo', xl: 1, d: 'Pan ciabatta, milanesa de pollo, mayonesa, queso, lechuga, tomate. Papas fritas.', p: 17500},
+   {n: 'Ciabatta pollo', xl: 1, d: 'Pan ciabatta, pechuga de pollo a la plancha, pasta de tomates, rúcula, queso. Papas fritas.', p: 17500},
+   {n: 'Ciabatta lomito ahumado', xl: 1, d: 'Pan ciabatta, lomito de cerdo ahumado, mostaza con miel, pepinillos agridulces, cebolla caramelizada. Papas fritas.', p: 17000},
+   {n: 'Ciabatta veggie', xl: 1, v: 1, vg: 1, d: 'Pan ciabatta, hummus de garbanzos, rúcula, hongos salteados, tomates asados, queso. Papas fritas.', p: 16800},
+   {n: 'Hamburguesa clásica', d: 'Medallón de ternera, lechuga, tomate, queso, mayonesa. Papas fritas.', p: 14500},
+   {n: 'Hamburguesa New York', d: 'Medallón de ternera, panceta ahumada, queso, pepinillos agridulces, mayonesa. Papas fritas.', p: 15000},
+  ]},
+ ]},
+ {id: 'almuerzo', t: 'menú ejecutivo', sub2: 'Almuerzo · lunes a viernes de 12:00 a 15:30 hs · consultá la sugerencia semanal', nav: 'Almuerzo', panel: 'crema', groups: [
+  {g: 'Clásicos al sartén', items: [
+   {n: 'Omelette', v: 1, d: 'Huevo, queso, albahaca y tomates confitados.', p: 11500},
+   {n: 'Tortilla de papas', v: 1, d: 'Acompañada de mix de verdes.', p: 14000},
+  ]},
+  {g: 'Carnes', s: 'acompañado de papas fritas, ensalada, puré de papas o vegetales asados · elegir una opción', items: [
+   {n: 'Bife de cuadril', p: 22000}, {n: 'Pechuga a la plancha', p: 16500}, {n: 'Filet de merluza', p: 16500},
+   {n: 'Plato alemán', d: 'Salchichas alemanas, chucrut, papas fritas.', p: 18500},
+  ]},
+  {g: 'Milanesas', s: 'mismo acompañamiento · elegir una opción', items: [
+   {n: 'Clásica', p: 19000}, {n: 'Napolitana', p: 21000}, {n: 'Suprema', p: 16500}, {n: 'Suprema napolitana', p: 18500},
+   {n: 'Berenjena', v: 1, p: 15000}, {n: 'Berenjena napolitana', v: 1, p: 17000},
+  ]},
+  {g: 'Pastas', s: 'salsa filetto, bechamel, mixta, bolognesa o pesto · elegir una opción', items: [
+   {n: 'Cintas al huevo', v: 1, p: 14500}, {n: 'Ñoquis', v: 1, p: 14500}, {n: 'Ravioles de carne y verdura', p: 16500},
+   {n: 'Sorrentinos', v: 1, d: 'Jamón y muzzarella / calabaza y queso.', p: 17500},
+   {n: 'Lasagna Numen', d: 'Lasagna de ternera braseada, masa casera, salsa filetto y bechamel, queso.', p: 18500},
+   {n: 'Wok fideos de arroz', vg: 1, sg: 1, d: 'Salteado de fideos de arroz, mix de vegetales, salsa de soja y semillas.', p: 17000},
+  ]},
+  {g: 'Postres', items: [
+   {n: 'Flan casero', sg: 1, p: 6000}, {n: 'Higos en almíbar y queso', p: 8000}, {n: 'Batata o membrillo y queso', p: 7500}, {n: 'Ensalada de frutas', p: 5000},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => typeof n === 'number' ? '$ ' + n.toLocaleString('es-AR') : n;
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => p == null ? '' : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+const marks = it => `${it.xl ? '<i class="mk xl">XL</i>' : ''}${it.v ? '<i class="mk" title="Vegetariano">V</i>' : ''}${it.vg ? '<i class="mk" title="Vegano">VG</i>' : ''}${it.sg ? '<i class="mk sg" title="Receta sin gluten">✱</i>' : ''}`;
+
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}${marks(it)}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp">${g.g ? `<h3>${g.g}${g.s ? `<small>${g.s}</small>` : ''}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul>${g.after ? `<p class="nota">${g.after}</p>` : ''}</div>`;
+
+const table = t => `<p class="nota" style="margin:12px 0 0">Precios en pesos.</p><table class="tbl" style="margin-top:4px"><thead><tr><th scope="col"></th>${t.cols.map(([a, b]) => `<th scope="col">${a}<small>${b}</small></th>`).join('')}</tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
+  const p = Object.fromEntries(t.cols.map(([a, b], i) => [`${a} ${b}`, v[i]]));
+  return `<tr${Pedido.attr(n, p, {d})}><td data-pd-slot>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}</tr>`;
+}).join('')}</tbody></table>`;
+
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.titleImg ? `<img src="img/${s.titleImg}.webp" alt="${s.t}">` : s.t}</h2>${s.sub2 ? `<p class="sub-t">${s.sub2}</p>` : ''}
+  ${s.nota ? `<p class="nota">${s.nota}</p>` : ''}
+  ${s.table ? table(s.table) : ''}<div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(s => s.panel ? `<div class="panel ${s.panel}">${section(s)}</div>` : section(s)).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({theme: {btn: '#244634', btnFg: '#ffffff', bg: '#fbfaf6', fg: '#1c2a22', mute: '#5f6f65', line: 'rgba(36,70,52,.2)', price: '#244634', field: 'rgba(36,70,52,.07)', font: 'Poppins,system-ui,sans-serif', head: 'Lexend,sans-serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>

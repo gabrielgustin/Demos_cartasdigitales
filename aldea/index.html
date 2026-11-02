@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aldea Café · Menú</title>
+<meta name="description" content="Menú de Aldea Café: café e infusiones, panadería, desayunos y meriendas, minutas, pastas, milanesas, postres y bebidas.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--teal:#2b4745;--teal-2:#3f6663;--ink:#1c1c1c;--mute:#5c6a69;--line:rgba(43,71,69,.18);--sage:#eef3f1}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;font-weight:400;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{text-align:center;padding:30px 20px 18px}
+.hero img{display:block;width:min(230px,56vw);height:auto;margin:0 auto}
+.hero p{margin-top:6px;font-weight:500;font-size:.8rem;letter-spacing:.34em;margin-right:-.34em;text-transform:uppercase;color:var(--teal-2)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:2px solid var(--teal)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:1px solid var(--teal);border-radius:999px;color:var(--teal);text-decoration:none;font-weight:600;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--teal);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:40px 0 8px}
+.sec>h2{font-weight:800;font-size:clamp(1.5rem,6.4vw,2.1rem);line-height:1.15;color:var(--teal);text-transform:uppercase;letter-spacing:.01em}
+.sec>h2::after{content:"";display:block;width:54px;height:3px;margin-top:10px;background:var(--teal-2)}
+.nota{margin-top:12px;padding:10px 14px;background:var(--sage);border-left:3px solid var(--teal);font-size:.84rem;line-height:1.55;color:var(--teal);font-weight:500}
+.cols{columns:2 400px;column-gap:48px;margin-top:10px}
+.grp{break-inside:avoid;margin-bottom:22px}
+.grp>h3{margin:16px 0 2px;font-weight:700;font-size:.92rem;letter-spacing:.04em;text-transform:uppercase;color:var(--teal)}
+.grp>h3 small{display:block;margin-top:2px;font-weight:500;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--mute)}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:600;font-size:.88rem;line-height:1.35;text-transform:uppercase;letter-spacing:.01em}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:600;font-size:.9rem;white-space:nowrap;text-align:right;color:var(--teal)}
+.it .pr small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.8rem;line-height:1.5;color:var(--mute)}
+
+/* ---------- pie con las marcas ---------- */
+.marcas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 30px;margin:44px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+.marcas img{height:44px;width:auto;max-width:112px;object-fit:contain}
+footer{padding:12px 20px 40px;text-align:center;font-size:.72rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="img/logo.webp" alt="Aldea Café" width="520" height="378">
+  <p>Menú</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+<div class="wrap"><div class="marcas" aria-label="Marcas">
+  <img src="img/amstel.webp" alt="Amstel" loading="lazy"><img src="img/imperial.webp" alt="Imperial" loading="lazy"><img src="img/heineken.webp" alt="Heineken" loading="lazy">
+  <img src="img/carpano.webp" alt="Carpano" loading="lazy"><img src="img/spiritoblu.webp" alt="Spirito Blu" loading="lazy"><img src="img/branca.webp" alt="Branca" loading="lazy">
+  <img src="img/sernova.webp" alt="Sernova" loading="lazy"><img src="img/lacelia.webp" alt="Bodega La Celia" loading="lazy">
+</div></div>
+<footer>Precios en pesos argentinos.</footer>
+
+<script>
+// ---------- datos (transcriptos del menú de Aldea Café) ----------
+// p: número o {etiqueta: precio}; d: descripción
+const SECS = [
+ {id: 'cafe', t: 'Café e infusiones', nav: 'Café', groups: [
+  {items: [
+   {n: 'Ristretto', p: 3800}, {n: 'Expresso', p: 3900}, {n: 'Jarrito', p: 4200}, {n: 'Doble', p: 4900},
+   {n: 'Chocolatada (Nesquik)', p: 4900}, {n: 'Iced coffee (café frío)', p: 6400}, {n: 'Capuchino', p: 6000},
+   {n: 'Submarino', p: 5800}, {n: 'Súper tazón café con leche', p: 6300}, {n: 'Té / mate cocido', p: 3800},
+  ]},
+ ]},
+ {id: 'naturales', t: 'Naturales', groups: [
+  {items: [
+   {n: 'Licuados con leche', p: 6000}, {n: 'Licuados con agua', p: 5500}, {n: 'Smoothies', p: 7400},
+   {n: 'Jugo de naranja exprimido grande', p: 5500},
+   {n: 'Limonada', d: 'Elegí tu opción: frutos rojos y albahaca · menta y pepino · menta y jengibre.', p: {Vaso: 4400, Jarra: 8800}},
+  ]},
+ ]},
+ {id: 'panaderia', t: 'Panadería', groups: [
+  {items: [
+   {n: 'Medialuna', p: 1700}, {n: 'Tortilla tucumana (criollo)', p: 1300}, {n: 'Tostadas', p: 2200},
+   {n: 'Mafalda (medialuna con jamón y queso)', p: 5200}, {n: 'Muffin', p: 6000}, {n: 'Cookies', p: 5500},
+  ]},
+  {g: 'Tostaditos', items: [
+   {n: 'Clásico', d: 'Queso tybo + jamón cocido + manteca.', p: 9800},
+   {n: 'Americano', d: 'Queso cheddar + jamón cocido + ketchup.', p: 9800},
+  ]},
+ ]},
+ {id: 'bagel', t: 'Bagel y tostón', groups: [
+  {g: 'Bagel', s: 'sale con papas de copetín', items: [
+   {n: 'Bagel de berenjenas', d: 'Berenjenas asadas, fontina y tomates asados.', p: 11000},
+   {n: 'Bagel de lomito de cerdo', d: 'Fetas de lomito de cerdo a la plancha, queso cheddar y queso Senda.', p: 11000},
+  ]},
+  {g: 'Tostón', items: [
+   {n: 'Tostón de jamón crudo', d: 'Tostón + queso crema + rúcula + jamón crudo + aceite de oliva.', p: 13200},
+   {n: 'Tostón de palta y huevo', d: 'Tostón + queso crema + palta + huevo revuelto + semillas de sésamo.', p: 13200},
+  ]},
+ ]},
+ {id: 'combos', t: 'Combos desayuno y merienda', nav: 'Combos', groups: [
+  {items: [
+   {n: 'Ejecutivo', d: 'Jarrito + 1 medialuna o 1 criollo o 1 factura.', p: 5500},
+   {n: 'Simple', d: 'Café doble o infusión + 2 medialunas o 2 criollos o 2 facturas.', p: 7100},
+   {n: 'Light', d: 'Café doble o infusión + 2 tostadas de pan integral con semillas + queso crema + mermelada + jugo exprimido de naranja chico.', p: 10500},
+   {n: 'Completo', d: 'Café doble o infusión + 1 medialuna y 2 criollos + untables (dulce de leche y manteca) + jugo exprimido de naranja chico.', p: 11000},
+   {n: 'Montaditos de jamón', d: 'Café doble o infusión + 2 tostadas de pan integral con semillas + queso crema + jamón cocido + jugo exprimido de naranja chico.', p: 11000},
+   {n: 'Un clásico del centro', d: 'Licuado de banana + tostadito de jamón y queso.', p: 13500},
+   {n: 'Americano', d: 'Café doble o infusión + 2 tostadas + 2 huevos revueltos + jamón y queso + panceta + jugo exprimido de naranja chico.', p: 16500},
+   {n: 'Tostón de palta', d: 'Tostón + queso crema + palta + huevo revuelto + semillas de sésamo.', p: 16500},
+   {n: 'Proteico', d: 'Café doble o infusión + 2 tostadas + 2 huevos revueltos + jamón y queso + palta + queso crema + aceitunas + jugo exprimido de naranja chico.', p: 17500},
+  ]},
+ ]},
+ {id: 'huevos', t: 'Huevos de campo', groups: [
+  {items: [
+   {n: 'Revueltos', d: 'Con mix crocante de semillas y pequeña ensalada fresca de rúcula y palta, acompañado de tostadas caseras multicereal recién horneadas.', p: 9900},
+   {n: 'Omelette', d: 'Relleno de queso fundido, tomate y cebolla salteada, espolvoreado con un mix crocante de semillas. Acompañado de una ensalada fresca de rúcula y palta y tostadas caseras multicereal, recién horneadas.', p: 13500},
+  ]},
+  {g: 'Adicionales', s: 'para revueltos u omelette', items: [
+   {n: 'Con jamón cocido', p: 2200}, {n: 'Con jamón serrano', p: 2750}, {n: 'Con lomo ahumado a las finas hierbas', p: 2200},
+  ]},
+  {g: 'Extras', items: [
+   {n: 'Mermelada, manteca, queso untable o dulce de leche', p: 900}, {n: 'Leche vegetal', p: 1100},
+   {n: 'Jamón o queso', p: 2200}, {n: 'Huevo o palta', p: 2200},
+   {n: 'Cazuela de aceitunas, maní o papas de copetín', p: 1100}, {n: 'Hielo', p: 1700},
+  ]},
+ ]},
+ {id: 'minutas', t: 'Minutas', sub: 'Almuerzo y cena', groups: [
+  {g: 'Pizzas', items: [
+   {n: 'Muzzarella', d: 'Salsa de tomate, muzzarella, orégano y olivas negras.', p: 17600},
+   {n: 'Fugazzeta', d: 'Salsa de tomate, muzzarella, cebolla, orégano y olivas negras.', p: 19800},
+   {n: 'Napolitana', d: 'Salsa de tomate, muzzarella, rodaja de tomate, ajo y olivas negras.', p: 22000},
+   {n: 'Especial', d: 'Salsa de tomate, muzzarella, jamón cocido y olivas negras.', p: 24200},
+   {n: 'Rúcula', d: 'Salsa de tomate, muzzarella, jamón crudo y rúcula.', p: 24200},
+  ]},
+  {g: 'Picadas', items: [
+   {n: 'Picada del asador', d: 'Salame + queso fontina + aceitunas + maní + papas + pan.', p: 22000},
+   {n: 'Tablacriolla', d: 'Jamón crudo + salame + lomo ahumado + queso tybo + aceituna + maní + papas + pan.', p: 28600},
+  ]},
+  {g: 'Empanadas', s: 'cada una', items: [
+   {n: 'Criolla de carne', p: 2800}, {n: 'Jamón y queso', p: 2800}, {n: 'Vegetarianas', p: 2800},
+   {n: 'Osobuco', p: 2800}, {n: 'Pollo al disco', p: 2800}, {n: 'Bondiola', p: 2800},
+  ]},
+  {g: 'Sándwiches de la casa', s: 'salen con papas de copetín', items: [
+   {n: 'Clásico', d: 'Jamón cocido + queso tybo + manteca + pan de la casa.', p: 13200},
+   {n: 'Cordobés', d: 'Salame de Oncativo + queso tybo + manteca + pan de la casa.', p: 16500},
+   {n: 'Mediterráneo', d: 'Jamón crudo + queso tybo + rúcula + parmesano + tomate + aceite de oliva + pan de la casa.', p: 17600},
+   {n: 'Sándwich de milanesa', d: 'Milanesa de nalga + jamón cocido + queso tybo + huevo + tomate + lechuga + mayonesa + pan de la casa.', p: 19500},
+   {n: 'Vacío con criolla serrana', d: 'Vacío con criolla serrana desmechado y ahumado por más de 12 hs, con pimientos asados, rúcula, tomates confitados y cebolla caramelizada.', p: 22000},
+  ]},
+  {g: 'Papas y rabas', items: [
+   {n: 'Papas rústicas', p: 9500}, {n: 'Papas rústicas con cheddar, verdeo y panceta', p: 13800}, {n: 'Porción de rabas', p: 19800},
+  ]},
+ ]},
+ {id: 'ejecutivo', t: 'Menú ejecutivo', nav: 'Ejecutivo', groups: [], nota: 'Almuerzo y cena. Incluye plato principal + bebida. Consultá el menú ejecutivo.'},
+ {id: 'principales', t: 'Principales', sub: 'Almuerzo y cena', groups: [
+  {g: 'Pastas caseras', items: [
+   {n: 'Ñoquis caseros de papa natural', p: 15400}, {n: 'Ravioles caseros de jamón, ricota y muzzarella', p: 15400},
+   {n: 'Ravioles caseros de espinaca, ricota y muzzarella', p: 15400}, {n: 'Ravioles caseros premium de pollo al disco', p: 17600},
+   {n: 'Panzottis caseros premium de vacío a la leña', p: 18700},
+  ]},
+  {g: 'Milanesas premium', s: 'salen con ensalada o papas rústicas', items: [
+   {n: 'Milanesa de carne', p: 18000}, {n: 'Milanesa de carne a la napolitana', p: 19200},
+   {n: 'Suprema de pollo', p: 17000}, {n: 'Suprema de pollo napolitana', p: 18100},
+  ]},
+  {g: 'Calzonis', s: 'con ensalada o papas rústicas', items: [
+   {n: 'Calzoni de capresse', d: 'Tomates asados, aceitunas negras, albahaca y muzzarella.', p: 13700},
+   {n: 'Calzoni de pollo tucumano', p: 13700},
+  ]},
+  {g: 'Tartas', s: 'salen con ensalada o papas rústicas', items: [
+   {n: 'Tarta de pollo y muzzarella', p: 11000}, {n: 'Tarta de jamón y queso', p: 11000}, {n: 'Tarta de verduras', p: 11000},
+  ]},
+  {g: 'Ensaladas', items: [
+   {n: 'Club chicken salad', d: 'Lechuga, pollo, panceta crujiente, palta, tomates y huevo duro.', p: 13700},
+   {n: 'Ensalada con trucha salmonada', d: 'Lechuga, trucha salmonada, palta, tomates y huevo duro.', p: 17000},
+  ]},
+ ]},
+ {id: 'postres', t: 'Postres y tortas', nav: 'Postres', groups: [
+  {items: [
+   {n: 'Helado crema americana', p: 5500}, {n: 'Brownie con helado', p: 8800},
+   {n: 'Franui chocolate con leche / semiamargo', p: 9500}, {n: 'Porción de torta', p: 8500},
+  ]},
+ ]},
+ {id: 'bebidas', t: 'Bebidas', groups: [
+  {g: 'Limonadas', s: 'elegí tu opción: limón, menta y pepino · limón, menta y jengibre · limón, frutos rojos y albahaca', items: [
+   {n: 'Limonada', p: {Vaso: 4500, Jarra: 8000}},
+  ]},
+  {g: 'Sin alcohol · chica', items: [
+   {n: 'Agua', p: 3000}, {n: 'Coca-Cola regular', p: 3500}, {n: 'Coca-Cola Zero', p: 3500}, {n: 'Sprite regular', p: 3500},
+   {n: 'Sprite Zero', p: 3500}, {n: 'Schweppes Zero', p: 3500}, {n: 'Powerade', p: 3500}, {n: 'Lata tónica', p: 3500}, {n: 'Levité', p: 3500},
+  ]},
+  {g: 'Sin alcohol · grande', items: [
+   {n: 'Agua', p: 4500}, {n: 'Coca-Cola regular', p: 6000}, {n: 'Coca-Cola Zero', p: 6000}, {n: 'Sprite regular', p: 6000},
+   {n: 'Sprite Zero', p: 6000}, {n: 'Schweppes Zero', p: 6000},
+  ]},
+  {g: 'Vinos', items: [
+   {n: 'Copa de vino de la casa', p: 5000}, {n: 'Los Cardos Malbec', p: 13500}, {n: 'Colón blanco dulce', p: 12000},
+   {n: 'Estate Malbec', p: 20200}, {n: 'Terruño Malbec Franc', p: 24100}, {n: 'Assemblage Malbec - Cabernet Franc', p: 16500},
+   {n: 'Un Mundo Chiquito Malbec', p: 13500}, {n: 'Tomero Malbec', p: 20000}, {n: 'Perro Callejero', p: 16500},
+   {n: 'Cordero con Piel de Lobo Malbec', p: 16500}, {n: 'La Celia Reserva Malbec', p: 17000},
+  ]},
+  {g: 'Sidra y espumante', items: [
+   {n: 'Sidra Pehuenia 500 cc', p: 6000}, {n: 'Sidra 1888 750 cc', p: 13800}, {n: 'Espumante extra brut Progenie', p: 18000},
+  ]},
+  {g: 'Cervezas lata', items: [
+   {n: 'Heineken', p: 6000}, {n: 'Heineken 0', p: 5000}, {n: 'Imperial', p: 5200}, {n: 'Blue Mont', p: 6000},
+  ]},
+  {g: 'Cervezas botella', items: [
+   {n: 'Amstel 1 L', p: 10000}, {n: 'Córdoba 1 L', p: 10000}, {n: 'Imperial 1 L', p: 12000}, {n: 'Miller 1 L', p: 12500}, {n: 'Heineken 1 L', p: 14000},
+  ]},
+  {g: 'Tragos', items: [
+   {n: 'Fernet con Coca', d: 'Medida de Fernet Branca.', p: 8000},
+   {n: 'Carpano originale', d: 'Vermú Carpano Rosso + soda + aceituna.', p: 8000},
+   {n: 'Carpano orang', d: 'Vermú Carpano Rosso + soda + rodaja de naranja.', p: 8000},
+   {n: 'Bianco tonic', d: 'Vermú Carpano Bianco + tónica + rodaja de limón.', p: 8000},
+   {n: 'Blu gin tonic', d: 'Spirito Blu gin + tónica + piel de limón.', p: 8000},
+   {n: 'Punt e Mes tonic', d: 'Vermú Punt e Mes + tónica.', p: 8000},
+   {n: 'Branca y soda', d: 'Branca Menta with soda.', p: 8000},
+   {n: 'Borghetti on the rocks', d: 'Licor de café Borghetti + hielo.', p: 8000},
+   {n: 'Whisky Johnnie Walker Black Label', p: 13000},
+  ]},
+ ]},
+];
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>` : ''}${money(v)}</span>`;
+const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp">${g.g ? `<h3>${g.g}${g.s ? `<small>${g.s}</small>` : ''}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>${s.sub ? `<p class="nota" style="border:0;background:none;padding:6px 0 0;color:var(--mute)">${s.sub}</p>` : ''}
+  ${s.nota ? `<p class="nota">${s.nota}</p>` : ''}
+  <div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({theme: {btn: '#2b4745', btnFg: '#ffffff', bg: '#ffffff', fg: '#1c1c1c', mute: '#5c6a69', line: 'rgba(43,71,69,.18)', price: '#2b4745', font: 'Montserrat,system-ui,sans-serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
