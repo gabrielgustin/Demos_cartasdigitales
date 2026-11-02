@@ -278,7 +278,7 @@ document.getElementById('menu').innerHTML = SECS.map(s => s.panel ? `<div class=
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
 
 // ---------- pedido para el salón (módulo compartido) ----------
-Pedido.init({theme: {btn: '#244634', btnFg: '#ffffff', bg: '#fbfaf6', fg: '#1c2a22', mute: '#5f6f65', line: 'rgba(36,70,52,.2)', price: '#244634', field: 'rgba(36,70,52,.07)', font: 'Poppins,system-ui,sans-serif', head: 'Lexend,sans-serif'}});
+Pedido.init({pickText: 'Elegí el tamaño', theme: {btn: '#244634', btnFg: '#ffffff', bg: '#fbfaf6', fg: '#1c2a22', mute: '#5f6f65', line: 'rgba(36,70,52,.2)', price: '#244634', field: 'rgba(36,70,52,.07)', font: 'Poppins,system-ui,sans-serif', head: 'Lexend,sans-serif'}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

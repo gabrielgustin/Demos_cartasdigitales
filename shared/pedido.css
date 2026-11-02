@@ -93,3 +93,12 @@ body.pd-lock{overflow:hidden}
 .pd-info .pd-x.pd-flo{position:absolute;top:14px;right:14px}
 .pd-vars{margin:2px 0 0;padding:0;list-style:none;border-top:1px solid var(--pd-line)}
 .pd-vars .pd-ln:first-child{padding-top:10px}
+
+/* selector de tamaño / opción */
+.pd-pick{margin:4px 0 0;font:700 .68rem/1 var(--pd-font);letter-spacing:.16em;text-transform:uppercase;color:var(--pd-mute)}
+.pd-opts{display:grid;gap:8px}
+.pd-opt{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding:13px 18px;border:1.5px solid var(--pd-line);border-radius:16px;background:var(--pd-field);color:var(--pd-fg);font:600 .95rem var(--pd-font);text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+.pd-opt:hover,.pd-opt:focus-visible{border-color:var(--pd-btn);background:var(--pd-bg)}
+.pd-opt .pd-ol{display:flex;flex-direction:column;gap:2px}
+.pd-opt em{font:400 .72rem var(--pd-font);font-style:normal;color:var(--pd-mute)}
+.pd-opt .pd-op{flex:none;font-weight:700;color:var(--pd-price)}

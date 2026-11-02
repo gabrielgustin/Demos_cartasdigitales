@@ -150,7 +150,7 @@ document.getElementById('menu').insertAdjacentHTML('beforeend', `<div class="pie
 </div>`);
 
 // ---------- pedido para el salón (módulo compartido) ----------
-Pedido.init({theme: {btn: '#00501f', btnFg: '#ffffff', bg: '#ffffff', fg: '#0b4a24', mute: '#4d7a5c', line: 'rgba(0,80,31,.2)', price: '#00501f', field: 'rgba(0,80,31,.07)', font: 'Montserrat,system-ui,sans-serif'}});
+Pedido.init({pickText: 'Elegí el tamaño', theme: {btn: '#00501f', btnFg: '#ffffff', bg: '#ffffff', fg: '#0b4a24', mute: '#4d7a5c', line: 'rgba(0,80,31,.2)', price: '#00501f', field: 'rgba(0,80,31,.07)', font: 'Montserrat,system-ui,sans-serif'}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

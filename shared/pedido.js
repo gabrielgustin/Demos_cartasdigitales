@@ -11,7 +11,7 @@ const escAttr = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/<
 
 const T = {
   add: n => `Agregar ${n} al pedido`, less: n => `Quitar una unidad de ${n}`, more: n => `Agregar una unidad de ${n}`,
-  pick: n => `Elegir opciones de ${n}`, view: 'Ver pedido', dine: 'Pedido para el salón', items: n => n === 1 ? '1 plato' : `${n} platos`,
+  pick: n => `Elegir opciones de ${n}`, pickText: 'Elegí una opción', inOrderN: n => `${n} en tu pedido`, view: 'Ver pedido', dine: 'Pedido para el salón', items: n => n === 1 ? '1 plato' : `${n} platos`,
   title: 'Mi pedido', hint: 'Revisá tu pedido y ajustá las cantidades. Después se lo mostrás al mozo.',
   empty: 'Todavía no agregaste nada. Tocá + en los platos que quieras.', total: 'Total estimado', make: 'Hacer pedido',
   show: 'Mostrale esta pantalla al mozo cuando se acerque a tu mesa.', done: 'Listo', edit: 'Modificar pedido',
@@ -196,10 +196,13 @@ function openProduct(info) {
       : [h('div', {class: 'pd-inyour'}, h('span', {class: 'pd-lbl'}, T.inOrder), stepper(info.n, q, () => bump(info, one, -1), () => bump(info, one, 1))),
          h('button', {class: 'pd-main', type: 'button', 'data-first': true, onclick: m.close}, T.done)];
     else if (info.v.length) actions = [
-      h('ul', {class: 'pd-vars'}, info.v.map(v => h('li', {class: 'pd-ln'},
-        h('div', {}, h('h4', {}, v[0] || info.n), h('small', {}, fmt(v[1]))),
-        stepper(`${info.n} ${v[0]}`.trim(), qtyOf(lineKey(info.sec, info.n, v[0], v[1])), () => bump(info, v, -1), () => bump(info, v, 1))))),
-      h('button', {class: 'pd-main', type: 'button', 'data-first': true, onclick: m.close}, T.done)];
+      h('p', {class: 'pd-pick'}, T.pickText),
+      h('div', {class: 'pd-opts', role: 'group', 'aria-label': T.pickText}, info.v.map((v, i) => {
+        const q = qtyOf(lineKey(info.sec, info.n, v[0], v[1]));
+        return h('button', {class: 'pd-opt', type: 'button', 'data-first': i === 0 || null, 'aria-label': `${T.add(`${info.n} ${v[0]}`.trim())}, ${fmt(v[1])}`, onclick: () => { bump(info, v, 1); m.close(); }},
+          h('span', {class: 'pd-ol'}, v[0] || fmt(v[1]), q ? h('em', {}, T.inOrderN(q)) : null), v[0] ? h('span', {class: 'pd-op'}, fmt(v[1])) : null);
+      })),
+      h('button', {class: 'pd-ghost', type: 'button', onclick: m.close}, T.close)];
     else actions = [h('p', {}, T.ask), h('button', {class: 'pd-main', type: 'button', 'data-first': true, onclick: m.close}, T.close)];
     return h('div', {},
       info.i && h('div', {class: 'pd-pic'}, h('img', {src: info.i, alt: ''}), closeBtn(m)),
@@ -313,6 +316,7 @@ function init(o = {}) {
   const th = o.theme || {}, map = {btn: 'btn', btnFg: 'btn-fg', bg: 'bg', fg: 'fg', mute: 'mute', line: 'line', price: 'price', font: 'font', head: 'head', field: 'field'};
   for (const [k, v] of Object.entries(th)) if (map[k]) document.documentElement.style.setProperty('--pd-' + map[k], v);
   if (o.key) KEY = 'pedido:' + o.key;
+  if (o.pickText) T.pickText = o.pickText;
   const root = document.querySelector(o.root || '#menu') || document.querySelector('main');
   load();
   barEl = h('div', {class: 'pd-bar', hidden: true}, h('button', {type: 'button', onclick: openOrder}));
