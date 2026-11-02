@@ -60,6 +60,7 @@ main{padding-bottom:8px}
 .mk.xl{border-radius:5px;letter-spacing:.04em}
 
 /* tabla de cafetería */
+.tbl{max-width:620px}.tbl .tc{width:48px;padding-left:8px;padding-right:0;text-align:right}.tbl .tc .pd-ctl{margin:0}
 .tbl{margin-top:12px;width:100%;border-collapse:collapse}
 .tbl th{padding:6px 4px;font:600 .68rem Poppins;text-align:right;color:var(--verde);vertical-align:bottom;position:sticky;top:48px;background:rgba(251,250,246,.96)}
 .tbl th small{display:block;font-weight:300;color:var(--mute)}
@@ -262,9 +263,9 @@ const marks = it => `${it.xl ? '<i class="mk xl">XL</i>' : ''}${it.v ? '<i class
 const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}${marks(it)}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
 const group = g => `<div class="grp">${g.g ? `<h3>${g.g}${g.s ? `<small>${g.s}</small>` : ''}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul>${g.after ? `<p class="nota">${g.after}</p>` : ''}</div>`;
 
-const table = t => `<p class="nota" style="margin:12px 0 0">Precios en pesos.</p><table class="tbl" style="margin-top:4px"><thead><tr><th scope="col"></th>${t.cols.map(([a, b]) => `<th scope="col">${a}<small>${b}</small></th>`).join('')}</tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
+const table = t => `<p class="nota" style="margin:12px 0 0">Precios en pesos.</p><table class="tbl" style="margin-top:4px"><thead><tr><th scope="col"></th>${t.cols.map(([a, b]) => `<th scope="col">${a}<small>${b}</small></th>`).join('')}<th class="tc"></th></tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
   const p = Object.fromEntries(t.cols.map(([a, b], i) => [`${a} ${b}`, v[i]]));
-  return `<tr${Pedido.attr(n, p, {d})}><td data-pd-slot>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}</tr>`;
+  return `<tr${Pedido.attr(n, p, {d})} data-pd-compact><td>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}<td class="tc" data-pd-slot></td></tr>`;
 }).join('')}</tbody></table>`;
 
 const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">

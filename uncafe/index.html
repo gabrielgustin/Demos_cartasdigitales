@@ -53,6 +53,7 @@ main{padding-bottom:8px}
 .nota{margin-top:10px;font-size:.78rem;line-height:1.5;opacity:.9}
 
 /* tabla CH / M / G */
+.tbl{max-width:620px}.tbl .tc{width:48px;padding-left:8px;padding-right:0;text-align:right}.tbl .tc .pd-ctl{margin:0}
 .tbl{margin-top:10px;width:100%;border-collapse:collapse}
 .tbl th{padding:6px 4px;font-weight:800;font-size:.8rem;text-align:right;position:sticky;top:48px;background:rgba(244,222,205,.96)}
 .tbl th:first-child{text-align:left}
@@ -153,9 +154,9 @@ const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>
 const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
 const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
 const group = g => `<div class="grp">${g.g ? `<h3>${g.g}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
-const table = t => `<table class="tbl"><thead><tr><th scope="col"></th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
+const table = t => `<table class="tbl"><thead><tr><th scope="col"></th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}<th class="tc"></th></tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
   const p = Object.fromEntries(t.cols.map((c, i) => [c, v[i]]));
-  return `<tr${Pedido.attr(n, p, {d})}><td data-pd-slot>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}</tr>`;
+  return `<tr${Pedido.attr(n, p, {d})} data-pd-compact><td>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '' : x.toLocaleString('es-AR')}</td>`).join('')}<td class="tc" data-pd-slot></td></tr>`;
 }).join('')}</tbody></table>`;
 
 const section = s => {

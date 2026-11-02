@@ -66,10 +66,11 @@ main{padding-bottom:8px}
 .sec.des .torta{position:absolute}
 
 /* cakes: tabla de tamaños */
+.tbl{max-width:620px}.tbl .tc{width:48px;padding-left:8px;padding-right:0;text-align:right}.tbl .tc .pd-ctl{margin:0}
 .tbl{margin-top:14px;width:100%;border-collapse:collapse}
 .tbl th{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--naranja);text-align:right;padding:6px 8px;position:sticky;top:50px;background:rgba(241,234,227,.96)}
 .tbl th:first-child{text-align:left}
-.tbl td{padding:9px 8px;border-bottom:1px solid rgba(90,58,30,.12);font-size:.9rem;text-align:right;white-space:nowrap}
+.tbl td{padding:9px 5px;border-bottom:1px solid rgba(90,58,30,.12);font-size:.9rem;text-align:right;white-space:nowrap}
 .tbl td:first-child{text-align:left;white-space:normal;color:var(--naranja);font-weight:500}
 .tbl td small{font-size:.72rem;color:var(--marron)}
 .tbl tr:last-child td{border-bottom:0}
@@ -245,8 +246,8 @@ const marks = it => `${it.st ? '<span class="mk" title="Opción sin TACC">* sin 
 const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}${marks(it)}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
 const group = g => `<div class="grp">${g.g ? `<h3>${g.g}${g.s ? ` <small>· ${g.s}</small>` : ''}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
 
-const table = t => `<table class="tbl"><thead><tr><th scope="col">Torta</th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>${
-  t.rows.map(r => `<tr${Pedido.attr(r[0], Object.fromEntries(t.cols.map((c, i) => [c, r[i + 1]])))}><td data-pd-slot>${r[0]}</td>${r.slice(1).map(v => `<td>${v == null ? '–' : money(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+const table = t => `<table class="tbl"><thead><tr><th scope="col">Torta<small style="display:block;font-weight:400;font-size:.62rem;color:var(--marron)">precios en pesos</small></th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}<th class="tc"></th></tr></thead><tbody>${
+  t.rows.map(r => `<tr${Pedido.attr(r[0], Object.fromEntries(t.cols.map((c, i) => [c, r[i + 1]])))} data-pd-compact><td>${r[0]}</td>${r.slice(1).map(v => `<td>${v == null ? '–' : v.toLocaleString('es-AR')}</td>`).join('')}<td class="tc" data-pd-slot></td></tr>`).join('')}</tbody></table>`;
 
 const section = s => `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-t">
   ${s.torta ? '<img class="torta" src="img/torta.webp" alt="" loading="lazy">' : ''}

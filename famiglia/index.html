@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabores Famiglia · Carta de sabores</title>
+<meta name="description" content="Carta de sabores de Famiglia: sabores a la crema, al agua, chocolates y dulces de leche.">
+<meta name="theme-color" content="#00767c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--t:#00767c;--t-2:#005f64;--c:#8fd4d8;--c-2:#a9dfe2;--ink:#00666b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;font-weight:400;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---------- portada ---------- */
+.hero{position:relative;text-align:center;padding:30px 20px 22px;overflow:hidden}
+.hero .logo{display:block;width:min(340px,80vw);height:auto;margin:0 auto}
+.hero p{max-width:460px;margin:14px auto 0;font-size:.88rem;line-height:1.55}
+.hero .bola{position:absolute;width:clamp(90px,20vw,150px);height:auto;border-radius:50%;box-shadow:0 8px 22px -8px rgba(0,60,64,.5)}
+.hero .b1{left:-62px;bottom:-44px}.hero .b2{right:-48px;top:14px}
+.hero .logo,.hero p{position:relative;z-index:1}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid rgba(0,118,124,.2);border-bottom:2px solid var(--t)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:980px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:2px solid var(--t);border-radius:999px;color:var(--t);text-decoration:none;font-weight:700;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--t);color:#fff}
+
+/* ---------- secciones: paneles de color como en el PDF ---------- */
+.panel{position:relative;padding:8px 0 26px}
+.panel.blanco{background:#fff}
+.panel.teal{background:var(--t);color:#fff}
+.panel.celeste{background:var(--c-2)}
+.sec{padding:34px 0 4px;position:relative}
+.sec.wrap{padding-left:20px;padding-right:20px}
+.sec>h2{font-weight:700;font-size:clamp(1.5rem,6.4vw,2.1rem);letter-spacing:.01em;text-transform:uppercase;color:var(--c);line-height:1.1;max-width:calc(100% - 110px)}
+.panel.teal .sec>h2{color:var(--c-2)}
+.panel.celeste .sec>h2{color:var(--t)}
+.sec .bola{position:absolute;top:18px;right:0;width:clamp(76px,18vw,120px);height:auto;border-radius:50%;box-shadow:0 8px 20px -8px rgba(0,60,64,.5)}
+.cols{columns:2 380px;column-gap:48px;margin-top:18px}
+.it{break-inside:avoid;padding:10px 0 12px}
+.it h4{font-weight:800;font-size:.95rem;line-height:1.3;color:var(--t)}
+.panel.teal .it h4{color:#fff}
+.it p{margin-top:2px;font-size:.88rem;line-height:1.55}
+.it .ask{display:none}
+
+footer{padding:26px 20px 40px;text-align:center;font-size:.76rem;color:var(--t)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img class="bola b1" src="img/oreo.webp" alt="" width="358" height="358">
+  <img class="bola b2" src="img/almendra.webp" alt="" width="358" height="358">
+  <img class="logo" src="img/logo.webp" alt="Sabores Famiglia" width="620" height="327">
+  <p>Todos nuestros sabores, de la crema al agua, los chocolates y los dulces de leche.</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main id="menu"></main>
+<footer>Famiglia · Carta de sabores</footer>
+
+<script>
+// ---------- datos (transcriptos de la Carta de Sabores; el PDF no trae precios) ----------
+const SECS = [
+ {id: 'crema', t: 'Sabores a la crema', nav: 'A la crema', panel: 'blanco', img: 'blanco', items: [
+  ['Mascarpone con frutos rojos', 'Helado a base de queso mascarpone italiano sembrado con frutos rojos.'],
+  ['Menta blanca granizada', 'Amarlo u odiarlo.'],
+  ['Pistacho', 'Versión a la crema de uno de los frutos secos más refinados. Equilibrio justo entre lo salado del propio fruto y lo dulce de nuestra crema.'],
+  ['Tiramisú', 'Clásico postre italiano. Helado de tiramisú, sembrado con trozos de bizcochuelo humedecido en vino marsala.'],
+  ['Tramontana', 'Helado de Fior di Latte sembrado con dulce de leche repostero y galletas bañadas en chocolate.'],
+  ['Vainilla tostada', 'Base de helado de vainilla de chaucha, sembrado con almendras caramelizadas.'],
+ ]},
+ {id: 'crema2', t: 'Más sabores a la crema', nav: 'Más crema', panel: 'teal', img: 'dulce', items: [
+  ['Banana Split', 'Crema helada de banana, sembrado con dulce de leche repostero.'],
+  ['Cheesecake de Maracuyá', 'Helado a base de queso mascarpone italiano con maracuyá (con semillas).'],
+  ['Coco Goloso', 'Crema helada de coco, sembrado con dulce de leche y merengue seco.'],
+  ['Crema Famiglia', 'Crema de Nutella (crema de avellanas y cacao), sembrado con galletas Oreo.'],
+  ['Crema Marquise', 'Helado de Fior di Latte sembrado con dulce de leche y brownie casero.'],
+  ['Fior di Latte', 'Es nuestro sabor más puro, solo crema, leche y azúcares. Sirve de base para muchos de nuestros sabores a la crema.'],
+  ['Flan de La Nonna', 'Cremoso helado de flan casero, con notas de vainilla y caramelo, inspirado en la receta tradicional de la Nonna.'],
+  ['Frutilla a la crema', 'Helado de frutilla a la crema, hecho con fruta 100 % natural, sembrado con frutillas en almíbar.'],
+  ['Kínder', 'Helado de crema de avellanas, chocolate con leche y manteca de cacao.'],
+  ['Lemon pie', 'Helado de mousse de limón, veteado con curd de limón y pequeños trozos de galletita de limón. Equilibrio perfecto de cremosidad, acidez y dulzor.'],
+  ['Marroc', 'Helado de maní, veteado con la combinación perfecta de una pasta de chocolate con leche y maní.'],
+ ]},
+ {id: 'agua', t: 'Sabores al agua', nav: 'Al agua', panel: 'blanco', items: [
+  ['Limón al agua', 'Helado elaborado a base de jugo de limón natural.'],
+  ['Limonada con menta y jengibre', 'Helado de limón, menta y jengibre. Hecho a base de jugo de limón natural.'],
+  ['Frutos rojos', 'Helado de frutos rojos (frutilla, frambuesa, arándanos y moras). Utilizamos fruta 100% natural.'],
+  ['Frambuesa nevada', 'Helado de frambuesa, sembrado con chocolate semiamargo y chocolate blanco.'],
+  ['Naranja Frutilla', 'Helado de naranja y frutilla. Elaborado a base de jugo de naranja natural y frutillas.'],
+ ]},
+ {id: 'chocolate', t: 'Chocolate', panel: 'celeste', img: 'almendra', items: [
+  ['Chocolate clásico (semi amargo)', 'Blend de Cacao Holandés y Brasilero, manteca de cacao pura y azúcares.'],
+  ['Chocolate con almendras', 'Chocolate semi amargo sembrado con almendras enteras.'],
+  ['Chocolate Famiglia', 'Chocolate intenso, sembrado con galletas Oreo y dulce de leche repostero.'],
+  ['Chocolate Marquise', 'Helado de chocolate, sembrado con dulce de leche y merengue italiano.'],
+  ['Mousse Famiglia', 'Helado de mousse de chocolate y dulce de leche. Resultado: un chocolate suave y cremoso, con un toque extra de dulzor.'],
+ ]},
+ {id: 'dulcedeleche', t: 'Dulce de leche', nav: 'Dulce de leche', panel: 'teal', img: 'oreo', items: [
+  ['Dulce de leche Clásico', 'Blend de dulce de leche heladero.'],
+  ['Dulce de leche Chocotorta', 'Helado de dulce de leche, sembrado con dulce de leche y la clásica galleta Chocolina.'],
+  ['Dulce de leche Famiglia', 'Helado de dulce de leche endulzado a base de miel, sembrado con nueces caramelizadas.'],
+  ['Dulce de leche Goloso', 'Helado de dulce de leche, sembrado con dulce de leche repostero y merengue seco.'],
+  ['Dulce de leche Granizado', 'Helado de dulce de leche granizado con Stracciatella (baño de chocolate).'],
+  ['Súper Dulce de leche', 'Helado de dulce de leche, sembrado con dulce de leche repostero.'],
+  ['Dulce de leche Rogel', 'Helado de dulce de leche, sembrado con dulce de leche repostero y masa de hojaldre.'],
+ ]},
+];
+
+// ---------- render ----------
+const item = ([n, d]) => `<li class="it"${Pedido.attr(n, undefined, {d})} style="list-style:none"><h4>${n}</h4><p>${d}</p></li>`;
+const section = s => `<div class="panel ${s.panel}"><section class="sec wrap" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>${s.img ? `<img class="bola" src="img/${s.img}.webp" alt="" loading="lazy" width="358" height="358">` : ''}
+  <ul class="cols" style="padding:0">${s.items.map(item).join('')}</ul>
+</section></div>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido (módulo compartido): el PDF no trae precios, así que los sabores solo abren su detalle ----------
+Pedido.init({theme: {btn: '#00767c', btnFg: '#ffffff', bg: '#ffffff', fg: '#00666b', mute: '#3f8e93', line: 'rgba(0,118,124,.25)', price: '#00767c', field: 'rgba(0,118,124,.08)', font: 'Montserrat,system-ui,sans-serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>

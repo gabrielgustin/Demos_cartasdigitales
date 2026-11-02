@@ -250,7 +250,9 @@ function setupItem(el) {
       return;
     }
     const v = info.v[0], q = qtyOf(lineKey(info.sec, info.n, v[0], v[1]));
-    if (!q) ctl.replaceChildren(...lead, h('button', {class: 'pd-b pd-on', type: 'button', 'aria-label': T.add(info.n), html: ICON.plus, onclick: e => { e.stopPropagation(); bump(info, v, 1); }}));
+    // data-pd-compact (filas de tabla): un solo botón de ancho fijo que suma 1 y muestra la cantidad en una insignia
+    if (!q || el.hasAttribute('data-pd-compact')) ctl.replaceChildren(...lead, h('button', {class: 'pd-b pd-on' + (q ? ' pd-badge' : ''), type: 'button', 'aria-label': T.add(info.n) + (q ? ` (${q})` : ''), html: ICON.plus, onclick: e => { e.stopPropagation(); bump(info, v, 1); }},
+      q ? h('span', {class: 'pd-cnt'}, String(q)) : null));
     else ctl.replaceChildren(...lead, h('button', {class: 'pd-b', type: 'button', 'aria-label': T.less(info.n), html: ICON.minus, onclick: e => { e.stopPropagation(); bump(info, v, -1); }}),
       h('span', {class: 'pd-n', 'aria-live': 'polite'}, String(q)),
       h('button', {class: 'pd-b', type: 'button', 'aria-label': T.more(info.n), html: ICON.plus, onclick: e => { e.stopPropagation(); bump(info, v, 1); }}));

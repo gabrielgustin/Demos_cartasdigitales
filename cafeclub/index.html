@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Café Club · Carta</title>
+<meta name="description" content="Carta 2026 de Café Club, directo al grano: café clásico, sin café, acompañalo con, cookies, budines, alfajores y entre panes.">
+<meta name="theme-color" content="#00501f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
+<style>
+:root{--v:#00501f;--v-2:#1b4f25;--v-3:#095526;--ink:#0b4a24;--mute:#4d7a5c;--line:rgba(0,80,31,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:Montserrat,system-ui,sans-serif;font-weight:500;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+/* guarda de ajedrez del PDF */
+.guarda{height:28px;background:conic-gradient(var(--v) 25%,#fff 0 50%,var(--v) 0 75%,#fff 0) 0 0/56px 56px}
+
+/* ---------- portada ---------- */
+.hero{position:relative;margin:0 14px;padding:22px 20px 22px;background:var(--v);color:#fff;border-radius:0 0 28px 28px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;max-width:calc(960px - 28px);margin-inline:auto;text-align:center;font-size:.76rem;line-height:1.45}
+.hero img{width:clamp(96px,26vw,130px);height:auto;margin:-34px 0 -22px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}
+.hero b{font-weight:800}
+@media (max-width:520px){.hero{grid-template-columns:1fr;padding-top:70px}.hero img{position:absolute;top:-30px;left:50%;transform:translateX(-50%);margin:0}.hero p:first-of-type{order:2}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;margin-top:14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:2px solid var(--v)}
+.nav ul{display:flex;gap:6px;overflow-x:auto;list-style:none;padding:10px 16px;max-width:960px;margin:0 auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;padding:6px 14px;border:2px solid var(--v);border-radius:999px;color:var(--v);text-decoration:none;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.nav a[aria-current="true"]{background:var(--v);color:#fff}
+
+/* ---------- secciones ---------- */
+main{padding-bottom:8px}
+.sec{padding:34px 0 8px}
+.sec>h2{font-weight:900;font-size:clamp(1.25rem,5.4vw,1.6rem);letter-spacing:.01em;text-transform:uppercase;color:var(--v-3)}
+.sec-sub{margin-top:6px;font-size:.78rem;color:var(--mute)}
+.cols{columns:2 400px;column-gap:48px;margin-top:6px}
+.grp{break-inside:avoid;margin-bottom:6px}
+.items{list-style:none}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.it h4{font-weight:500;font-size:.95rem;line-height:1.3}
+.it .prices{display:flex;gap:14px;align-items:flex-start}
+.it .pr{font-weight:700;font-size:.95rem;white-space:nowrap;text-align:right}
+.it .pr small{display:block;font-weight:600;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.it p{grid-column:1/-1;font-size:.78rem;line-height:1.5;color:var(--mute)}
+
+/* tabla M / XL / frío */
+.tbl{max-width:620px}.tbl .tc{width:48px;padding-left:8px;padding-right:0;text-align:right}.tbl .tc .pd-ctl{margin:0}
+.tbl{margin-top:8px;width:100%;border-collapse:collapse}
+.tbl th{padding:6px 4px;font-weight:900;font-size:.8rem;text-align:right;position:sticky;top:48px;background:rgba(255,255,255,.97);color:var(--v-3)}
+.tbl th:first-child{text-align:left}
+.tbl th img{height:22px;width:auto;vertical-align:middle}
+.tbl td{padding:9px 4px;border-bottom:1px solid var(--line);font-weight:600;font-size:.84rem;text-align:right;white-space:nowrap}
+.tbl td:first-child{text-align:left;white-space:normal;font-weight:500;font-size:.92rem}
+.tbl td small{display:block;margin-top:2px;font-weight:500;font-size:.72rem;line-height:1.4;color:var(--mute);white-space:normal}
+
+/* cajas del PDF */
+.caja{margin:16px 0 6px;padding:14px 20px;border-radius:14px;background:var(--v-2);color:#fff;font-size:.82rem;line-height:1.45;text-align:center}
+.caja b{font-weight:800}
+.pie-leche{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:36px 0 8px;border:2px dashed var(--v);border-radius:24px;overflow:hidden}
+.pie-leche>div{padding:16px 14px;text-align:center;font-size:.8rem;line-height:1.35}
+.pie-leche>div:first-child{border-right:2px dotted var(--v)}
+.pie-leche b{display:block;font-weight:800;font-size:.92rem}
+.pie-leche em{display:inline-block;margin-top:8px;padding:5px 12px;background:var(--v-2);color:#fff;font-style:normal;font-weight:800;font-size:.82rem}
+.dia{grid-column:1/-1;margin:-2px;padding:16px 18px;background:var(--v-2);color:#fff;text-align:center}
+.dia b{display:block;font-weight:900;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
+.dia strong{display:block;font-weight:900;font-size:2rem;line-height:1.1}
+.dia span{font-size:.72rem}
+.dia-it{display:block;border:0;padding:8px 0 0;list-style:none;--pd-btn:#fff;--pd-btn-fg:#1b4f25;--pd-fg:#fff;--pd-bg:#1b4f25;--pd-line:rgba(255,255,255,.5)}
+.dia-it .pd-ctl{justify-content:center;margin:0}
+.pie-leche{margin-top:34px}
+@media (min-width:700px){.pie-leche{grid-template-columns:1fr 1fr 1.1fr}.dia{grid-column:auto;margin:-2px -2px -2px 0;border-radius:0 22px 22px 0}}
+footer{padding:12px 20px 0;text-align:center;font-size:.72rem;color:var(--mute)}
+footer+.guarda{margin-top:26px}
+</style>
+</head>
+<body>
+<div class="guarda" aria-hidden="true"></div>
+<header class="hero">
+  <p>Todos nuestros productos son <b>frescos</b> y de <b>stock limitado</b>, por lo que recomendamos <b>chusmear mostrador!</b></p>
+  <img src="img/roundel.webp" alt="Café Club, directo al grano" width="300" height="299">
+  <p>Vayamos <b>directo al grano</b>,<br>si lo tomás más caliente, <b>avisanos</b>.</p>
+</header>
+<nav class="nav" aria-label="Secciones de la carta"><ul id="nav"></ul></nav>
+<main class="wrap" id="menu"></main>
+
+<footer>Precios en pesos argentinos.</footer>
+<div class="guarda" aria-hidden="true"></div>
+
+<script>
+// ---------- datos (transcriptos de la carta 2026) ----------
+// p: número o {etiqueta: precio}; null = no aplica
+const SECS = [
+ {id: 'cafe', t: 'Café clásico', nav: 'Café', table: {cols: [['M', ''], ['XL', ''], ['Frío', 'ice']], rows: [
+  ['Doble espresso', '', 3400, null, null], ['Americano', '', 3800, null, 4500], ['Flat White', '', 4600, null, 4900], ['Latte', '', 4400, 4800, 5000],
+  ['Capuccino', '', 4500, 4900, 5100], ['Mocaccino', '', 4800, 5000, 5200], ['Espresso Tonic', '', null, null, 5000]]}, groups: [], cafeDia: 1},
+ {id: 'algomas', t: 'Café y algo más', nav: 'Algo más', table: {cols: [['M', ''], ['XL', ''], ['Frío', 'ice']], rows: [
+  ['Latte especial', 'Pistacho, coco, avellana, caramel, vainilla, amaretti', 4600, 5000, 5200]]}, groups: []},
+ {id: 'sincafe', t: 'Sin café', table: {cols: [['M', ''], ['XL', ''], ['Frío', 'ice']], rows: [
+  ['Matcha Latte', '', 5600, 5900, 6200], ['Submarino', '', 4500, 4800, 5000]]}, groups: []},
+ {id: 'acompanalo', t: 'Acompañalo con', nav: 'Acompañalo', caja: 'Recomendación del club: <b>pedilo calentito</b>', groups: [
+  {items: [
+   {n: 'Croissant', p: 4200}, {n: 'Medialuna de manteca', p: 4200}, {n: 'Roll de canela', p: 5500}, {n: 'Croissant de almendras', p: 7500},
+   {n: 'Croissant de pistachos', p: 7500}, {n: 'Scon de queso', p: 5200}, {n: 'Chipa de queso (x2)', p: 3000}, {n: 'Lemonie', p: 4500}, {n: 'Brownie', p: 5000},
+  ]},
+ ]},
+ {id: 'cookies', t: 'Cookies', caja: 'Consultá por opciones <b>veganas / vegetarianas!</b>', groups: [
+  {items: [{n: 'Crunch', p: 5000}, {n: 'Red Velvet', p: 5000}, {n: 'Limón y pistacho', p: 5000}, {n: 'Choco Dubai', p: 5000}]},
+ ]},
+ {id: 'budines', t: 'Budines', groups: [
+  {items: [{n: 'Zanahoria y nuez', p: 5200}, {n: 'Limón y amapolas', p: 5200}, {n: 'Banana y tahini', p: 5200}]},
+ ]},
+ {id: 'alfajores', t: 'Alfajores', groups: [{items: [{n: 'Maicena', p: 4000}, {n: 'Almendras', p: 5000}]}]},
+ {id: 'panes', t: 'Entre panes', groups: [
+  {items: [
+   {n: 'Croissant / Medialuna', d: 'Con jamón y queso.', p: 7500},
+   {n: 'Tostado americano', d: 'Pan de papa · jamón y queso · lomo y cheddar.', p: 7500},
+   {n: 'Sandwich de focaccia', p: 9500}, {n: 'Sandwich de ciabatta', p: 9500},
+  ]},
+ ]},
+];
+const CAFE_DIA = {n: 'Café del día', d: 'Consultar con el barista de turno.', p: 4200};
+
+// ---------- render ----------
+const money = n => '$ ' + n.toLocaleString('es-AR');
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}</h4><div class="prices"><span class="pr">${money(it.p)}</span></div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const group = g => `<div class="grp"><ul class="items">${g.items.map(item).join('')}</ul></div>`;
+const table = t => `<table class="tbl"><thead><tr><th scope="col"></th>${t.cols.map(([a, k]) => `<th scope="col">${k === 'ice' ? `<img src="img/hielo.webp" alt="${a}" title="${a}">` : a}</th>`).join('')}<th class="tc"></th></tr></thead><tbody>${t.rows.map(([n, d, ...v]) => {
+  const p = Object.fromEntries(t.cols.map(([a], i) => [a === 'Frío' ? 'Frío' : a, v[i]]));
+  return `<tr${Pedido.attr(n, p, {d})} data-pd-compact><td>${n}${d ? `<small>${d}</small>` : ''}</td>${v.map(x => `<td>${x == null ? '–' : x.toLocaleString('es-AR')}</td>`).join('')}<td class="tc" data-pd-slot></td></tr>`;
+}).join('')}</tbody></table>`;
+const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
+  <h2 id="${s.id}-t">${s.t}</h2>${s.caja ? `<p class="caja">${s.caja}</p>` : ''}
+  ${s.table ? table(s.table) : ''}<div class="cols">${s.groups.map(group).join('')}</div>
+</section>`;
+
+document.getElementById('menu').innerHTML = SECS.map(section).join('');
+document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+// pie del PDF (leches + café del día), dentro del menú para que el café del día también se pueda pedir
+document.getElementById('menu').insertAdjacentHTML('beforeend', `<div class="pie-leche">
+  <div><b>Leche descremada, deslactosada o entera</b><em>Sin costo adicional.</em></div>
+  <div><b>Leche vegetal</b><span>Almendras / Coco</span><br><em>$ 1.000</em></div>
+  <div class="dia"><b>Café del día</b><strong>${money(CAFE_DIA.p)}</strong><span>${CAFE_DIA.d}</span>
+    <ul class="items"><li class="it dia-it"${Pedido.attr(CAFE_DIA.n, CAFE_DIA.p, {d: CAFE_DIA.d})} data-pd-block></li></ul></div>
+</div>`);
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({theme: {btn: '#00501f', btnFg: '#ffffff', bg: '#ffffff', fg: '#0b4a24', mute: '#4d7a5c', line: 'rgba(0,80,31,.2)', price: '#00501f', field: 'rgba(0,80,31,.07)', font: 'Montserrat,system-ui,sans-serif'}});
+
+// la carta se dibuja con JS: el navegador ya no salta solo al #hash
+if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+
+// ---------- scroll-spy ----------
+const navUl = document.getElementById('nav'), links = [...navUl.querySelectorAll('a')];
+let current;
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  const a = links.find(l => l.hash === '#' + e.target.id);
+  if (!e.isIntersecting || a === current) return;
+  current?.removeAttribute('aria-current');
+  a.setAttribute('aria-current', 'true');
+  current = a;
+  // solo mueve la barra de chips: scrollIntoView también toca el scroll de la página y lo traba
+  navUl.scrollTo({left: a.offsetLeft - (navUl.clientWidth - a.offsetWidth) / 2, behavior: 'smooth'});
+}), {rootMargin: '-40% 0px -55% 0px'});
+document.querySelectorAll('.sec').forEach(s => spy.observe(s));
+// salto sin ensuciar el historial (el botón "atrás" vuelve a salir de la carta)
+navUl.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  e.preventDefault();
+  document.querySelector(a.hash).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+</script>
+</body>
+</html>
