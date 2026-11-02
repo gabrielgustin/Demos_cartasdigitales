@@ -311,6 +311,35 @@ function setupSearch(root, o) {
   return run;
 }
 
+// ---------- pedido de ejemplo ----------
+// Demo: al abrir la carta el pedido ya tiene 1 o 2 platos (el primero de la carta y otro de una sección distinta),
+// para que se vea la barra "Ver pedido". Se puede desactivar con seed:false o elegir platos con seed:['Nombre', ...].
+let seeded = false;
+function seedOrder(root, o) {
+  if (seeded || o.seed === false) return;
+  const cands = [...root.querySelectorAll('[data-pd]')].flatMap(el => {
+    let d; try { d = JSON.parse(el.dataset.pd); } catch { return []; }
+    if (!d.v.length) return [];
+    const secEl = el.closest('section');
+    return [{d, sec: plain(secEl?.querySelector('h2')?.textContent || '') || 'Carta', order: Math.max(0, sections.indexOf(secEl))}];
+  });
+  if (!cands.length) return; // la carta todavía no se dibujó (pestañas): se reintenta en el próximo escaneo
+  seeded = true;
+  let pick;
+  if (Array.isArray(o.seed)) pick = o.seed.map(n => cands.find(c => norm(c.d.n) === norm(n))).filter(Boolean);
+  else {
+    const first = cands[0];
+    const second = cands.find((c, i) => i >= Math.floor(cands.length * .35) && c.sec !== first.sec) || cands.find(c => c !== first);
+    pick = [first, second].filter(Boolean);
+  }
+  store.lines = {}; store.mode = 'none';
+  for (const c of pick) {
+    const [label, p] = c.d.v[0];
+    store.lines[lineKey(c.sec, c.d.n, label, p)] = {n: c.d.n, s: c.sec, o: c.order, l: label, p, q: 1};
+  }
+  emit();
+}
+
 // ---------- arranque ----------
 function init(o = {}) {
   const th = o.theme || {}, map = {btn: 'btn', btnFg: 'btn-fg', bg: 'bg', fg: 'fg', mute: 'mute', line: 'line', price: 'price', font: 'font', head: 'head', field: 'field'};
@@ -327,6 +356,7 @@ function init(o = {}) {
     sections = [...document.querySelectorAll('section')];
     root.querySelectorAll('[data-pd]:not([data-pd-ready])').forEach(el => { setupItem(el); });
     root.querySelectorAll('[data-pd]').forEach(bindOpen);
+    seedOrder(root, o);
     paintBar(); rerunSearch?.();
   };
   scan();
