@@ -157,6 +157,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 
@@ -348,7 +350,7 @@ const MASCOTS = {
 };
 const mascot = m => { const [f, w, h, idle] = MASCOTS[m]; return `<img class="mascot fx i-${idle}" src="img/${f}.webp" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">`; };
 
-const row = (it, col) => `<li class="row ${col}">
+const row = (it, col) => `<li class="row ${col}"${Pedido.attr(it.n, it.p, {d: it.d})}>
   <div><h3>${it.n}${it.u ? ` <em>${it.u}</em>` : ''}${it.tag ? `<span class="tag">${it.tag}</span>` : ''}</h3>${it.d ? `<p>${it.d}</p>` : ''}</div>
   <div class="prices">${it.p && typeof it.p === 'object' ? Object.entries(it.p).map(([k, v]) => price(v, k)).join('') : price(it.p)}</div>
 </li>`;
@@ -368,6 +370,9 @@ document.getElementById('menu').innerHTML = GROUPS.map(g =>
 const allSecs = GROUPS.flatMap(g => g.secs);
 document.getElementById('nav').innerHTML = allSecs.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('')
   + '<li><a href="#sucursales">Sucursales</a></li>';
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#161616", "btnFg": "#ffd23f", "bg": "#ffffff", "fg": "#161616", "mute": "#5b5560", "line": "rgba(22,22,22,.18)", "price": "#7a45cc", "field": "rgba(22,22,22,.07)", "font": "Nunito,system-ui,sans-serif", "head": "'Luckiest Guy',cursive"}});
 
 document.getElementById('branches').innerHTML = BRANCHES.map(b => {
   const wa = '549' + b.tel.replace(/\D/g, '');

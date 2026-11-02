@@ -48,6 +48,8 @@ main{padding:6px 0 8px}
 footer{padding:26px 16px 36px;text-align:center}
 footer p{color:var(--durazno);font-weight:400;font-size:.9rem}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header>
@@ -157,7 +159,7 @@ const SECS = [
 
 // ---------- render ----------
 const money = n => '$ ' + n.toLocaleString('es-AR');
-const item = it => `<li class="it"><h4>${it.n}</h4><span class="pr">${money(it.p)}</span>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}</h4><span class="pr">${money(it.p)}</span>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
 const group = g => `<div class="grp">${g.g ? `<h3>${g.g}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
 const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
   <h2 id="${s.id}-t">${s.t}</h2>
@@ -167,6 +169,9 @@ const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}
 
 document.getElementById('menu').innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#6f9a6a", "btnFg": "#ffffff", "bg": "#ffffff", "fg": "#2c2c2c", "mute": "#777777", "line": "#ececec", "price": "#6f9a6a", "font": "Oswald,system-ui,sans-serif"}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

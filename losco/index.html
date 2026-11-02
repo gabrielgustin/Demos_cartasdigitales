@@ -85,6 +85,8 @@ footer img{width:150px;height:auto}
 footer p{margin-top:12px;font-size:.78rem;color:var(--mute)}
 @media (min-width:760px){.banner{min-height:210px;padding:24px}}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header class="hero">
@@ -239,12 +241,12 @@ const row = (it, g) => {
   const cols = g.cols, list = Array.isArray(it.p) ? it.p : [it.p];
   const head = `<h4>${it.n}${it.star ? '<span class="star" title="Favorito">★</span>' : ''}</h4>`, desc = it.d ? `<p>${it.d}</p>` : '';
   if (g.mode === 'chips') {
-    const chips = list.map((v, i) => v == null ? '' : `<span class="chip">${icon(cols[i].ic)}<span><small>${cols[i].l}</small><b>${money(v)}</b></span></span>`).join('');
-    return `<li class="it big">${head}${desc}<div class="chips">${chips}</div></li>`;
+    const chips = list.map((v, i) => v == null ? '' : `<span class="chip" data-pd-v="${i}">${icon(cols[i].ic)}<span><small>${cols[i].l}</small><b>${money(v)}</b></span></span>`).join('');
+    return `<li class="it big"${Pedido.attr(it.n, it.p, {d: it.d, cols})} data-pd-block>${head}${desc}<div class="chips">${chips}</div></li>`;
   }
   const n = cols ? cols.length : 1;
   const cells = Array.from({length: n}, (_, i) => list[i] == null ? '<span class="v no">–</span>' : `<span class="v">${money(list[i])}</span>`).join('');
-  return `<li class="it" style="--n:${n}">${head}${cells}${desc}</li>`;
+  return `<li class="it" style="--n:${n}"${Pedido.attr(it.n, it.p, {d: it.d, cols})} data-pd-block>${head}${cells}${desc}</li>`;
 };
 
 const group = g => {
@@ -268,6 +270,9 @@ const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}
 const menu = document.getElementById('menu');
 menu.innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"search": false, "theme": {"btn": "#ff1493", "btnFg": "#ffffff", "bg": "#1a1a1a", "fg": "#ffffff", "mute": "#b9b4b8", "line": "rgba(255,255,255,.14)", "price": "#ff5cb4", "field": "rgba(255,255,255,.09)", "font": "Montserrat,system-ui,sans-serif"}});
 
 // ---------- buscador ----------
 const q = document.getElementById('q'), vacio = document.getElementById('vacio');

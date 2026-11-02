@@ -1,0 +1,92 @@
+/* Pedido para el salón — módulo compartido por todas las cartas.
+   Cada carta define su paleta con Pedido.init({theme}); acá solo hay valores por defecto. */
+:root{
+  --pd-btn:#222;--pd-btn-fg:#fff;--pd-bg:#fff;--pd-fg:#222;--pd-mute:#777;--pd-line:rgba(0,0,0,.12);
+  --pd-price:var(--pd-btn);--pd-font:system-ui,sans-serif;--pd-head:var(--pd-font);--pd-field:rgba(0,0,0,.05)
+}
+[hidden]{display:none!important}
+body.pd-lock{overflow:hidden}
+
+/* ---------- control + / − dentro de cada plato ---------- */
+.pd-ctl{display:inline-flex;align-items:center;gap:6px;margin-left:8px;vertical-align:middle;font:600 14px/1 var(--pd-font);letter-spacing:0;text-transform:none;font-style:normal;white-space:nowrap}
+.pd-ctl.pd-block{display:flex;grid-column:1/-1;justify-self:end;margin:4px 0 0}
+.pd-pr{margin-right:4px;font-weight:700;color:var(--pd-price)}
+.pd-b{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border-radius:999px;border:1px solid var(--pd-line);background:var(--pd-bg);color:var(--pd-btn);cursor:pointer;font:inherit;transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.pd-b svg{width:14px;height:14px;pointer-events:none}
+.pd-b:hover{border-color:var(--pd-btn)}
+.pd-b.pd-on{background:var(--pd-btn);border-color:transparent;color:var(--pd-btn-fg)}
+.pd-b.pd-on:hover{filter:brightness(1.08)}
+.pd-b:focus-visible,.pd-bar button:focus-visible,.pd-box button:focus-visible,.pd-search input:focus-visible{outline:2px solid var(--pd-btn);outline-offset:2px}
+.pd-n{min-width:18px;text-align:center;color:var(--pd-fg);font-variant-numeric:tabular-nums}
+.pd-badge{position:relative}
+.pd-badge .pd-cnt{position:absolute;top:-6px;right:-6px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--pd-price);color:var(--pd-btn-fg);font:700 10px/17px var(--pd-font);text-align:center}
+[data-pd]{cursor:pointer}
+/* tarjetas de precio que también agregan (Simple / Doble / Triple) */
+.pd-chip{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .15s,box-shadow .15s}
+.pd-chip.pd-sel{border-color:var(--pd-btn)!important;box-shadow:0 0 0 1px var(--pd-btn)}
+.pd-chip:focus-visible{outline:2px solid var(--pd-btn);outline-offset:2px}
+.pd-chip .pd-cnt{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--pd-btn);color:var(--pd-btn-fg);font:700 11px/20px var(--pd-font);text-align:center}
+
+/* ---------- buscador ---------- */
+.pd-search{max-width:960px;margin:0 auto;padding:16px 20px 10px}
+.pd-search label{position:relative;display:block}
+.pd-search svg{position:absolute;left:15px;top:50%;width:17px;height:17px;transform:translateY(-50%);color:var(--pd-mute);pointer-events:none}
+.pd-search input{width:100%;height:46px;padding:0 16px 0 42px;border:1px solid var(--pd-line);border-radius:999px;background:var(--pd-bg);color:var(--pd-fg);font:400 .95rem var(--pd-font);-webkit-appearance:none;appearance:none}
+.pd-search input::placeholder{color:var(--pd-mute)}
+.pd-search input::-webkit-search-cancel-button{-webkit-appearance:none}
+.pd-none{padding:46px 20px;text-align:center;color:var(--pd-mute);font:400 .95rem var(--pd-font)}
+
+/* ---------- barra fija "Ver pedido" ---------- */
+.pd-bar{position:fixed;inset:auto 0 0 0;z-index:90;display:flex;justify-content:center;padding:0 16px max(16px,env(safe-area-inset-bottom));pointer-events:none}
+.pd-bar button{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;max-width:448px;padding:14px 20px;border:0;border-radius:999px;background:var(--pd-btn);color:var(--pd-btn-fg);font:600 .9rem var(--pd-font);cursor:pointer;box-shadow:0 12px 28px -8px rgba(0,0,0,.45)}
+.pd-bar .pd-l{display:flex;align-items:center;gap:10px;min-width:0}
+.pd-bar svg{width:19px;height:19px;flex:none}
+.pd-bar .pd-c{padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.2);font-size:.75rem}
+.pd-bar .pd-t{font:700 .95rem var(--pd-head)}
+
+/* ---------- ventanas (producto y pedido) ---------- */
+.pd-ov{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);animation:pd-fade .18s ease-out}
+.pd-box{position:relative;width:100%;max-width:448px;max-height:92vh;max-height:92dvh;overflow-y:auto;overscroll-behavior:contain;border-radius:24px 24px 0 0;background:var(--pd-bg);color:var(--pd-fg);font:400 .9rem/1.5 var(--pd-font);animation:pd-up .22s ease-out}
+@media (min-width:640px){.pd-ov{align-items:center}.pd-box{border-radius:24px}}
+@keyframes pd-fade{from{opacity:0}}
+@keyframes pd-up{from{transform:translateY(24px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pd-ov,.pd-box{animation:none}}
+.pd-x{display:inline-flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;padding:0;border:0;border-radius:999px;background:var(--pd-field);color:var(--pd-fg);cursor:pointer}
+.pd-x svg{width:18px;height:18px;pointer-events:none}
+.pd-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:22px 22px 14px;border-bottom:1px solid var(--pd-line)}
+.pd-hd .pd-tt{display:flex;align-items:flex-start;gap:12px;min-width:0}
+.pd-hd h2{margin:0;font:700 1.45rem/1.2 var(--pd-head);color:var(--pd-fg)}
+.pd-hd p{margin:6px 0 0;color:var(--pd-mute)}
+.pd-body{padding:6px 22px 4px}
+.pd-eyebrow{margin:18px 0 2px;font:700 .62rem/1 var(--pd-font);letter-spacing:.22em;text-transform:uppercase;color:var(--pd-mute)}
+.pd-ln{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--pd-line)}
+.pd-ln:last-child{border-bottom:0}
+.pd-ln h4{margin:0;font:600 .92rem/1.3 var(--pd-head);color:var(--pd-fg)}
+.pd-ln small{display:block;margin-top:2px;color:var(--pd-mute);font-size:.76rem}
+.pd-ln .pd-q{margin-right:8px;color:var(--pd-price);font-variant-numeric:tabular-nums}
+.pd-ln .pd-p{flex:none;color:var(--pd-mute);font-size:.8rem}
+.pd-ft{display:grid;gap:10px;padding:16px 22px 22px;border-top:1px solid var(--pd-line)}
+.pd-tot{display:flex;align-items:baseline;justify-content:space-between}
+.pd-tot span{font:700 .68rem/1 var(--pd-font);letter-spacing:.16em;text-transform:uppercase;color:var(--pd-mute)}
+.pd-tot b{font:700 1.3rem/1 var(--pd-head);color:var(--pd-price)}
+.pd-main{display:block;width:100%;height:46px;padding:0 20px;border:0;border-radius:999px;background:var(--pd-btn);color:var(--pd-btn-fg);font:600 .9rem var(--pd-font);cursor:pointer}
+.pd-main:hover{filter:brightness(1.08)}
+.pd-ghost{display:block;width:100%;padding:11px 20px;border:1px solid var(--pd-line);border-radius:999px;background:transparent;color:var(--pd-mute);font:700 .7rem var(--pd-font);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.pd-ghost:hover{border-color:var(--pd-btn);color:var(--pd-btn)}
+.pd-empty{padding:26px 22px;color:var(--pd-mute)}
+
+/* producto */
+.pd-pic{position:relative;height:210px;background:var(--pd-field)}
+.pd-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pd-pic .pd-x{position:absolute;top:14px;right:14px;background:var(--pd-bg);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.pd-info{display:grid;gap:12px;padding:22px}
+.pd-info .pd-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.pd-info h2{margin:0;font:700 1.5rem/1.2 var(--pd-head);color:var(--pd-fg)}
+.pd-info .pd-price{flex:none;padding-top:4px;font:700 1.1rem var(--pd-head);color:var(--pd-price)}
+.pd-info .pd-eyebrow{margin:0}
+.pd-info p{margin:0;color:var(--pd-mute)}
+.pd-inyour{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pd-inyour span.pd-lbl{font:700 .68rem var(--pd-font);letter-spacing:.16em;text-transform:uppercase;color:var(--pd-mute)}
+.pd-info .pd-x.pd-flo{position:absolute;top:14px;right:14px}
+.pd-vars{margin:2px 0 0;padding:0;list-style:none;border-top:1px solid var(--pd-line)}
+.pd-vars .pd-ln:first-child{padding-top:10px}

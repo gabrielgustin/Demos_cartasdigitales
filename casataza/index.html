@@ -78,6 +78,8 @@ footer{padding:34px 20px 48px;text-align:center}
 footer img{width:60px;height:auto}
 footer p{margin-top:10px;font-size:.78rem;color:var(--marron)}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header class="hero">
@@ -240,11 +242,11 @@ const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>
 const prices = p => typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
 const marks = it => `${it.st ? '<span class="mk" title="Opción sin TACC">* sin TACC</span>' : ''}${it.vg ? '<span class="mk v">vegano</span>' : ''}`;
 
-const item = it => `<li class="it"><h4>${it.n}${marks(it)}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}><h4>${it.n}${marks(it)}</h4><div class="prices">${prices(it.p)}</div>${it.d ? `<p>${it.d}</p>` : ''}</li>`;
 const group = g => `<div class="grp">${g.g ? `<h3>${g.g}${g.s ? ` <small>· ${g.s}</small>` : ''}</h3>` : ''}<ul class="items">${g.items.map(item).join('')}</ul></div>`;
 
 const table = t => `<table class="tbl"><thead><tr><th scope="col">Torta</th>${t.cols.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>${
-  t.rows.map(r => `<tr><td>${r[0]}</td>${r.slice(1).map(v => `<td>${v == null ? '–' : money(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  t.rows.map(r => `<tr${Pedido.attr(r[0], Object.fromEntries(t.cols.map((c, i) => [c, r[i + 1]])))}><td data-pd-slot>${r[0]}</td>${r.slice(1).map(v => `<td>${v == null ? '–' : money(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 
 const section = s => `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-t">
   ${s.torta ? '<img class="torta" src="img/torta.webp" alt="" loading="lazy">' : ''}
@@ -255,6 +257,9 @@ const section = s => `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id
 
 document.getElementById('menu').innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#ad262e", "btnFg": "#ffffff", "bg": "#f6f0ea", "fg": "#5a3a1e", "mute": "#8a6a4c", "line": "rgba(173,38,46,.22)", "price": "#ad262e", "font": "Rubik,system-ui,sans-serif", "head": "'Barlow Condensed',sans-serif"}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

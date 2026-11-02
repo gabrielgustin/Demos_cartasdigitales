@@ -65,6 +65,8 @@ main{padding:10px 0 8px}
 
 footer{padding:26px 16px 40px;text-align:center;font-size:.72rem;letter-spacing:.06em;color:var(--mute)}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header class="hero">
@@ -424,7 +426,7 @@ const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>
 const prices = p => p === undefined ? '' : p === 'nd' ? '<span class="nd">No disponible</span>'
   : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
 
-const item = it => `<li class="it${it.p === 'nd' ? ' off' : ''}">
+const item = it => `<li class="it${it.p === 'nd' ? ' off' : ''}"${Pedido.attr(it.n, it.p, {d: it.d})}>
   <h4>${it.n}${it.nw ? '<span class="tag new">Nuevo</span>' : ''}${it.share ? '<span class="tag share">Para compartir</span>' : ''}${it.st ? '<span class="tag st">Sin TACC</span>' : ''}</h4>
   <div class="prices">${prices(it.p)}</div>
   ${it.d ? `<p>${it.d}</p>` : ''}
@@ -444,6 +446,9 @@ const section = s => `<section class="sec${s.cls ? ' ' + s.cls : ''}" id="${s.id
 
 document.getElementById('menu').innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#111111", "btnFg": "#ffffff", "bg": "#ffffff", "fg": "#111111", "mute": "#6f6a72", "line": "#e4dde2", "price": "#6d3d5f", "font": "Montserrat,system-ui,sans-serif", "head": "Oswald,sans-serif"}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

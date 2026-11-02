@@ -53,6 +53,8 @@ main{padding:6px 0 8px}
 footer{padding:34px 20px 44px;text-align:center}
 footer img{width:150px;height:auto;filter:invert(24%) sepia(75%) saturate(1500%) hue-rotate(345deg) brightness(.8)}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header class="hero">
@@ -110,9 +112,9 @@ const SECS = [
 const money = n => '$ ' + n.toLocaleString('es-AR');
 const card = c => `<article class="card">
   <div class="cap"><img src="img/${c.img}.webp" alt="${c.n}" loading="lazy"></div>
-  <div><h3 class="script">${c.n}</h3>${c.d ? `<p>${c.d}</p>` : ''}<span class="pill">${money(c.p)}</span></div>
+  <div${Pedido.attr(c.n, c.p, {d: c.d, img: `img/${c.img}.webp`})} data-pd-nolabel><h3 class="script">${c.n}</h3>${c.d ? `<p>${c.d}</p>` : ''}<span class="pill">${money(c.p)}</span></div>
 </article>`;
-const row = r => `<div class="plain"><h3>${r.n}${r.d ? ` <small>(${r.d})</small>` : ''}</h3><span>${money(r.p)}</span></div>`;
+const row = r => `<div class="plain"${Pedido.attr(r.n, r.p, {d: r.d})}><h3>${r.n}${r.d ? ` <small>(${r.d})</small>` : ''}</h3><span class="pr">${money(r.p)}</span></div>`;
 const group = g => `<div class="grp"><h3 class="t">${g.g}</h3>${g.icon ? `<img class="taza" src="img/${g.icon}.webp" alt="" loading="lazy">` : ''}${g.rows.map(row).join('')}</div>`;
 
 const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}-t">
@@ -122,6 +124,9 @@ const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}
 
 document.getElementById('menu').innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#75150e", "btnFg": "#ffffff", "bg": "#f4e7e2", "fg": "#2a1a17", "mute": "#7a5a54", "line": "rgba(117,21,14,.2)", "price": "#75150e", "font": "Lora,Georgia,serif", "head": "'Playfair Display',serif"}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();

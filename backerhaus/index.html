@@ -133,6 +133,8 @@ main{padding:30px 0 10px;min-height:60vh}
   .rv{opacity:1;transform:none}
 }
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 
@@ -344,7 +346,7 @@ const TABS = [
 const money = n => '$' + n.toLocaleString('es-AR');
 const price = p => typeof p === 'number' ? `<span class="pr">${money(p)}</span>` : `<span class="pr${p ? '' : ' na'}">${p ?? 'Consultar'}</span>`;
 const extras = x => `<div class="ex">${x.t ? `<b>${x.t}</b>` : ''}<ul>${x.o.map(([n, p]) => `<li><span>${n}</span><i></i><span>${p == null ? 'Consultar' : money(p)}</span></li>`).join('')}</ul></div>`;
-const item = it => `<li class="it">
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}>
   <div class="ln"><h3>${it.n}</h3><i aria-hidden="true"></i>${price(it.p)}</div>
   ${it.d ? `<p>${it.d}</p>` : ''}${it.x ? extras(it.x) : ''}
 </li>`;
@@ -367,6 +369,9 @@ const OKT_HEAD = `<div class="okt-h">
 
 const menu = document.getElementById('menu'), tabsEl = document.getElementById('tabs'), chips = document.getElementById('chips');
 tabsEl.innerHTML = TABS.map(t => `<button class="tab${t.okt ? ' okt' : ''}" role="tab" data-tab="${t.id}">${t.t}<small>${t.s}</small></button>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#1c2e5c", "btnFg": "#f6ead0", "bg": "#f6ead0", "fg": "#1c2e5c", "mute": "#4d4a45", "line": "rgba(28,46,92,.22)", "price": "#c4202d", "font": "Lora,Georgia,serif", "head": "Oswald,sans-serif"}});
 
 let spy, rv, current;
 function show(id, scroll) {

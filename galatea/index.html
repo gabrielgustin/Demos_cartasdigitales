@@ -60,6 +60,8 @@ main{padding:34px 0 8px}
 
 footer{padding:22px 16px 40px;text-align:center;font-size:.75rem;color:var(--mute)}
 </style>
+<link rel="stylesheet" href="../shared/pedido.css">
+<script src="../shared/pedido.js"></script>
 </head>
 <body>
 <header class="hero">
@@ -240,7 +242,7 @@ const price = (v, label) => `<span class="pr">${label ? `<small>${label}</small>
 const prices = p => p === 'ask' ? '<span class="ask">Consultar</span>'
   : typeof p === 'object' ? Object.entries(p).map(([k, v]) => price(v, k)).join('') : price(p);
 
-const item = it => `<li class="it">
+const item = it => `<li class="it"${Pedido.attr(it.n, it.p, {d: it.d})}>
   <h4>${it.n}</h4>
   <div class="prices">${prices(it.p)}</div>
   ${it.d ? `<p>${it.d}</p>` : ''}${it.q ? `<p class="q">${it.q}</p>` : ''}
@@ -260,6 +262,9 @@ const section = s => `<section class="sec" id="${s.id}" aria-labelledby="${s.id}
 
 document.getElementById('menu').innerHTML = SECS.map(section).join('');
 document.getElementById('nav').innerHTML = SECS.map(s => `<li><a href="#${s.id}">${s.nav || s.t}</a></li>`).join('');
+
+// ---------- pedido para el salón (módulo compartido) ----------
+Pedido.init({"theme": {"btn": "#e0c566", "btnFg": "#111111", "bg": "#161616", "fg": "#f4f1e6", "mute": "#a9a597", "line": "rgba(224,197,102,.3)", "price": "#e0c566", "field": "rgba(255,255,255,.08)", "font": "Roboto,system-ui,sans-serif", "head": "Oswald,sans-serif"}});
 
 // la carta se dibuja con JS: el navegador ya no salta solo al #hash
 if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
